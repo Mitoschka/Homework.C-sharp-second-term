@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Задача_1._1
+namespace Task_1._1
 {
     class Program
     {
