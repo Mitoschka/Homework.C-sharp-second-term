@@ -1,6 +1,6 @@
 ﻿namespace Task_3._2
 {
-    class FirstHash : IMyHash
+    public class FirstHash : IMyHash
     {
         const int capacity = 100;
 

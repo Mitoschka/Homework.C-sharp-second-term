@@ -1,6 +1,6 @@
 ﻿namespace Task_3._2
 {
-    class SecondHash : IMyHash
+    public class SecondHash : IMyHash
     {
         const int capacity = 100;
         /// <summary>

@@ -2,7 +2,7 @@
 
 namespace Task_3._2
 {
-    class Program
+    public class Program
     {
         static void PrintMenu()
         {
