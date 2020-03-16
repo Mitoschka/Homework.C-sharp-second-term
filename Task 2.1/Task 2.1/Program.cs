@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Task_2._1
+namespace MyList
 {
     class Program
     {
