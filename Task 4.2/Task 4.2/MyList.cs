@@ -51,9 +51,7 @@ namespace MyList
             ListElement currentElement = head;
             if (currentElement == null)
             {
-                Console.WriteLine("Нет начала списка");
-                --counter;
-                return;
+                throw new DeleteException("Error: Отсутствует начало списка");
             }
             if (head.value == value)
             {

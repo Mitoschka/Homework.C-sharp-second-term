@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Task_4._2
+namespace MyList
 {
     [Serializable]
     public class DeleteException : Exception

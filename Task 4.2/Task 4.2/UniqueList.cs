@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Task_4._2
+namespace MyList
 {
-    public class UniqueList : MyList.MyList
+    public class UniqueList : MyList
     {
         public void AddUniqueElementToList(string value)
         {
@@ -19,7 +19,7 @@ namespace Task_4._2
             {
                 if (currentElement.value == value)
                 {
-                    return;
+                    throw new AddException("Error: Выражение не являеться уникальным");
                 }
                 currentElement = currentElement.next;
             }
@@ -30,6 +30,7 @@ namespace Task_4._2
                 currentElement.next.value = value;
                 ++counter;
             }
+            throw new AddException("Error: Выражение не являеться уникальным");
         }
     }
 }
