@@ -10,122 +10,48 @@ namespace Task_4._2.Test
         }
 
         [Test]
-        public void AddElementAndDeleteElementTogetherWithGetItemValueShallWork1()
+        public void AddUniqueElementToListShouldWorkTrue()
         {
-            MyList.MyList myList = new MyList.MyList();
+            UniqueList list = new UniqueList();
 
-            myList.AddElement(1, 0);
-            myList.AddElement(2, 1);
-            myList.AddElement(3, 2);
-            myList.DeleteElement(0);
+            list.AddUniqueElementToList("abc");
 
-            Assert.AreEqual(2, myList.GetItemValue(0));
+            Assert.IsTrue(list.IsContain("abc"));
         }
 
         [Test]
-        public void SizeOfListShallWork()
+        public void AddUniqueElementToListShouldWorkFalse()
         {
-            MyList.MyList myList = new MyList.MyList();
+            UniqueList list = new UniqueList();
 
-            Assert.AreEqual(0, myList.SizeOfList());
+            list.AddUniqueElementToList("abc");
+
+            Assert.IsFalse(list.IsContain("ver"));
         }
 
         [Test]
-        public void AddElementAndDeleteElementTogetherWithGetItemValueShallWork2()
+        public void AddUniqueElementToListAndDeleteElementShouldWork()
         {
-            MyList.MyList myList = new MyList.MyList();
+            UniqueList list = new UniqueList();
 
-            myList.AddElement(765, 0);
-            myList.AddElement(-3, 1);
-            myList.AddElement(45, 2);
-            myList.AddElement(64, 3);
-            myList.DeleteElement(0);
-            myList.DeleteElement(1);
+            list.AddUniqueElementToList("abc");
+            list.AddUniqueElementToList("ver");
+            list.DeleteElement("abc");
 
-            Assert.AreEqual(-3, myList.GetItemValue(0));
+            Assert.IsFalse(list.IsContain("abc"));
+            Assert.IsTrue(list.IsContain("ver"));
         }
 
         [Test]
-        public void AddElementAndDeleteElementTogetherWithSizeOfListShallWork()
+        public void AddElementAndAddUniqueElementToListShouldWork()
         {
-            MyList.MyList myList = new MyList.MyList();
+            UniqueList list = new UniqueList();
 
-            myList.AddElement(28, 0);
-            myList.AddElement(-54, 1);
-            myList.DeleteElement(2);
+            list.AddElement("abc");
+            list.AddUniqueElementToList("abc");
+            list.AddElement("abc");
 
-            Assert.AreEqual(2, myList.SizeOfList());
-        }
-
-        [Test]
-        public void AddElementTogetherWithSizeOfListShallWork()
-        {
-            MyList.MyList myList = new MyList.MyList();
-
-            myList.AddElement(28, 0);
-            myList.AddElement(72, 1);
-            myList.AddElement(-94, 2);
-            myList.AddElement(1, 5);
-
-            Assert.AreEqual(3, myList.SizeOfList());
-        }
-
-        [Test]
-        public void AddElementTogetherWithGetItemValueShallWork1()
-        {
-            MyList.MyList myList = new MyList.MyList();
-
-            myList.AddElement(22, 0);
-            myList.AddElement(0, 1);
-            myList.AddElement(-4, 2);
-
-            Assert.AreEqual(22, myList.GetItemValue(0));
-        }
-
-        [Test]
-        public void AddElementTogetherWithGetItemValueShallWork2()
-        {
-            MyList.MyList myList = new MyList.MyList();
-
-            myList.AddElement(84, 0);
-            myList.AddElement(-2, 1);
-            myList.AddElement(5, 2);
-
-            Assert.AreEqual(-2, myList.GetItemValue(1));
-        }
-
-        [Test]
-        public void AddElementTogetherWithSizeOfListShallWork2()
-        {
-            MyList.MyList myList = new MyList.MyList();
-
-            myList.AddElement(84, 1);
-
-            Assert.AreEqual(0, myList.SizeOfList());
-        }
-
-        [Test]
-        public void AddElementAndSetItemValueTogetherWithGetItemValueShallWork1()
-        {
-            MyList.MyList myList = new MyList.MyList();
-
-            myList.AddElement(5, 0);
-            myList.AddElement(84, 1);
-            myList.SetItemValue(0, 34);
-
-            Assert.AreEqual(34, myList.GetItemValue(0));
-        }
-
-        [Test]
-        public void AddElementAndSetItemValueTogetherWithGetItemValueShallWork2()
-        {
-            MyList.MyList myList = new MyList.MyList();
-
-            myList.AddElement(953, 0);
-            myList.AddElement(-5, 1);
-            myList.SetItemValue(1, 3);
-
-            Assert.AreEqual(3, myList.GetItemValue(1));
+            Assert.AreEqual(2, list.SizeOfList());
         }
     }
 }
