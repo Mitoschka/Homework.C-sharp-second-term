@@ -19,7 +19,10 @@ namespace Task_3._2
         MyList[] hashTable = new MyList[capacity];
         int count = 0;
 
-
+        /// <summary>
+        /// Change my hash
+        /// </summary>
+        /// <param name="myHash"> changed hash </param>
         public void ChangeHash(IMyHash myHash)
         {
             MyList list = new MyList();
@@ -38,13 +41,6 @@ namespace Task_3._2
                 AddElementToHashTable(value);
             }
         }
-
-        // что нужно. нужен какой-то контейнеер, в котором будем хранить
-        // выкинутые элементы. нужен цикл, в котором будем идти по всей
-        // хеш таблице и вытаскивать элементы оттуда в контейнер
-        // после этого цикла сменить хэш функцию и наверное новым циклом
-        // пока наш контейнер не окажется пуст, вытаскивать из него
-        // элементы и засовывать в хеш таблицу
 
         /// <summary>
         /// Add value to hash table and checks value for uniqueness in hash table
@@ -67,6 +63,10 @@ namespace Task_3._2
             return hashTable[index].IsContain(value);
         }
 
+        /// <summary>
+        /// Pop the element
+        /// </summary>
+        /// <returns> element </returns>
         public string PopElement()
         {
             int index = Hash.HashFunction(hashTable[count].PopElement());
@@ -77,8 +77,10 @@ namespace Task_3._2
             return hashTable[index].PopElement();
         }
 
-
-        public void AddElementToHashTabl()
+        /// <summary>
+        /// Add element to hash table
+        /// </summary>
+        public void AddElementToHashTable()
         {
             int index = Hash.HashFunction(PopElement());
             hashTable[index].AddUniqueElementToList(PopElement());

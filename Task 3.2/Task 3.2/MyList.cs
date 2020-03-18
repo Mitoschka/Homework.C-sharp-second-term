@@ -116,9 +116,9 @@ namespace Task_3._2
         }
 
         /// <summary>
-        /// 
+        /// Pop the element
         /// </summary>
-        /// <returns></returns>
+        /// <returns> element </returns>
         public string PopElement()
         {
             ListElement currentElement = head;
@@ -147,9 +147,9 @@ namespace Task_3._2
         }
 
         /// <summary>
-        /// 
+        /// Size of list
         /// </summary>
-        /// <returns></returns>
+        /// <returns> Size of list </returns>
         public int SizeOfList()
         {
             return counter;
