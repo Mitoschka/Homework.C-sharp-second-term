@@ -27,5 +27,12 @@ namespace Task_4._2.Test
             unique.DeleteElement("dog");
             Assert.Throws<DeleteException>(() => unique.DeleteElement("dog"));
         }
+
+        [Test]
+        public void DeleteElementFromListTest()
+        {
+            unique.AddUniqueElementToList("dog");
+            Assert.Throws<DeleteException>(() => unique.DeleteElement("cat"));
+        }
     }
 }

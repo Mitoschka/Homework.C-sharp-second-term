@@ -63,6 +63,10 @@ namespace MyList
             {
                 currentElement = currentElement.next;
             }
+            if (currentElement.next == null)
+            {
+                throw new DeleteException("Error: Такого элемента нет");
+            }
             currentElement.next = currentElement.next.next;
             --counter;
         }
