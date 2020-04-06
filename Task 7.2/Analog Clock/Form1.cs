@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,14 @@ namespace Analog_Clock
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            PrivateFontCollection fontCollection = new PrivateFontCollection();
+            fontCollection.AddFontFile("362_LCDNOVA.ttf"); 
+            FontFamily family = fontCollection.Families[0];
+
+            lblTime.Font = new Font(family, 15);
+            lblDate.Font = new Font(family, 13);
+            lblDay.Font = new Font(family, 13);
+
             lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
             lblDate.Text = DateTime.Now.ToString("MMM dd yyyy");
             lblDay.Text = DateTime.Now.ToString("dddd");
