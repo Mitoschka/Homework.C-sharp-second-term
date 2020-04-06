@@ -86,7 +86,6 @@
             this.dotBox.Size = new System.Drawing.Size(450, 462);
             this.dotBox.TabIndex = 3;
             this.dotBox.TabStop = false;
-            this.dotBox.Click += new System.EventHandler(this.dotBox_Click);
             // 
             // secondBox
             // 
@@ -113,7 +112,6 @@
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(0, 31);
             this.lblTime.TabIndex = 5;
-            this.lblTime.Click += new System.EventHandler(this.lblTime_Click);
             // 
             // lblDate
             // 

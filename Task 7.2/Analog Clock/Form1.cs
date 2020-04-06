@@ -16,21 +16,6 @@ namespace Analog_Clock
         int count = 0;
         Bitmap back, hour, minute, dot, second;
 
-        private void dotBox_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblTime_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblSecond_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (count == 0)
