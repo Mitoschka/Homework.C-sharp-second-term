@@ -38,6 +38,7 @@
             this.lblTime = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblDay = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.backBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hourBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minuteBox)).BeginInit();
@@ -133,11 +134,22 @@
             this.lblDay.Size = new System.Drawing.Size(0, 35);
             this.lblDay.TabIndex = 8;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(13, 14);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 47);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Изменить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(525, 559);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblDay);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblTime);
@@ -173,6 +185,7 @@
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblDay;
+        private System.Windows.Forms.Button button1;
     }
 }
 

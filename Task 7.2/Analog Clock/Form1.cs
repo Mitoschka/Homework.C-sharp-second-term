@@ -13,6 +13,7 @@ namespace Analog_Clock
 {
     public partial class Form1 : Form
     {
+        int count = 0;
         Bitmap back, hour, minute, dot, second;
 
         private void dotBox_Click(object sender, EventArgs e)
@@ -28,6 +29,28 @@ namespace Analog_Clock
         private void lblSecond_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (count == 0)
+            {
+                back = new Bitmap(".\\oldBack.png");
+                count = 1;
+                return;
+            }
+            if (count == 1)
+            {
+                back = new Bitmap(".\\newBack.png");
+                count = 2;
+                return;
+            }
+            if (count == 2)
+            {
+                back = new Bitmap(".\\back.png");
+                count = 0;
+                return;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
