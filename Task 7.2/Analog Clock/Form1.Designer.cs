@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.backBox = new System.Windows.Forms.PictureBox();
             this.hourBox = new System.Windows.Forms.PictureBox();
             this.minuteBox = new System.Windows.Forms.PictureBox();
@@ -159,6 +160,7 @@
             this.Controls.Add(this.hourBox);
             this.Controls.Add(this.backBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "Form1";
