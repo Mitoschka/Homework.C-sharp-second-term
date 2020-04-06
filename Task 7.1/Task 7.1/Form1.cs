@@ -12,22 +12,20 @@ namespace Task_7._1
 {
     public partial class Form1 : Form
     {
+        double firstNum = 0;
+        double secondNum = 0;
+        double result = 0;
+        char sumbol = ' ';
+        bool isOperationPressedEarly = false;
+        bool EmtyEqual = false;
+        bool isContainDot = false;
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Operation()
         {
-            MaximizeBox = false;
-        }
-
-        private void equalButton_Click(object sender, EventArgs e)
-        {
-            if (inputAndOutputLine.Text.Length == 0)
-            {
-                return;
-            }
             switch (sumbol)
             {
                 case '+':
@@ -81,6 +79,19 @@ namespace Task_7._1
                         break;
                     }
             }
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            MaximizeBox = false;
+        }
+
+        private void equalButton_Click(object sender, EventArgs e)
+        {
+            if (inputAndOutputLine.Text.Length == 0)
+            {
+                return;
+            }
+            Operation();
             isOperationPressedEarly = false;
             EmtyEqual = true;
             textBox1.Clear();
@@ -92,16 +103,9 @@ namespace Task_7._1
             textBox1.Text += (sender as Button).Text;
         }
 
-        double firstNum = 0;
-        double secondNum = 0;
-        double result = 0;
-        char sumbol = ' ';
-        bool isOperationPressedEarly = false;
-        bool EmtyEqual = false;
-        bool EmtyString = false;
         private void inputSymblButton_Click(object sender, EventArgs e)
         {
-            EmtyString = false;
+            isContainDot = false;
             if (inputAndOutputLine.Text.Length == 0)
             {
                 return;
@@ -137,64 +141,7 @@ namespace Task_7._1
                 {
                     inputAndOutputLine.Text = "Не корректный ввод";
                 }
-                switch (sumbol)
-                {
-                    case '+':
-                        {
-                            result = firstNum + secondNum;
-                            firstNum = result;
-                            textBox1.Clear();
-                            textBox1.Text = firstNum.ToString();
-                            count++;
-                            break;
-                        }
-                    case '-':
-                        {
-                            result = firstNum - secondNum;
-                            firstNum = result;
-                            textBox1.Clear();
-                            textBox1.Text = firstNum.ToString();
-                            count++;
-                            break;
-                        }
-                    case '*':
-                        {
-                            result = firstNum * secondNum;
-                            firstNum = result;
-                            textBox1.Clear();
-                            textBox1.Text = firstNum.ToString();
-                            count++;
-                            break;
-                        }
-                    case '/':
-                        {
-                            if (secondNum == 0)
-                            {
-                                inputAndOutputLine.Clear();
-                                textBox1.Clear();
-                                inputAndOutputLine.Text = null;
-                                return;
-                            }
-                            else
-                            {
-                                result = firstNum / secondNum;
-                                firstNum = result;
-                                textBox1.Clear();
-                                textBox1.Text = firstNum.ToString();
-                            }
-                            count++;
-                            break;
-                        }
-                    case '%':
-                        {
-                            result = firstNum * secondNum / 100;
-                            firstNum = result;
-                            textBox1.Clear();
-                            textBox1.Text = firstNum.ToString();
-                            count++;
-                            break;
-                        }
-                }
+                Operation();
                 sumbol = (sender as Button).Text[0];
                 if (count != 0)
                 {
@@ -244,14 +191,19 @@ namespace Task_7._1
             if (inputAndOutputLine.Text != "")
             {
                 inputAndOutputLine.Text = inputAndOutputLine.Text.Remove(inputAndOutputLine.Text.Length - 1, 1);
+                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1, 1);
                 if (EmtyEqual)
                 {
                     firstNum = Convert.ToDouble(inputAndOutputLine.Text);
                 }
+                else
+                {
+                    return;
+                }
             }
-            if (textBox1.Text != "")
+            if(!inputAndOutputLine.Text.Contains(","))
             {
-                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1, 1);
+                isContainDot = false;
             }
         }
 
@@ -336,13 +288,13 @@ namespace Task_7._1
 
         private void buttonSymbolDot_Click(object sender, EventArgs e)
         {
-            if(!EmtyString)
+            if(!isContainDot)
             {
                 if (inputAndOutputLine.Text.Length > 0)
                 {
                     inputAndOutputLine.Text += (sender as Button).Text;
                     textBox1.Text += (sender as Button).Text;
-                    EmtyString = true;
+                    isContainDot = true;
                 }
             }
             else
