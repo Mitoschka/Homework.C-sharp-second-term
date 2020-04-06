@@ -41,13 +41,13 @@ namespace Analog_Clock
             }
             if (count == 1)
             {
-                back = new Bitmap(".\\newBack.png");
+                back = new Bitmap(".\\back.png");
                 count = 2;
                 return;
             }
             if (count == 2)
             {
-                back = new Bitmap(".\\back.png");
+                back = new Bitmap(".\\newBack.png");
                 count = 0;
                 return;
             }
@@ -101,7 +101,7 @@ namespace Analog_Clock
         {
             InitializeComponent();
 
-            back = new Bitmap(".\\back.png");
+            back = new Bitmap(".\\newBack.png");
             hour = new Bitmap(".\\hour.png");
             minute = new Bitmap(".\\minute.png");
             dot = new Bitmap(".\\dot.png");
