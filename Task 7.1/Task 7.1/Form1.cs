@@ -12,73 +12,22 @@ namespace Task_7._1
 {
     public partial class Form1 : Form
     {
-        double firstNum = 0;
-        double secondNum = 0;
-        double result = 0;
-        char sumbol = ' ';
-        bool isOperationPressedEarly = false;
-        bool EmtyEqual = false;
-        bool isContainDot = false;
+        CalculatorLogic calculatorLogic;
         public Form1()
         {
             InitializeComponent();
+            calculatorLogic = new CalculatorLogic();
         }
 
-        private void Operation()
+        public void Operation()
         {
-            switch (sumbol)
+            if (!calculatorLogic.IsOperationPressedEarly)
             {
-                case '+':
-                    {
-                        secondNum = Convert.ToDouble(inputAndOutputLine.Text);
-                        result = firstNum + secondNum;
-                        firstNum = result;
-                        inputAndOutputLine.Text = firstNum.ToString();
-                        break;
-                    }
-                case '-':
-                    {
-                        secondNum = Convert.ToDouble(inputAndOutputLine.Text);
-                        result = firstNum - secondNum;
-                        firstNum = result;
-                        inputAndOutputLine.Text = firstNum.ToString();
-                        break;
-                    }
-                case '*':
-                    {
-                        secondNum = Convert.ToDouble(inputAndOutputLine.Text);
-                        result = firstNum * secondNum;
-                        firstNum = result;
-                        inputAndOutputLine.Text = firstNum.ToString();
-                        break;
-                    }
-                case '/':
-                    {
-                        secondNum = Convert.ToDouble(inputAndOutputLine.Text);
-                        if (secondNum == 0)
-                        {
-                            inputAndOutputLine.Clear();
-                            textBox1.Clear();
-                            inputAndOutputLine.Text = null;
-                            return;
-                        }
-                        else
-                        {
-                            result = firstNum / secondNum;
-                            firstNum = result;
-                            inputAndOutputLine.Text = firstNum.ToString();
-                        }
-                        break;
-                    }
-                case '%':
-                    {
-                        secondNum = Convert.ToDouble(inputAndOutputLine.Text);
-                        result = firstNum * secondNum / 100;
-                        firstNum = result;
-                        inputAndOutputLine.Text = firstNum.ToString();
-                        break;
-                    }
+                calculatorLogic.SecondNum = Convert.ToDouble(inputAndOutputLine.Text);
+                inputAndOutputLine.Clear();
             }
+            calculatorLogic.Operation();
+            inputAndOutputLine.Text = calculatorLogic.FirstNum.ToString();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -91,50 +40,48 @@ namespace Task_7._1
             {
                 return;
             }
-            Operation();
-            isOperationPressedEarly = false;
-            EmtyEqual = true;
+            calculatorLogic.SecondNum = Convert.ToDouble(inputAndOutputLine.Text);
+            calculatorLogic.EqualButtonPressed();
+            inputAndOutputLine.Text = calculatorLogic.FirstNum.ToString();
             textBox1.Clear();
         }
 
-        private void inputNumButton_Click(object sender, EventArgs e)
+        public void inputNumButton_Click(object sender, EventArgs e)
         {
             inputAndOutputLine.Text += (sender as Button).Text;
             textBox1.Text += (sender as Button).Text;
         }
 
-        private void inputSymblButton_Click(object sender, EventArgs e)
+        private void inputSumbolButton_Click(object sender, EventArgs e)
         {
-            isContainDot = false;
-            if (inputAndOutputLine.Text.Length == 0)
+            calculatorLogic.IsContainDot = false;
+            if (inputAndOutputLine.Text.Length == 0 && textBox1.Text.Length == 0)
             {
                 return;
             }
-            int count = 0;
-            if (EmtyEqual)
+            if (calculatorLogic.IsEqualPressed)
             {
-                textBox1.Text += firstNum;
+                textBox1.Text += calculatorLogic.FirstNum;
             }
-            if (!isOperationPressedEarly)
+            if (!calculatorLogic.IsOperationPressedEarly)
             {
                 try
                 {
-                    firstNum = Convert.ToDouble(inputAndOutputLine.Text);
+                    calculatorLogic.FirstNum = Convert.ToDouble(inputAndOutputLine.Text);
                     inputAndOutputLine.Clear();
                 }
                 catch
                 {
                     inputAndOutputLine.Text = "Не корректный ввод";
                 }
-                count++;
-                sumbol = (sender as Button).Text[0];
-                textBox1.Text += sumbol;
+                calculatorLogic.Sumbol = (sender as Button).Text[0];
+                textBox1.Text += calculatorLogic.Sumbol;
             }
             else
             {
                 try
                 {
-                    secondNum = Convert.ToDouble(inputAndOutputLine.Text);
+                    calculatorLogic.SecondNum = Convert.ToDouble(inputAndOutputLine.Text);
                     inputAndOutputLine.Clear();
                 }
                 catch
@@ -142,20 +89,17 @@ namespace Task_7._1
                     inputAndOutputLine.Text = "Не корректный ввод";
                 }
                 Operation();
-                sumbol = (sender as Button).Text[0];
-                if (count != 0)
-                {
-                    textBox1.Text += sumbol;
-                    count--;
-                }
+                calculatorLogic.Sumbol = (sender as Button).Text[0];
+                inputAndOutputLine.Clear();
+                textBox1.Text = calculatorLogic.FirstNum.ToString();
+                textBox1.Text += calculatorLogic.Sumbol;
             }
-            isOperationPressedEarly = true;
+            calculatorLogic.IsOperationPressedEarly = true;
         }
 
         private void RemoveButton_Click(object sender, EventArgs e)
         {
-            firstNum = 0;
-            secondNum = 0;
+            calculatorLogic.Remove();
             inputAndOutputLine.Clear();
             textBox1.Clear();
         }
@@ -190,20 +134,31 @@ namespace Task_7._1
         {
             if (inputAndOutputLine.Text != "")
             {
-                inputAndOutputLine.Text = inputAndOutputLine.Text.Remove(inputAndOutputLine.Text.Length - 1, 1);
-                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1, 1);
-                if (EmtyEqual)
+                if (textBox1.Text != "")
                 {
-                    firstNum = Convert.ToDouble(inputAndOutputLine.Text);
+                    textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1, 1);
+                }
+                inputAndOutputLine.Text = inputAndOutputLine.Text.Remove(inputAndOutputLine.Text.Length - 1, 1);
+                if (calculatorLogic.IsEqualPressed)
+                {
+                    calculatorLogic.FirstNum = Convert.ToDouble(inputAndOutputLine.Text);
                 }
                 else
                 {
                     return;
                 }
             }
-            if(!inputAndOutputLine.Text.Contains(","))
+            if (textBox1.Text != "")
             {
-                isContainDot = false;
+                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1, 1);
+            }
+            if (!inputAndOutputLine.Text.Contains(","))
+            {
+                calculatorLogic.IsContainDot = false;
+            }
+            if (!inputAndOutputLine.Text.Contains(calculatorLogic.Sumbol))
+            {
+                calculatorLogic.Sumbol = ' ';
             }
         }
 
@@ -217,14 +172,14 @@ namespace Task_7._1
             int count = 0;
             try
             {
-                firstNum = Convert.ToDouble(inputAndOutputLine.Text);
+                calculatorLogic.FirstNum = Convert.ToDouble(inputAndOutputLine.Text);
                 count++;
             }
             catch
             {
                 inputAndOutputLine.Text = "Нет числа";
             }
-            if (firstNum < 0)
+            if (calculatorLogic.FirstNum < 0)
             {
                 inputAndOutputLine.Clear();
                 textBox1.Clear();
@@ -232,10 +187,9 @@ namespace Task_7._1
             }
             else
             {
-                resultOfSqrt = Math.Sqrt(firstNum);
-                inputAndOutputLine.Text = resultOfSqrt.ToString();
-                textBox1.Text = resultOfSqrt.ToString();
-                firstNum = resultOfSqrt;
+                calculatorLogic.SqrtMath(resultOfSqrt);
+                inputAndOutputLine.Text = calculatorLogic.FirstNum.ToString();
+                textBox1.Text = calculatorLogic.FirstNum.ToString();
                 count--;
             }
         }
@@ -250,14 +204,14 @@ namespace Task_7._1
             int count = 0;
             try
             {
-                firstNum = Convert.ToDouble(inputAndOutputLine.Text);
+                calculatorLogic.FirstNum = Convert.ToDouble(inputAndOutputLine.Text);
                 count++;
             }
             catch
             {
                 inputAndOutputLine.Text = "Нет числа";
             }
-            if (firstNum == 0)
+            if (calculatorLogic.FirstNum == 0)
             {
                 inputAndOutputLine.Clear();
                 inputAndOutputLine.Text += "0";
@@ -265,10 +219,9 @@ namespace Task_7._1
             }
             else
             {
-                resultDivisedOnOne = 1 / firstNum;
-                inputAndOutputLine.Text = resultDivisedOnOne.ToString();
-                textBox1.Text = resultDivisedOnOne.ToString();
-                firstNum = resultDivisedOnOne;
+                calculatorLogic.DivisedOnOne(resultDivisedOnOne);
+                inputAndOutputLine.Text = calculatorLogic.FirstNum.ToString();
+                textBox1.Text = calculatorLogic.FirstNum.ToString();
                 count--;
             }
         }
@@ -288,13 +241,13 @@ namespace Task_7._1
 
         private void buttonSymbolDot_Click(object sender, EventArgs e)
         {
-            if(!isContainDot)
+            if (!inputAndOutputLine.Text.Contains(","))
             {
                 if (inputAndOutputLine.Text.Length > 0)
                 {
                     inputAndOutputLine.Text += (sender as Button).Text;
                     textBox1.Text += (sender as Button).Text;
-                    isContainDot = true;
+                    calculatorLogic.IsContainDot = true;
                 }
             }
             else

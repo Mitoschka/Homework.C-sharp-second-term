@@ -151,7 +151,7 @@
             this.buttonSymbolPlus.TabIndex = 10;
             this.buttonSymbolPlus.Text = "+";
             this.buttonSymbolPlus.UseVisualStyleBackColor = true;
-            this.buttonSymbolPlus.Click += new System.EventHandler(this.inputSymblButton_Click);
+            this.buttonSymbolPlus.Click += new System.EventHandler(this.inputSumbolButton_Click);
             // 
             // buttonSymbolEquals
             // 
@@ -173,7 +173,7 @@
             this.buttonSymbolMultiply.TabIndex = 12;
             this.buttonSymbolMultiply.Text = "*";
             this.buttonSymbolMultiply.UseVisualStyleBackColor = true;
-            this.buttonSymbolMultiply.Click += new System.EventHandler(this.inputSymblButton_Click);
+            this.buttonSymbolMultiply.Click += new System.EventHandler(this.inputSumbolButton_Click);
             // 
             // buttonNumberNine
             // 
@@ -217,7 +217,7 @@
             this.buttonPercentageOfNumber.TabIndex = 18;
             this.buttonPercentageOfNumber.Text = "%";
             this.buttonPercentageOfNumber.UseVisualStyleBackColor = true;
-            this.buttonPercentageOfNumber.Click += new System.EventHandler(this.inputSymblButton_Click);
+            this.buttonPercentageOfNumber.Click += new System.EventHandler(this.inputSumbolButton_Click);
             // 
             // buttonSymbolDivision
             // 
@@ -228,7 +228,7 @@
             this.buttonSymbolDivision.TabIndex = 17;
             this.buttonSymbolDivision.Text = "/";
             this.buttonSymbolDivision.UseVisualStyleBackColor = true;
-            this.buttonSymbolDivision.Click += new System.EventHandler(this.inputSymblButton_Click);
+            this.buttonSymbolDivision.Click += new System.EventHandler(this.inputSumbolButton_Click);
             // 
             // buttonNumberZero
             // 
@@ -250,7 +250,7 @@
             this.buttonSymbolMinus.TabIndex = 20;
             this.buttonSymbolMinus.Text = "-";
             this.buttonSymbolMinus.UseVisualStyleBackColor = true;
-            this.buttonSymbolMinus.Click += new System.EventHandler(this.inputSymblButton_Click);
+            this.buttonSymbolMinus.Click += new System.EventHandler(this.inputSumbolButton_Click);
             // 
             // buttonSymbolRoot
             // 
