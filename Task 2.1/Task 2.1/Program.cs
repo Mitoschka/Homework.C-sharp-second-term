@@ -4,7 +4,7 @@ namespace MyList
 {
     class Program
     {
-        static void PrintMenu()
+       private static void PrintMenu()
         {
             Console.Write("[МЕНЮ КОМАНД]: \n" +
             "'0' - Выход из программы \n" +
@@ -15,11 +15,12 @@ namespace MyList
             "'5' - Устанавливить значение элемента по позиции, задаваемой целым числом \n" +
             "'6' - Вызвать меню команд \n" + "\n");
         }
-        static void Main()
-        {
-            MyList list = new MyList();
 
-            Console.Write("Это программа по работе с листом \n");
+        private static void Main()
+        {
+            var list = new MyList();
+
+            Console.Write("Это программа по работе со списком \n");
             Program.PrintMenu();
 
             int number = -1;
@@ -34,6 +35,7 @@ namespace MyList
                 }
                 catch (FormatException)
                 {
+                    throw new Exception("Error");
                 }
 
                 switch (number)

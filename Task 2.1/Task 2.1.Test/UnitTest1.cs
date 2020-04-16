@@ -4,16 +4,18 @@ namespace Task_2._1.Test
 {
     public class Tests
     {
+        MyList.MyList myList;
+
         [SetUp]
         public void Setup()
         {
+            myList = new MyList.MyList();
         }
+
 
         [Test]
         public void AddElementAndDeleteElementTogetherWithGetItemValueShallWork1()
         {
-            MyList.MyList myList = new MyList.MyList();
-
             myList.AddElement(1, 0);
             myList.AddElement(2, 1);
             myList.AddElement(3, 2);
@@ -25,16 +27,12 @@ namespace Task_2._1.Test
         [Test]
         public void SizeOfListShallWork()
         {
-            MyList.MyList myList = new MyList.MyList();
-
             Assert.AreEqual(0, myList.SizeOfList());
         }
 
         [Test]
         public void AddElementAndDeleteElementTogetherWithGetItemValueShallWork2()
         {
-            MyList.MyList myList = new MyList.MyList();
-
             myList.AddElement(765, 0);
             myList.AddElement(-3, 1);
             myList.AddElement(45, 2);
@@ -48,8 +46,6 @@ namespace Task_2._1.Test
         [Test]
         public void AddElementAndDeleteElementTogetherWithSizeOfListShallWork()
         {
-            MyList.MyList myList = new MyList.MyList();
-
             myList.AddElement(28, 0);
             myList.AddElement(-54, 1);
             myList.DeleteElement(2);
@@ -60,8 +56,6 @@ namespace Task_2._1.Test
         [Test]
         public void AddElementTogetherWithSizeOfListShallWork()
         {
-            MyList.MyList myList = new MyList.MyList();
-
             myList.AddElement(28, 0);
             myList.AddElement(72, 1);
             myList.AddElement(-94, 2);
@@ -73,8 +67,6 @@ namespace Task_2._1.Test
         [Test]
         public void AddElementTogetherWithGetItemValueShallWork1()
         {
-            MyList.MyList myList = new MyList.MyList();
-
             myList.AddElement(22, 0);
             myList.AddElement(0, 1);
             myList.AddElement(-4, 2);
@@ -85,8 +77,6 @@ namespace Task_2._1.Test
         [Test]
         public void AddElementTogetherWithGetItemValueShallWork2()
         {
-            MyList.MyList myList = new MyList.MyList();
-
             myList.AddElement(84, 0);
             myList.AddElement(-2, 1);
             myList.AddElement(5, 2);
@@ -97,8 +87,6 @@ namespace Task_2._1.Test
         [Test]
         public void AddElementTogetherWithSizeOfListShallWork2()
         {
-            MyList.MyList myList = new MyList.MyList();
-
             myList.AddElement(84, 1);
 
             Assert.AreEqual(0, myList.SizeOfList());
@@ -107,8 +95,6 @@ namespace Task_2._1.Test
         [Test]
         public void AddElementAndSetItemValueTogetherWithGetItemValueShallWork1()
         {
-            MyList.MyList myList = new MyList.MyList();
-
             myList.AddElement(5, 0);
             myList.AddElement(84, 1);
             myList.SetItemValue(0, 34);
@@ -119,8 +105,6 @@ namespace Task_2._1.Test
         [Test]
         public void AddElementAndSetItemValueTogetherWithGetItemValueShallWork2()
         {
-            MyList.MyList myList = new MyList.MyList();
-
             myList.AddElement(953, 0);
             myList.AddElement(-5, 1);
             myList.SetItemValue(1, 3);
