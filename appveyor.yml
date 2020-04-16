@@ -1,6 +1,7 @@
 image: Visual Studio 2019
 
 before_build:
+
 - nuget restore "Task 1.5/Task 1.5.sln"
 
 build:
@@ -8,3 +9,4 @@ build:
 
 test_script:
 - dotnet test "Task 1.5/Task 1.5.sln"
+
