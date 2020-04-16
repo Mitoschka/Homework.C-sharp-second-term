@@ -4,8 +4,8 @@ namespace Task_1._4
 {
     internal class Program
     {
-        const int sizeOfMatrix = 5;
-        static int[,] MatrixFilling(int line, int column)
+       private const int sizeOfMatrix = 5;
+        private static int[,] MatrixFilling(int line, int column)
         {
             int num = 0;
             int size = line * column;
@@ -26,7 +26,7 @@ namespace Task_1._4
             return array;
         }
 
-        static void MatrixOutput(int[,] array)
+        private static void MatrixOutput(int[,] array)
         {
             int[,] movement = new int[4, 2] { { -1, 0 }, { 0, -1 }, { 1, 0 }, { 0, 1 } };
             int move = 1;
@@ -60,7 +60,7 @@ namespace Task_1._4
             }
         }
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             int line = sizeOfMatrix;
             int column = sizeOfMatrix;
