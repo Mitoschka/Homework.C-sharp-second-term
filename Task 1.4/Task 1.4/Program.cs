@@ -4,86 +4,68 @@ namespace Task_1._4
 {
     internal class Program
     {
-        const int N = 13;
-
-        static int[,] FillingOut(int line, int column)
+        const int sizeOfMatrix = 5;
+        static int[,] MatrixFilling(int line, int column)
         {
+            int num = 0;
             int size = line * column;
             int[,] array = new int[line, column];
 
-            int horizontally = 0;
-            int upright = 0;
-            int maxColumn = N - 1;
-            int minColumn = 0;
-            int maxRow = N - 1;
-            int minRow = 0;
+            Console.WriteLine("Исходный массив:\n ");
 
-
-            while (size > 1)
+            for (int i = 0; i < sizeOfMatrix; i++)
             {
-                //Движемся вправо.
-                while (upright <= maxColumn)
+                for (int j = 0; j < sizeOfMatrix; j++)
                 {
-                    array[horizontally, upright] = size;
-                    size--;
-                    upright++;
+                    array[i, j] = num;
+                    Console.Write("{0}\t", array[i, j]);
+                    num++;
                 }
-                ++minRow;
-                --upright;
-                ++horizontally;
-
-                //Движемся вниз.
-                while (horizontally <= maxRow)
-                {
-                    array[horizontally, upright] = size;
-                    size--;
-                    horizontally++;
-                }
-                --maxColumn;
-                --horizontally;
-                --upright;
-
-
-                //Движемся влево.
-                while (upright >= minColumn)
-                {
-                    array[horizontally, upright] = size;
-                    size--;
-                    upright--;
-                }
-                --maxRow;
-                ++upright;
-                --horizontally;
-
-                //Движемся вверх.
-                while (horizontally >= minRow)
-                {
-                    array[horizontally, upright] = size;
-                    size--;
-                    horizontally--;
-                }
-                ++minColumn;
-                ++horizontally;
-                ++upright;
+                Console.WriteLine("\n");
             }
-            array[N / 2, N / 2] = 1;
             return array;
         }
+
+        static void MatrixOutput(int[,] array)
+        {
+            int[,] movement = new int[4, 2] { { -1, 0 }, { 0, -1 }, { 1, 0 }, { 0, 1 } };
+            int move = 1;
+            int position = 0;
+            int horizontally = sizeOfMatrix / 2;
+            int upright = sizeOfMatrix / 2;
+
+            Console.WriteLine("\nОтвет:\n");
+
+            while (move < sizeOfMatrix)
+            {
+                for (int i = 0; i < move; i++)
+                {
+                    Console.Write($" {array[horizontally, upright]} ");
+                    horizontally += movement[position, 0];
+                    upright += movement[position, 1];
+                }
+
+                position = (position + 1) % 4;
+                if (position % 2 == 0)
+                {
+                    move++;
+                }
+            }
+
+            for (int i = 0; i < sizeOfMatrix; i++)
+            {
+                Console.Write($" {array[horizontally, upright]} ");
+                horizontally += movement[position, 0];
+                upright += movement[position, 1];
+            }
+        }
+
         static void Main(string[] args)
         {
-            int line = N;
-            int column = N;
-            int[,] array = Program.FillingOut(line, column);
-
-            //Выводим массив в консоль.
-            for (int firstHorizontally = 0; firstHorizontally < line; firstHorizontally++)
-            {
-                for (int firstUpright = 0; firstUpright < column; firstUpright++)
-                {
-                    Console.Write(array[firstHorizontally, firstUpright] + "\t");
-                }
-                Console.WriteLine();
-            }
+            int line = sizeOfMatrix;
+            int column = sizeOfMatrix;
+            int[,] array = Program.MatrixFilling(line, column);
+            MatrixOutput(array);
         }
     }
 }
