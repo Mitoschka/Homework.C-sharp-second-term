@@ -29,13 +29,19 @@ namespace MyList
             {
                 Console.Write("\nВведите номер команды: " + "\n");
                 Console.Write("'6' - Вызвать меню команд \n" + "\n");
-                try
+                while (number == -1)
                 {
-                    number = Convert.ToInt32(Console.ReadLine());
-                }
-                catch (FormatException)
-                {
-                    throw new MyException("Error");
+                    try
+                    {
+                        number = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch (FormatException)
+                    {
+                        Console.Clear();
+                        Console.Write("'6' - Вызвать меню команд \n" + "\n");
+                        Console.WriteLine("Вы точно ввели правильное значение?");
+                        Console.Write("\nВведите номер команды: " + "\n");
+                    }
                 }
 
                 switch (number)

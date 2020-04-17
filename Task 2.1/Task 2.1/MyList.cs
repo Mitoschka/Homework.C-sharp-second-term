@@ -20,12 +20,12 @@ namespace MyList
         /// <param name="position">Number of item to add value to</param>
         public void AddElement(int value, int position)
         {
-            if (position > counter)
+            if (position > counter || position < 0)
             {
-                throw new MyException("Error");
+                throw new ArgumentException("Error");
             }
             int currentPosition = 0;
-            ListElement newElement = new ListElement();
+            var newElement = new ListElement();
             newElement.value = value;
             if (head == null || position == 0)
             {
@@ -47,6 +47,7 @@ namespace MyList
             currentElement.next = newElement;
             ++counter;
         }
+
         /// <summary>
         /// Removing an item from a list
         /// </summary>
@@ -68,7 +69,7 @@ namespace MyList
             }
             if (position > counter - 1)
             {
-                throw new MyException("Error");
+                throw new ArgumentException("Error");
             }
             while (currentElement.next != null && currentPosition != position - 1)
             {
@@ -94,7 +95,7 @@ namespace MyList
         {
             if (position > SizeOfList())
             {
-                throw new MyException("Error");
+                throw new ArgumentException("Error");
             }
             int currentPosition = 0;
             ListElement currentElement = head;
@@ -123,7 +124,7 @@ namespace MyList
         {
             if (position > counter - 1)
             {
-                return;
+                throw new ArgumentException("Error");
             }
             int currentPosition = 0;
             ListElement currentElement = head;

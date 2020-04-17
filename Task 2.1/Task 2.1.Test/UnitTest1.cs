@@ -4,7 +4,7 @@ namespace Task_2._1.Test
 {
     public class Tests
     {
-        MyList.MyList myList;
+        private MyList.MyList myList;
 
         [SetUp]
         public void Setup()
