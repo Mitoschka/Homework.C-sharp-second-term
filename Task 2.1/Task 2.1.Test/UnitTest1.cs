@@ -48,8 +48,8 @@ namespace Task_2._1.Test
         {
             myList.AddElement(28, 0);
             myList.AddElement(-54, 1);
-            myList.DeleteElement(2);
 
+            Assert.Throws<MyList.MyException>(() => myList.DeleteElement(2));
             Assert.AreEqual(2, myList.SizeOfList());
         }
 
@@ -59,8 +59,8 @@ namespace Task_2._1.Test
             myList.AddElement(28, 0);
             myList.AddElement(72, 1);
             myList.AddElement(-94, 2);
-            myList.AddElement(1, 5);
 
+            Assert.Throws<MyList.MyException>(() => myList.AddElement(1, 5));
             Assert.AreEqual(3, myList.SizeOfList());
         }
 
@@ -87,9 +87,7 @@ namespace Task_2._1.Test
         [Test]
         public void AddElementTogetherWithSizeOfListShallWork2()
         {
-            myList.AddElement(84, 1);
-
-            Assert.AreEqual(0, myList.SizeOfList());
+            Assert.Throws<MyList.MyException>(() => myList.AddElement(84, 1));
         }
 
         [Test]
@@ -110,6 +108,16 @@ namespace Task_2._1.Test
             myList.SetItemValue(1, 3);
 
             Assert.AreEqual(3, myList.GetItemValue(1));
+        }
+
+        [Test]
+        public void Work2()
+        {
+            myList.AddElement(953, 0);
+            myList.AddElement(-5, 1);
+            myList.SetItemValue(1, 3);
+
+            Assert.Throws<MyList.MyException>(() => myList.GetItemValue(21));
         }
     }
 }

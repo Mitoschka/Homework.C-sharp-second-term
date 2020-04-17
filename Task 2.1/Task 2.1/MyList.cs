@@ -22,7 +22,7 @@ namespace MyList
         {
             if (position > counter)
             {
-                throw new Exception("Error");
+                throw new MyException("Error");
             }
             int currentPosition = 0;
             ListElement newElement = new ListElement();
@@ -58,7 +58,7 @@ namespace MyList
             if (currentElement == null && position == 0)
             {
                 --counter;
-                throw new Exception("Нет начала списка");
+                throw new MyException("Нет начала списка");
             }
             if (position == 0)
             {
@@ -68,7 +68,7 @@ namespace MyList
             }
             if (position > counter - 1)
             {
-                throw new Exception("Error");
+                throw new MyException("Error");
             }
             while (currentElement.next != null && currentPosition != position - 1)
             {
@@ -94,13 +94,13 @@ namespace MyList
         {
             if (position > SizeOfList())
             {
-                throw new Exception("Error");
+                throw new MyException("Error");
             }
             int currentPosition = 0;
             ListElement currentElement = head;
             if (head == null)
             {
-                throw new Exception("Нет начала списка");
+                throw new MyException("Нет начала списка");
             }
             if (position == 0)
             {

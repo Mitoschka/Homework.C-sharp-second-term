@@ -35,7 +35,7 @@ namespace MyList
                 }
                 catch (FormatException)
                 {
-                    throw new Exception("Error");
+                    throw new MyException("Error");
                 }
 
                 switch (number)
