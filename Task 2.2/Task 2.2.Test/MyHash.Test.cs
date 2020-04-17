@@ -4,24 +4,46 @@ namespace Task_2._2.Test
 {
     public class Tests
     {
+       private HashTable hashTable;
+
         [SetUp]
         public void Setup()
         {
+            hashTable = new HashTable();
         }
 
         [Test]
-        public void PowerOfTwoShouldWork()
+        public void MyExceptionInDeleteElementOfHashTableShouldWork()
         {
-            HashTable hashTable = new HashTable();
+            Assert.Throws<MyException>(() => hashTable.DeleteElementOfHashTable("abc"));
+        }
 
-            Assert.AreEqual(8, hashTable.PowerOfTwo(3));
+        [Test]
+        public void AddUniqueElelementToHashTableShouldWork()
+        {
+            hashTable.AddElementToHashTable("abc");
+            hashTable.AddElementToHashTable("abc");
+            hashTable.AddElementToHashTable("abc");
+            hashTable.AddElementToHashTable("abc");
+            hashTable.AddElementToHashTable("vrc");
+
+            Assert.AreEqual(2, hashTable.SizeOfHashTable());
+        }
+
+        [Test]
+        public void AddUniqueElelementForThousendElementToHashTableShouldWork()
+        {
+            for (int i = 0; i <= 1000; i++)
+            {
+                hashTable.AddElementToHashTable("abc");
+            }
+
+            Assert.AreEqual(1, hashTable.SizeOfHashTable());
         }
 
         [Test]
         public void AddElementToHashTableAndIsContainInHashTableShouldWork()
         {
-            HashTable hashTable = new HashTable();
-
             hashTable.AddElementToHashTable("abc");
 
             Assert.IsTrue(hashTable.IsContainInHashTable("abc"));
@@ -30,8 +52,6 @@ namespace Task_2._2.Test
         [Test]
         public void AddElementToHashTableAndDeleteElementOfHashTableShouldWork()
         {
-            HashTable hashTable = new HashTable();
-
             hashTable.AddElementToHashTable("abc");
             hashTable.AddElementToHashTable("ver");
             hashTable.DeleteElementOfHashTable("abc");

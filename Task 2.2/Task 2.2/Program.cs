@@ -13,6 +13,7 @@ namespace Task_2._2
             "'3' - Проверить значение на принадлежность \n" +
             "'4' - Вызвать меню команд \n");
         }
+
         static void Main()
         {
             HashTable hashTable = new HashTable();
@@ -60,6 +61,7 @@ namespace Task_2._2
                             Console.Write("Введите значение: " + "\n");
                             string value = (Console.ReadLine());
                             hashTable.DeleteElementOfHashTable(value);
+                            Console.WriteLine($"\"{value}\" было удалено" + "\n");
                             break;
                         }
                     case 3:
@@ -95,4 +97,3 @@ namespace Task_2._2
         }
     }
 }
-

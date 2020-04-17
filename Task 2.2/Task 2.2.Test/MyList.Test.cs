@@ -4,16 +4,17 @@ namespace Task_2._2.Test
 {
     public class Test
     {
+        private MyList list;
+
         [SetUp]
         public void Setup()
         {
+            list = new MyList();
         }
 
         [Test]
         public void AddUniqueElementToListShouldWorkTrue()
         {
-            MyList list = new MyList();
-
             list.AddUniqueElementToList("abc");
 
             Assert.IsTrue(list.IsContain("abc"));
@@ -22,8 +23,6 @@ namespace Task_2._2.Test
         [Test]
         public void AddUniqueElementToListShouldWorkFalse()
         {
-            MyList list = new MyList();
-
             list.AddUniqueElementToList("abc");
 
             Assert.IsFalse(list.IsContain("ver"));
@@ -32,8 +31,6 @@ namespace Task_2._2.Test
         [Test]
         public void AddUniqueElementToListAndDeleteElementShouldWork()
         {
-            MyList list = new MyList();
-
             list.AddUniqueElementToList("abc");
             list.AddUniqueElementToList("ver");
             list.DeleteElement("abc");
@@ -45,8 +42,6 @@ namespace Task_2._2.Test
         [Test]
         public void AddElementAndAddUniqueElementToListShouldWork()
         {
-            MyList list = new MyList();
-
             list.AddElement("abc");
             list.AddUniqueElementToList("abc");
             list.AddElement("abc");

@@ -12,38 +12,23 @@ namespace Task_2._2
             }
         }
 
-        const int capacity = 100;
-        MyList[] hashTable = new MyList[capacity];
-
-        /// <summary>
-        /// Makes the hash function more random
-        /// </summary>
-        /// <param name="degree">Degree of received number</param>
-        /// <returns>Returns the power of a number</returns>
-        public int PowerOfTwo(int degree)
-        {
-            int result = 1;
-            for (int i = 0; i != degree; ++i)
-            {
-                result *= 2;
-            }
-
-            return result;
-        }
+        private const int capacity = 100;
+        private MyList[] hashTable = new MyList[capacity];
+        private int count = 0;
 
         /// <summary>
         /// Transforming an array of input data into a bit string of a specified length
         /// </summary>
         /// <param name="value">Input value</param>
         /// <returns>Returns result</returns>
-        public int HashFunction(string value)
+        private int HashFunction(string value)
         {
+            Degree degree = new Degree();
             int result = 0;
             for (int i = 0; i != value.Length; ++i)
             {
-                result = (result + PowerOfTwo(i) * value[i]) % capacity;
+                result = (result + degree.PowerOfTwo(i) * value[i]) % capacity;
             }
-
             return result;
         }
 
@@ -54,7 +39,14 @@ namespace Task_2._2
         public void AddElementToHashTable(string value)
         {
             int index = HashFunction(value);
-            hashTable[index].AddUniqueElementToList(value);
+            if (hashTable[index].AddUniqueElementToList(value))
+            {
+                count++;
+            }
+            else
+            {
+                return;
+            }
         }
 
         /// <summary>
@@ -75,16 +67,21 @@ namespace Task_2._2
         public void DeleteElementOfHashTable(string value)
         {
             int index = HashFunction(value);
-            if (IsContainInHashTable(value) == true)
+            if (IsContainInHashTable(value))
             {
                 hashTable[index].DeleteElement(value);
-                Console.WriteLine($"\"{value}\" было удалено" + "\n");
+                count--;
             }
             else
             {
-                Console.WriteLine("Такого элемента здесь нет");
-                return;
+                throw new MyException("Такого элемента здесь нет");
             }
         }
+
+        /// <summary>
+        /// Size of Hash Table
+        /// </summary>
+        /// <returns> Size of Hash Table </returns>
+        public int SizeOfHashTable() => count;
     }
 }

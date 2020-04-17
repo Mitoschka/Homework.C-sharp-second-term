@@ -10,8 +10,8 @@ namespace Task_2._2
             internal ListElement next;
         }
 
-        ListElement head;
-        int counter;
+        private ListElement head;
+        private int counter;
 
         /// <summary>
         /// Add item to List
@@ -87,14 +87,14 @@ namespace Task_2._2
         /// Add a unique item to List
         /// </summary>
         /// <param name="value">Unique value</param>
-        public void AddUniqueElementToList(string value)
+        public bool AddUniqueElementToList(string value)
         {
             if (head == null)
             {
                 head = new ListElement();
                 head.value = value;
                 ++counter;
-                return;
+                return true;
             }
 
             ListElement currentElement = head;
@@ -102,7 +102,7 @@ namespace Task_2._2
             {
                 if (currentElement.value == value)
                 {
-                    return;
+                    return false;
                 }
                 currentElement = currentElement.next;
             }
@@ -112,12 +112,11 @@ namespace Task_2._2
                 currentElement.next = new ListElement();
                 currentElement.next.value = value;
                 ++counter;
+                return true;
             }
+            return false;
         }
 
-        public int SizeOfList()
-        {
-            return counter;
-        }
+        public int SizeOfList() => counter;
     }
 }
