@@ -4,16 +4,17 @@ namespace Task_2._3.Test
 {
     public class TestsOfStackOnArray
     {
+        IStack stack;
+
         [SetUp]
         public void Setup()
         {
+            stack = new StackOnArray();
         }
 
         [Test]
         public void PeekShouldPullOutTheLastItemAdded()
         {
-            IStack stack = new StackOnArray();
-
             stack.Push("34");
             stack.Push("8");
 
@@ -23,8 +24,6 @@ namespace Task_2._3.Test
         [Test]
         public void CountShouldCountTheNumberOfAddedItems()
         {
-            IStack stack = new StackOnArray();
-
             stack.Push("34");
             stack.Push("8");
             stack.Peek();

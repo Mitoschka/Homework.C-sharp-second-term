@@ -20,7 +20,7 @@ namespace Task_2._3
         {
             if (counter > size)
             {
-                throw new IndexOutOfRangeException("Out of bounds array");
+                throw new MyException("Out of bounds array");
             }
             stringArray[counter] = value;
             counter++;
@@ -41,7 +41,7 @@ namespace Task_2._3
             }
             else
             {
-                throw new InvalidOperationException("The stack is empty");
+                throw new MyException("The stack is empty");
             }
         }
 
@@ -53,7 +53,7 @@ namespace Task_2._3
         {
             if (counter == 0)
             {
-                throw new InvalidOperationException("The stack is empty");
+                throw new MyException("The stack is empty");
             }
             else
             {

@@ -4,26 +4,19 @@ namespace Task_2._3.Test
 {
     public class TestsOfCalculator
     {
+        private IStack stack;
+        private Calculator calculator;
+
         [SetUp]
         public void Setup()
         {
+            stack = new StackOnList();
+            calculator = new Calculator(stack);
         }
 
         [Test]
-        public void ResultOfOperationsInArrayShouldReturnTheCorrectResultOfTheOperation()
+        public void ResultOfOperationsInArrayAndListShouldReturnTheCorrectResultOfTheOperation()
         {
-            IStack stack = new StackOnArray();
-            Calculator calculator = new Calculator(stack);
-
-            Assert.AreEqual(15, calculator.ResultOfOperations("1 4 - 2 3 + *"));
-        }
-
-        [Test]
-        public void ResultOfOperationsInListShouldReturnTheCorrectResultOfTheOperation()
-        {
-            IStack stack = new StackOnList();
-            Calculator calculator = new Calculator(stack);
-
             Assert.AreEqual(15, calculator.ResultOfOperations("1 4 - 2 3 + *"));
         }
     }

@@ -46,7 +46,7 @@ namespace Task_2._3
             ListElement currentElement = head;
             if (currentElement == null)
             {
-                throw new InvalidOperationException("The list is empty");
+                throw new MyException("The list is empty");
             }
 
             string value;

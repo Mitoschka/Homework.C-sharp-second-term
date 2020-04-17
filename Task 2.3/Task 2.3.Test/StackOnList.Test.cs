@@ -4,16 +4,17 @@ namespace Task_2._3.Test
 {
     public class TestsOfStackOnList
     {
+        private IStack stack;
+
         [SetUp]
         public void Setup()
         {
+            stack = new StackOnList();
         }
 
         [Test]
         public void CountShouldCountTheNumberOfAddedItems()
         {
-            IStack stack = new StackOnList();
-
             stack.Push("34");
             stack.Push("-4");
             stack.Peek();
@@ -23,13 +24,17 @@ namespace Task_2._3.Test
 
         [Test]
         public void PeekShouldPullOutTheLastItemAdded()
-        {
-            IStack stack = new StackOnList();
-
+        { 
             stack.Push("34");
             stack.Push("8");
 
             Assert.AreEqual("8", stack.Peek());
+        }
+
+        [Test]
+        public void PeekShouldWorkInEmptyStack()
+        {
+            Assert.Throws<MyException>(() => stack.Peek());
         }
     }
 }
