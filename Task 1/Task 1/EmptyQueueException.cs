@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Task_1
 {
-    class Program
+    public class EmptyQueueException : Exception
     {
-        static void Main(string[] args)
-        {
-
-        }
+        public EmptyQueueException() { }
     }
 }
