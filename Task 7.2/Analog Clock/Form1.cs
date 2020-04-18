@@ -18,19 +18,19 @@ namespace AnalogClock
         {
             if (count == 0)
             {
-                back = new Bitmap(".\\oldBack.png");
+                back = Analog_Clock.Properties.Resources.oldBack;
                 count = 1;
                 return;
             }
             if (count == 1)
             {
-                back = new Bitmap(".\\back.png");
+                back = Analog_Clock.Properties.Resources.back;
                 count = 2;
                 return;
             }
             if (count == 2)
             {
-                back = new Bitmap(".\\newBack.png");
+                back = Analog_Clock.Properties.Resources.newBack;
                 count = 0;
                 return;
             }
@@ -38,14 +38,6 @@ namespace AnalogClock
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            var fontCollection = new PrivateFontCollection();
-            fontCollection.AddFontFile("362_LCDNOVA.ttf"); 
-            FontFamily family = fontCollection.Families[0];
-
-            lblTime.Font = new Font(family, 15);
-            lblDate.Font = new Font(family, 13);
-            lblDay.Font = new Font(family, 13);
-
             lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
             lblDate.Text = DateTime.Now.ToString("MMM dd yyyy");
             lblDay.Text = DateTime.Now.ToString("dddd");
@@ -84,11 +76,11 @@ namespace AnalogClock
         {
             InitializeComponent();
 
-            back = new Bitmap(".\\newBack.png");
-            hour = new Bitmap(".\\hour.png");
-            minute = new Bitmap(".\\minute.png");
-            dot = new Bitmap(".\\dot.png");
-            second = new Bitmap(".\\second.png");
+            back = Analog_Clock.Properties.Resources.newBack;
+            hour = Analog_Clock.Properties.Resources.hour;
+            minute = Analog_Clock.Properties.Resources.minute;
+            dot = Analog_Clock.Properties.Resources.dot;
+            second = Analog_Clock.Properties.Resources.second;
         }
 
         private Bitmap RotateImage(Bitmap rotateMe, float angle)
