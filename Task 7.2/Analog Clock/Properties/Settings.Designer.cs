@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Analog_Clock.Properties
+namespace AnalogClock.Properties
 {
 
 

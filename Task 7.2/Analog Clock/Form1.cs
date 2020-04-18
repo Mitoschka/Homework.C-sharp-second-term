@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Analog_Clock
+namespace AnalogClock
 {
-    public partial class Form1 : Form
+    public partial class ClockForm : Form
     {
-        int count = 0;
-        Bitmap back, hour, minute, dot, second;
+        private int count = 0;
+        private Bitmap back;
+        private Bitmap hour;
+        private Bitmap minute;
+        private Bitmap dot;
+        private Bitmap second;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -40,7 +38,7 @@ namespace Analog_Clock
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            PrivateFontCollection fontCollection = new PrivateFontCollection();
+            var fontCollection = new PrivateFontCollection();
             fontCollection.AddFontFile("362_LCDNOVA.ttf"); 
             FontFamily family = fontCollection.Families[0];
 
@@ -65,12 +63,12 @@ namespace Analog_Clock
 
             backBox.Controls.Add(hourBox);
             hourBox.Location = new Point(0, 0);
-            hourBox.Image = rotateImage(hour, AngleH);
+            hourBox.Image = RotateImage(hour, AngleH);
 
 
             hourBox.Controls.Add(minuteBox);
             minuteBox.Location = new Point(0, 0);
-            minuteBox.Image = rotateImage(minute, AngleM);
+            minuteBox.Image = RotateImage(minute, AngleM);
 
             minuteBox.Controls.Add(dotBox);
             dotBox.Location = new Point(0, 0);
@@ -79,10 +77,10 @@ namespace Analog_Clock
 
             dotBox.Controls.Add(secondBox);
             secondBox.Location = new Point(0, 0);
-            secondBox.Image = rotateImage(second, AngleS);
+            secondBox.Image = RotateImage(second, AngleS);
         }
 
-        public Form1()
+        public ClockForm()
         {
             InitializeComponent();
 
@@ -93,16 +91,11 @@ namespace Analog_Clock
             second = new Bitmap(".\\second.png");
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private Bitmap RotateImage(Bitmap rotateMe, float angle)
         {
+            var rotatedImage = new Bitmap(rotateMe.Width, rotateMe.Height);
 
-        }
-
-        private Bitmap rotateImage(Bitmap rotateMe, float angle)
-        {
-            Bitmap rotatedImage = new Bitmap(rotateMe.Width, rotateMe.Height);
-
-            using(Graphics g = Graphics.FromImage(rotatedImage))
+            using (Graphics g = Graphics.FromImage(rotatedImage))
             {
                 g.TranslateTransform(rotateMe.Width / 2, rotateMe.Height / 2);
                 g.RotateTransform(angle);

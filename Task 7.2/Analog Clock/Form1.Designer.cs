@@ -1,6 +1,6 @@
-﻿namespace Analog_Clock
+﻿namespace AnalogClock
 {
-    partial class Form1
+    partial class ClockForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClockForm));
             this.backBox = new System.Windows.Forms.PictureBox();
             this.hourBox = new System.Windows.Forms.PictureBox();
             this.minuteBox = new System.Windows.Forms.PictureBox();
@@ -163,7 +163,6 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Часы";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.backBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hourBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minuteBox)).EndInit();
