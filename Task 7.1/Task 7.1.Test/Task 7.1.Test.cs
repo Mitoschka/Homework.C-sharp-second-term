@@ -4,11 +4,12 @@ namespace Task_7._1.Test
 {
     public class Tests
     {
-        CalculatorLogic calculatorLogic = new CalculatorLogic();
+        CalculatorLogic calculatorLogic;
 
         [SetUp]
         public void Setup()
         {
+            calculatorLogic = new CalculatorLogic();
         }
 
         [Test]
