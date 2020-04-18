@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6E56C5D5-DB92-472B-B9FC-BC1FBDB3DC84}</ProjectGuid>
+    <ProjectGuid>{E78D6056-6538-4C34-AE99-97DDD0817B84}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Task_7._1</RootNamespace>
     <AssemblyName>Task 7.1</AssemblyName>
@@ -47,17 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalculatorLogic.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="CalculatorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="CalculatorForm.Designer.cs">
+      <DependentUpon>CalculatorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
