@@ -19,7 +19,7 @@ namespace Task_2._3
         /// </summary>
         /// <param name="expression">The string that the user enters</param>
         /// <returns>Result of operations</returns>
-        public int ResultOfOperations(string expression)
+        public int CalculateTheResultOfOperations(string expression)
         {
             string tmp = "";
             for (int i = 0; i != expression.Length; ++i)
@@ -39,9 +39,9 @@ namespace Task_2._3
                     {
                         case '/':
                             {
-                                string divisor = stack.Peek();
+                                string divisor = stack.Pop();
                                 int convertDivisor = Convert.ToInt32(divisor);
-                                string dividend = stack.Peek();
+                                string dividend = stack.Pop();
                                 int convertDividend = Convert.ToInt32(dividend);
 
                                 int result = convertDividend / convertDivisor;
@@ -52,22 +52,22 @@ namespace Task_2._3
                             }
                         case '*':
                             {
-                                string firstFactor = stack.Peek();
+                                string firstFactor = stack.Pop();
                                 int convertFirstFactor = Convert.ToInt32(firstFactor);
-                                string secondFactor = stack.Peek();
+                                string secondFactor = stack.Pop();
                                 int convertSecondFactor = Convert.ToInt32(secondFactor);
 
                                 int result = convertFirstFactor * convertSecondFactor;
 
-                                string produs = Convert.ToString(result);
-                                stack.Push(produs);
+                                string composition = Convert.ToString(result);
+                                stack.Push(composition);
                                 break;
                             }
                         case '+':
                             {
-                                string firstMultiplier = stack.Peek();
+                                string firstMultiplier = stack.Pop();
                                 int convertFirstMultiplier = Convert.ToInt32(firstMultiplier);
-                                string secondMultiplier = stack.Peek();
+                                string secondMultiplier = stack.Pop();
                                 int convertSecondMultiplier = Convert.ToInt32(secondMultiplier);
 
                                 int result = convertFirstMultiplier + convertSecondMultiplier;
@@ -78,9 +78,9 @@ namespace Task_2._3
                             }
                         case '-':
                             {
-                                string minuend = stack.Peek();
+                                string minuend = stack.Pop();
                                 int convertMinuend = Convert.ToInt32(minuend);
-                                string subtrahend = stack.Peek();
+                                string subtrahend = stack.Pop();
                                 int convertSubtrahend = Convert.ToInt32(subtrahend);
 
                                 int result = convertMinuend - convertSubtrahend;
@@ -100,7 +100,7 @@ namespace Task_2._3
                     }
                 }
             }
-            string peek = stack.Peek();
+            string peek = stack.Pop();
             int res = Convert.ToInt32(peek);
             return res;
         }

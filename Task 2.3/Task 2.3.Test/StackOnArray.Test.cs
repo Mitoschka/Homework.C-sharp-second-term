@@ -18,7 +18,7 @@ namespace Task_2._3.Test
             stack.Push("34");
             stack.Push("8");
 
-            Assert.AreEqual("8", stack.Peek());
+            Assert.AreEqual("8", stack.Pop());
         }
 
         [Test]
@@ -26,7 +26,7 @@ namespace Task_2._3.Test
         {
             stack.Push("34");
             stack.Push("8");
-            stack.Peek();
+            stack.Pop();
 
             Assert.AreEqual(1, stack.Count());
         }

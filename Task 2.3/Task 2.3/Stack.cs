@@ -15,7 +15,7 @@
         /// Returns the top element of the stack.
         /// </summary>
         /// <returns>Top element</returns>
-        string Peek();
+        string Pop();
 
         /// <summary>
         /// Returns the number of items on the stack.

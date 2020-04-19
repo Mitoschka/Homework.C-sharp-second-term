@@ -17,7 +17,7 @@ namespace Task_2._3.Test
         [Test]
         public void ResultOfOperationsInArrayAndListShouldReturnTheCorrectResultOfTheOperation()
         {
-            Assert.AreEqual(15, calculator.ResultOfOperations("1 4 - 2 3 + *"));
+            Assert.AreEqual(15, calculator.CalculateTheResultOfOperations("1 4 - 2 3 + *"));
         }
     }
 }

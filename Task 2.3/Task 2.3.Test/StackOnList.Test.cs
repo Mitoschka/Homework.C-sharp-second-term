@@ -17,7 +17,7 @@ namespace Task_2._3.Test
         {
             stack.Push("34");
             stack.Push("-4");
-            stack.Peek();
+            stack.Pop();
 
             Assert.AreEqual(1, stack.Count());
         }
@@ -28,13 +28,13 @@ namespace Task_2._3.Test
             stack.Push("34");
             stack.Push("8");
 
-            Assert.AreEqual("8", stack.Peek());
+            Assert.AreEqual("8", stack.Pop());
         }
 
         [Test]
         public void PeekShouldWorkInEmptyStack()
         {
-            Assert.Throws<MyException>(() => stack.Peek());
+            Assert.Throws<MyException>(() => stack.Pop());
         }
     }
 }

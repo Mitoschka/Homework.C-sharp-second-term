@@ -30,7 +30,7 @@ namespace Task_2._3
         /// Returns the top element of the stack.
         /// </summary>
         /// <returns> top element </returns>
-        public string Peek()
+        public string Pop()
         {
             if (stringArray[counter] == null)
             {
@@ -51,14 +51,7 @@ namespace Task_2._3
         /// <returns> size of stack </returns>
         public int Count()
         {
-            if (counter == 0)
-            {
-                throw new MyException("The stack is empty");
-            }
-            else
-            {
-                return counter;
-            }
+            return counter;
         }
     }
 }
