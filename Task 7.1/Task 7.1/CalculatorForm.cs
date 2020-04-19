@@ -6,7 +6,7 @@ namespace Task_7._1
 {
     public partial class CalculatorForm : Form
     {
-        CalculatorLogic calculatorLogic;
+        private CalculatorLogic calculatorLogic;
         public CalculatorForm()
         {
             InitializeComponent();
@@ -17,11 +17,11 @@ namespace Task_7._1
         {
             if (!calculatorLogic.IsOperationPressedEarly)
             {
-                calculatorLogic.SecondNum = Convert.ToDouble(inputAndOutputLine.Text);
-                inputAndOutputLine.Clear();
+                calculatorLogic.SecondNum = Convert.ToDouble(inputAndOutputLineOfResult.Text);
+                inputAndOutputLineOfResult.Clear();
             }
             calculatorLogic.Operation();
-            inputAndOutputLine.Text = calculatorLogic.FirstNum.ToString();
+            inputAndOutputLineOfResult.Text = calculatorLogic.FirstNum.ToString();
         }
         private void CalculatorForm_Load(object sender, EventArgs e)
         {
@@ -30,63 +30,76 @@ namespace Task_7._1
 
         private void equalButton_Click(object sender, EventArgs e)
         {
-            if (inputAndOutputLine.Text.Length == 0)
+            if (inputAndOutputLineOfResult.Text.Length == 0)
             {
                 return;
             }
-            calculatorLogic.SecondNum = Convert.ToDouble(inputAndOutputLine.Text);
+            calculatorLogic.SecondNum = Convert.ToDouble(inputAndOutputLineOfResult.Text);
             calculatorLogic.EqualButtonPressed();
-            inputAndOutputLine.Text = calculatorLogic.FirstNum.ToString();
-            textBox1.Clear();
+            inputAndOutputLineOfResult.Text = calculatorLogic.FirstNum.ToString();
+            inputAndOutputLineOfOperation.Clear();
+            calculatorLogic.IsDelete = false;
         }
 
         public void inputNumButton_Click(object sender, EventArgs e)
         {
-            inputAndOutputLine.Text += (sender as Button).Text;
-            textBox1.Text += (sender as Button).Text;
+            if(calculatorLogic.IsEqualPressed)
+            {
+                if(!calculatorLogic.IsDelete)
+                {
+                    inputAndOutputLineOfResult.Clear();
+                    calculatorLogic.IsDelete = true;
+                }
+                inputAndOutputLineOfResult.Text += (sender as Button).Text;
+                return;
+            }
+            inputAndOutputLineOfResult.Text += (sender as Button).Text;
+            inputAndOutputLineOfOperation.Text += (sender as Button).Text;
         }
 
-        private void inputSumbolButton_Click(object sender, EventArgs e)
+        private void inputSymbolButton_Click(object sender, EventArgs e)
         {
             calculatorLogic.IsContainDot = false;
-            if (inputAndOutputLine.Text.Length == 0 && textBox1.Text.Length == 0)
+            if (inputAndOutputLineOfResult.Text.Length == 0 && inputAndOutputLineOfOperation.Text.Length == 0)
             {
                 return;
             }
             if (calculatorLogic.IsEqualPressed)
             {
-                textBox1.Text += calculatorLogic.FirstNum;
+                calculatorLogic.FirstNum = Convert.ToDouble(inputAndOutputLineOfResult.Text);
+                inputAndOutputLineOfOperation.Text += calculatorLogic.FirstNum;
+                calculatorLogic.IsEqualPressed = false;
             }
             if (!calculatorLogic.IsOperationPressedEarly)
             {
                 try
                 {
-                    calculatorLogic.FirstNum = Convert.ToDouble(inputAndOutputLine.Text);
-                    inputAndOutputLine.Clear();
+                    calculatorLogic.FirstNum = Convert.ToDouble(inputAndOutputLineOfResult.Text);
+                    inputAndOutputLineOfResult.Clear();
                 }
                 catch
                 {
-                    inputAndOutputLine.Text = "Не корректный ввод";
+                    inputAndOutputLineOfResult.Text = "Не корректный ввод";
                 }
-                calculatorLogic.Sumbol = (sender as Button).Text[0];
-                textBox1.Text += calculatorLogic.Sumbol;
+                calculatorLogic.Symbol = (sender as Button).Text[0];
+                inputAndOutputLineOfOperation.Text += calculatorLogic.Symbol;
             }
             else
             {
                 try
                 {
-                    calculatorLogic.SecondNum = Convert.ToDouble(inputAndOutputLine.Text);
-                    inputAndOutputLine.Clear();
+                    calculatorLogic.SecondNum = Convert.ToDouble(inputAndOutputLineOfResult.Text);
+                    inputAndOutputLineOfResult.Clear();
                 }
                 catch
                 {
-                    inputAndOutputLine.Text = "Не корректный ввод";
+                    inputAndOutputLineOfResult.Text = "Не корректный ввод";
                 }
                 Operation();
-                calculatorLogic.Sumbol = (sender as Button).Text[0];
-                inputAndOutputLine.Clear();
-                textBox1.Text = calculatorLogic.FirstNum.ToString();
-                textBox1.Text += calculatorLogic.Sumbol;
+                calculatorLogic.Symbol = (sender as Button).Text[0];
+                inputAndOutputLineOfResult.Clear();
+                inputAndOutputLineOfOperation.Text = calculatorLogic.FirstNum.ToString();
+                inputAndOutputLineOfOperation.Text += calculatorLogic.Symbol;
             }
             calculatorLogic.IsOperationPressedEarly = true;
         }
@@ -94,71 +107,72 @@ namespace Task_7._1
         private void RemoveButton_Click(object sender, EventArgs e)
         {
             calculatorLogic.Remove();
-            inputAndOutputLine.Clear();
-            textBox1.Clear();
+            inputAndOutputLineOfResult.Clear();
+            inputAndOutputLineOfOperation.Clear();
+            calculatorLogic.IsDelete = false;
         }
 
         private void oppositeMeaningButton_Click(object sender, EventArgs e)
         {
-            if (inputAndOutputLine.Text != "")
+            if (inputAndOutputLineOfResult.Text != "")
             {
-                if (inputAndOutputLine.Text[0] == '-')
+                if (inputAndOutputLineOfResult.Text[0] == '-')
                 {
-                    inputAndOutputLine.Text = inputAndOutputLine.Text.Remove(0, 1);
+                    inputAndOutputLineOfResult.Text = inputAndOutputLineOfResult.Text.Remove(0, 1);
                 }
                 else
                 {
-                    inputAndOutputLine.Text = '-' + inputAndOutputLine.Text;
+                    inputAndOutputLineOfResult.Text = '-' + inputAndOutputLineOfResult.Text;
                 }
             }
-            if (textBox1.Text != "")
+            if (inputAndOutputLineOfOperation.Text != "")
             {
-                if (textBox1.Text[0] == '-')
+                if (inputAndOutputLineOfOperation.Text[0] == '-')
                 {
-                    textBox1.Text = textBox1.Text.Remove(0, 1);
+                    inputAndOutputLineOfOperation.Text = inputAndOutputLineOfOperation.Text.Remove(0, 1);
                 }
                 else
                 {
-                    textBox1.Text = '-' + textBox1.Text;
+                    inputAndOutputLineOfOperation.Text = '-' + inputAndOutputLineOfOperation.Text;
                 }
             }
         }
 
         private void arrowButton_Click(object sender, EventArgs e)
         {
-            if (inputAndOutputLine.Text != "")
+            if (inputAndOutputLineOfResult.Text != "")
             {
-                if (textBox1.Text != "")
+                if (inputAndOutputLineOfOperation.Text != "")
                 {
-                    textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1, 1);
+                    inputAndOutputLineOfOperation.Text = inputAndOutputLineOfOperation.Text.Remove(inputAndOutputLineOfOperation.Text.Length - 1, 1);
                 }
-                inputAndOutputLine.Text = inputAndOutputLine.Text.Remove(inputAndOutputLine.Text.Length - 1, 1);
+                inputAndOutputLineOfResult.Text = inputAndOutputLineOfResult.Text.Remove(inputAndOutputLineOfResult.Text.Length - 1, 1);
                 if (calculatorLogic.IsEqualPressed)
                 {
-                    calculatorLogic.FirstNum = Convert.ToDouble(inputAndOutputLine.Text);
+                    calculatorLogic.FirstNum = Convert.ToDouble(inputAndOutputLineOfResult.Text);
                 }
                 else
                 {
                     return;
                 }
             }
-            if (textBox1.Text != "")
+            if (inputAndOutputLineOfOperation.Text != "")
             {
-                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1, 1);
+                inputAndOutputLineOfOperation.Text = inputAndOutputLineOfOperation.Text.Remove(inputAndOutputLineOfOperation.Text.Length - 1, 1);
             }
-            if (!inputAndOutputLine.Text.Contains(","))
+            if (!inputAndOutputLineOfResult.Text.Contains(","))
             {
                 calculatorLogic.IsContainDot = false;
             }
-            if (!inputAndOutputLine.Text.Contains(calculatorLogic.Sumbol))
+            if (!inputAndOutputLineOfResult.Text.Contains(calculatorLogic.Symbol))
             {
-                calculatorLogic.Sumbol = ' ';
+                calculatorLogic.Symbol = ' ';
             }
         }
 
         private void SqrtButton_Click(object sender, EventArgs e)
         {
-            if (inputAndOutputLine.Text.Length == 0)
+            if (inputAndOutputLineOfResult.Text.Length == 0)
             {
                 return;
             }
@@ -166,31 +180,31 @@ namespace Task_7._1
             int count = 0;
             try
             {
-                calculatorLogic.FirstNum = Convert.ToDouble(inputAndOutputLine.Text);
+                calculatorLogic.FirstNum = Convert.ToDouble(inputAndOutputLineOfResult.Text);
                 count++;
             }
             catch
             {
-                inputAndOutputLine.Text = "Нет числа";
+                inputAndOutputLineOfResult.Text = "Нет числа";
             }
             if (calculatorLogic.FirstNum < 0)
             {
-                inputAndOutputLine.Clear();
-                textBox1.Clear();
+                inputAndOutputLineOfResult.Clear();
+                inputAndOutputLineOfOperation.Clear();
                 count--;
             }
             else
             {
                 calculatorLogic.SqrtMath(resultOfSqrt);
-                inputAndOutputLine.Text = calculatorLogic.FirstNum.ToString();
-                textBox1.Text = calculatorLogic.FirstNum.ToString();
+                inputAndOutputLineOfResult.Text = calculatorLogic.FirstNum.ToString();
+                inputAndOutputLineOfOperation.Text = calculatorLogic.FirstNum.ToString();
                 count--;
             }
         }
 
         private void DivisedOnOneButton_Click(object sender, EventArgs e)
         {
-            if (inputAndOutputLine.Text.Length == 0)
+            if (inputAndOutputLineOfResult.Text.Length == 0)
             {
                 return;
             }
@@ -198,55 +212,51 @@ namespace Task_7._1
             int count = 0;
             try
             {
-                calculatorLogic.FirstNum = Convert.ToDouble(inputAndOutputLine.Text);
+                calculatorLogic.FirstNum = Convert.ToDouble(inputAndOutputLineOfResult.Text);
                 count++;
             }
             catch
             {
-                inputAndOutputLine.Text = "Нет числа";
+                inputAndOutputLineOfResult.Text = "Нет числа";
             }
             if (calculatorLogic.FirstNum == 0)
             {
-                inputAndOutputLine.Clear();
-                inputAndOutputLine.Text += "0";
+                inputAndOutputLineOfResult.Clear();
+                inputAndOutputLineOfResult.Text += "0";
                 count--;
             }
             else
             {
                 calculatorLogic.DivisedOnOne(resultDivisedOnOne);
-                inputAndOutputLine.Text = calculatorLogic.FirstNum.ToString();
-                textBox1.Text = calculatorLogic.FirstNum.ToString();
+                inputAndOutputLineOfResult.Text = calculatorLogic.FirstNum.ToString();
+                inputAndOutputLineOfOperation.Text = calculatorLogic.FirstNum.ToString();
                 count--;
             }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            textBox1.TextAlign = HorizontalAlignment.Right;
-            textBox1.Focus();
-            textBox1.SelectionStart = textBox1.MaxLength;
+            inputAndOutputLineOfOperation.TextAlign = HorizontalAlignment.Right;
+            inputAndOutputLineOfOperation.Focus();
+            inputAndOutputLineOfOperation.SelectionStart = inputAndOutputLineOfOperation.MaxLength;
         }
 
         private void inputAndOutputLine_TextChanged(object sender, EventArgs e)
         {
-            inputAndOutputLine.TextAlign = HorizontalAlignment.Right;
-            inputAndOutputLine.SelectionStart = textBox1.MaxLength;
+            inputAndOutputLineOfResult.TextAlign = HorizontalAlignment.Right;
+            inputAndOutputLineOfResult.SelectionStart = inputAndOutputLineOfOperation.MaxLength;
         }
 
         private void buttonSymbolDot_Click(object sender, EventArgs e)
         {
-            if (!inputAndOutputLine.Text.Contains(","))
+            if (!inputAndOutputLineOfResult.Text.Contains(","))
             {
-                if (inputAndOutputLine.Text.Length > 0)
+                if (inputAndOutputLineOfResult.Text.Length > 0)
                 {
-                    inputAndOutputLine.Text += (sender as Button).Text;
-                    textBox1.Text += (sender as Button).Text;
+                    inputAndOutputLineOfResult.Text += (sender as Button).Text;
+                    inputAndOutputLineOfOperation.Text += (sender as Button).Text;
                     calculatorLogic.IsContainDot = true;
                 }
-            }
-            else
-            {
-                return;
             }
         }
     }

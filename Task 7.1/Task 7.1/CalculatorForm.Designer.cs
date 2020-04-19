@@ -36,7 +36,7 @@
             this.buttonNumberTwo = new System.Windows.Forms.Button();
             this.buttonNumberThree = new System.Windows.Forms.Button();
             this.buttonSymbolDot = new System.Windows.Forms.Button();
-            this.inputAndOutputLine = new System.Windows.Forms.TextBox();
+            this.inputAndOutputLineOfResult = new System.Windows.Forms.TextBox();
             this.buttonSymbolPlus = new System.Windows.Forms.Button();
             this.buttonSymbolEquals = new System.Windows.Forms.Button();
             this.buttonSymbolMultiply = new System.Windows.Forms.Button();
@@ -52,7 +52,7 @@
             this.buttonNumberFour = new System.Windows.Forms.Button();
             this.buttonErase = new System.Windows.Forms.Button();
             this.buttonSymbolDividedByOne = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.inputAndOutputLineOfOperation = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonSymbolDeleteCharacter
@@ -134,13 +134,13 @@
             // 
             // inputAndOutputLine
             // 
-            this.inputAndOutputLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.inputAndOutputLine.Location = new System.Drawing.Point(30, 12);
-            this.inputAndOutputLine.Name = "inputAndOutputLine";
-            this.inputAndOutputLine.ReadOnly = true;
-            this.inputAndOutputLine.Size = new System.Drawing.Size(303, 44);
-            this.inputAndOutputLine.TabIndex = 9;
-            this.inputAndOutputLine.TextChanged += new System.EventHandler(this.inputAndOutputLine_TextChanged);
+            this.inputAndOutputLineOfResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.inputAndOutputLineOfResult.Location = new System.Drawing.Point(30, 12);
+            this.inputAndOutputLineOfResult.Name = "inputAndOutputLine";
+            this.inputAndOutputLineOfResult.ReadOnly = true;
+            this.inputAndOutputLineOfResult.Size = new System.Drawing.Size(303, 44);
+            this.inputAndOutputLineOfResult.TabIndex = 9;
+            this.inputAndOutputLineOfResult.TextChanged += new System.EventHandler(this.inputAndOutputLine_TextChanged);
             // 
             // buttonSymbolPlus
             // 
@@ -151,7 +151,7 @@
             this.buttonSymbolPlus.TabIndex = 10;
             this.buttonSymbolPlus.Text = "+";
             this.buttonSymbolPlus.UseVisualStyleBackColor = true;
-            this.buttonSymbolPlus.Click += new System.EventHandler(this.inputSumbolButton_Click);
+            this.buttonSymbolPlus.Click += new System.EventHandler(this.inputSymbolButton_Click);
             // 
             // buttonSymbolEquals
             // 
@@ -173,7 +173,7 @@
             this.buttonSymbolMultiply.TabIndex = 12;
             this.buttonSymbolMultiply.Text = "*";
             this.buttonSymbolMultiply.UseVisualStyleBackColor = true;
-            this.buttonSymbolMultiply.Click += new System.EventHandler(this.inputSumbolButton_Click);
+            this.buttonSymbolMultiply.Click += new System.EventHandler(this.inputSymbolButton_Click);
             // 
             // buttonNumberNine
             // 
@@ -217,7 +217,7 @@
             this.buttonPercentageOfNumber.TabIndex = 18;
             this.buttonPercentageOfNumber.Text = "%";
             this.buttonPercentageOfNumber.UseVisualStyleBackColor = true;
-            this.buttonPercentageOfNumber.Click += new System.EventHandler(this.inputSumbolButton_Click);
+            this.buttonPercentageOfNumber.Click += new System.EventHandler(this.inputSymbolButton_Click);
             // 
             // buttonSymbolDivision
             // 
@@ -228,7 +228,7 @@
             this.buttonSymbolDivision.TabIndex = 17;
             this.buttonSymbolDivision.Text = "/";
             this.buttonSymbolDivision.UseVisualStyleBackColor = true;
-            this.buttonSymbolDivision.Click += new System.EventHandler(this.inputSumbolButton_Click);
+            this.buttonSymbolDivision.Click += new System.EventHandler(this.inputSymbolButton_Click);
             // 
             // buttonNumberZero
             // 
@@ -250,7 +250,7 @@
             this.buttonSymbolMinus.TabIndex = 20;
             this.buttonSymbolMinus.Text = "-";
             this.buttonSymbolMinus.UseVisualStyleBackColor = true;
-            this.buttonSymbolMinus.Click += new System.EventHandler(this.inputSumbolButton_Click);
+            this.buttonSymbolMinus.Click += new System.EventHandler(this.inputSymbolButton_Click);
             // 
             // buttonSymbolRoot
             // 
@@ -309,19 +309,19 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(30, 63);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(303, 26);
-            this.textBox1.TabIndex = 27;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.inputAndOutputLineOfOperation.Location = new System.Drawing.Point(30, 63);
+            this.inputAndOutputLineOfOperation.Name = "textBox1";
+            this.inputAndOutputLineOfOperation.ReadOnly = true;
+            this.inputAndOutputLineOfOperation.Size = new System.Drawing.Size(303, 26);
+            this.inputAndOutputLineOfOperation.TabIndex = 27;
+            this.inputAndOutputLineOfOperation.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(364, 420);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.inputAndOutputLineOfOperation);
             this.Controls.Add(this.buttonSymbolDividedByOne);
             this.Controls.Add(this.buttonSymbolRoot);
             this.Controls.Add(this.buttonOppositeSign);
@@ -337,7 +337,7 @@
             this.Controls.Add(this.buttonSymbolMultiply);
             this.Controls.Add(this.buttonSymbolEquals);
             this.Controls.Add(this.buttonSymbolPlus);
-            this.Controls.Add(this.inputAndOutputLine);
+            this.Controls.Add(this.inputAndOutputLineOfResult);
             this.Controls.Add(this.buttonSymbolDot);
             this.Controls.Add(this.buttonNumberThree);
             this.Controls.Add(this.buttonNumberTwo);
@@ -365,7 +365,7 @@
         private System.Windows.Forms.Button buttonNumberTwo;
         private System.Windows.Forms.Button buttonNumberThree;
         private System.Windows.Forms.Button buttonSymbolDot;
-        private System.Windows.Forms.TextBox inputAndOutputLine;
+        private System.Windows.Forms.TextBox inputAndOutputLineOfResult;
         private System.Windows.Forms.Button buttonSymbolPlus;
         private System.Windows.Forms.Button buttonSymbolEquals;
         private System.Windows.Forms.Button buttonSymbolMultiply;
@@ -381,7 +381,7 @@
         private System.Windows.Forms.Button buttonNumberFour;
         private System.Windows.Forms.Button buttonErase;
         private System.Windows.Forms.Button buttonSymbolDividedByOne;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox inputAndOutputLineOfOperation;
     }
 }
 
