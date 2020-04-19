@@ -1,6 +1,7 @@
 image: Visual Studio 2019
 
 before_build:
+
 - nuget restore "Task 1.2/Task 1.2.sln"
 
 build:
