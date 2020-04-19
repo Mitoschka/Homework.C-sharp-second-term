@@ -5,7 +5,7 @@ namespace Task_6._1.Test
 {
     public class MapTest
     {
-        MapFunction mapFunction;
+        private MapFunction mapFunction;
 
         [SetUp]
         public void Setup()
@@ -16,7 +16,8 @@ namespace Task_6._1.Test
         [Test]
         public void MapTestShoulWork()
         {
-            List<int> list = new List<int>();
+            var list = new List<int>();
+
             list.Add(0);
             list.Add(1);
             list.Add(2);

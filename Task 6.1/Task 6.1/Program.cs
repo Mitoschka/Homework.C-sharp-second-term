@@ -7,8 +7,9 @@ namespace Task_6._1
     {
         static void Main(string[] args)
         {
-            MapFunction mapFunction = new MapFunction();
-            List<int> listOfMap = new List<int>();
+            var mapFunction = new MapFunction();
+            var listOfMap = new List<int>();
+
             listOfMap.Add(0);
             listOfMap.Add(1);
             listOfMap.Add(2);
@@ -22,9 +23,11 @@ namespace Task_6._1
             {
                 Console.Write($"{listOfMap[i]} ");
             }
+
             Console.Write("\n");
-            FilterFunction FilterFunction = new FilterFunction();
-            List<int> listOfFilter = new List<int>();
+
+            var listOfFilter = new List<int>();
+
             listOfFilter.Add(0);
             listOfFilter.Add(1);
             listOfFilter.Add(2);
@@ -39,20 +42,25 @@ namespace Task_6._1
             {
                 Console.Write($"{listOfFilter[i]} ");
             }
+
             Console.Write("\n");
-            FoldFunction FoldFunction = new FoldFunction();
-            List<int> listOfFold = new List<int>();
+
+            var FoldFunction = new FoldFunction();
+            var listOfFold = new List<int>();
+            int result = 0;
+
             listOfFold.Add(1);
             listOfFold.Add(2);
             listOfFold.Add(3);
             listOfFold.Add(4);
 
-            listOfFold = FoldFunction.Fold(listOfFold, 1, (x,y) => x * y);
-            Console.Write("Fold: ");
+            result = FoldFunction.Fold(listOfFold, 1, (x,y) => x * y);
+            Console.Write("Fold:\tList: ");
             for (int i = 0; i != listOfFold.Count; i++)
             {
                 Console.Write($"{listOfFold[i]} ");
             }
+            Console.Write($"\n\tResult: {result}");
         }
     }
 }
