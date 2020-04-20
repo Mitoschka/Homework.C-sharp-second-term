@@ -16,18 +16,36 @@ namespace Task_6._1.Test
         [Test]
         public void MapTestShoulWork()
         {
-            var list = new List<int>();
-
-            list.Add(0);
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
-            list.Add(4);
+            var list = new List<int>() {0, 1, 2, 3, 4};
 
             list = mapFunction.Map(list, x => x * 2);
 
             Assert.IsTrue(list.Contains(8));
             Assert.IsFalse(list.Contains(10));
+        }
+
+        [Test]
+        public void MapTestShoulWorkWhenWeDoNotAddValues()
+        {
+            var list = new List<int>() {};
+
+            list = mapFunction.Map(list, x => x * 2);
+
+            for (int i = 0; i <= 10; i++)
+            {
+                Assert.IsFalse(list.Contains(i));
+            }
+        }
+
+        [Test]
+        public void MapTestShoulWorkWithAddZeroValue()
+        {
+            var list = new List<int>() { 0, 0, 0, 0 };
+
+            list = mapFunction.Map(list, x => x * 2);
+
+            Assert.IsTrue(list.Contains(0));
+            Assert.IsFalse(list.Contains(1));
         }
     }
 }

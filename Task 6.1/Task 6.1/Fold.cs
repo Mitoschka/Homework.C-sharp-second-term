@@ -14,7 +14,7 @@ namespace Task_6._1
         /// <returns> Список полученный путём преобразования с помощью функции </returns>
         public int Fold(List<int> list, int initialValue, Func<int, int, int> function)
         {
-            List<int> resultList = new List<int>();
+            var resultList = new List<int>();
             int result = initialValue;
             foreach (int element in list)
             {

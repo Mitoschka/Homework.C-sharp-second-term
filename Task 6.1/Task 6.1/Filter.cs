@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Task_6._1
 {
-    static class FilterFunction
+    public static class FilterFunction
     {
         /// <summary>
         /// Filter принимает список и функцию, возвращающую булевое значение по элементу списка.
@@ -13,7 +13,7 @@ namespace Task_6._1
         /// <returns> Список полученный путём преобразования с помощью функции </returns>
         public static List<int> Filter(List<int> list, Func<int, bool> function)
         {
-            List<int> resultList = new List<int>();
+            var resultList = new List<int>();
             for (int i = 0; i != list.Count; ++i)
             {
                 if (function(list[i]))

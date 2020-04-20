@@ -13,7 +13,7 @@ namespace Task_6._1
         /// <returns> Список полученный путём преобразования с помощью функции </returns>
         public List<int> Map(List<int> list, Func<int, int> function)
         {
-            List<int> resultList = new List<int>();
+            var resultList = new List<int>();
             for(int i = 0; i != list.Count; ++i)
             {
                 int element = function(list[i]);
