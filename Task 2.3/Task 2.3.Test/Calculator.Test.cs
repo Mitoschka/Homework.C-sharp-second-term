@@ -4,20 +4,16 @@ namespace Task_2._3.Test
 {
     public class TestsOfCalculator
     {
-        private IStack stack;
-        private Calculator calculator;
-
-        [SetUp]
-        public void Setup()
-        {
-            stack = new StackOnList();
-            calculator = new Calculator(stack);
-        }
-
-        [Test]
-        public void ResultOfOperationsInArrayAndListShouldReturnTheCorrectResultOfTheOperation()
+        [TestCaseSource("DivideCases")]
+        public void DivideTest(Calculator calculator)
         {
             Assert.AreEqual(15, calculator.CalculateTheResultOfOperations("1 4 - 2 3 + *"));
         }
+
+        static object[] DivideCases =
+        {
+            new Calculator(new StackOnList()),
+               new Calculator(new StackOnArray())
+        };
     }
 }
