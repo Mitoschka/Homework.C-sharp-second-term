@@ -28,7 +28,7 @@
             int result = 0;
             for (int i = 0; i != value.Length; ++i)
             {
-                result = (result + PowerOfThree(i) * value[i]) % Program.Capacity;
+                result = (result + PowerOfThree(i) * value[i]);
             }
 
             return result;

@@ -12,7 +12,7 @@
             int result = 0;
             for (int i = 0; i != value.Length; ++i)
             {
-                result = (result * value[i]) % Program.Capacity;
+                result = (result * value[i]);
             }
 
             return result;

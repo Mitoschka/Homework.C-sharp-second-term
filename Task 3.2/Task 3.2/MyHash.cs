@@ -13,11 +13,11 @@ namespace Task_3._2
             }
         }
 
-        IMyHash Hash;
+        private IMyHash Hash;
 
-        const int capacity = 100;
-        MyList[] hashTable = new MyList[capacity];
-        int count = 0;
+        private const int capacity = 100;
+        private MyList[] hashTable = new MyList[capacity];
+        private int count = 0;
 
         /// <summary>
         /// Change my hash
@@ -48,7 +48,7 @@ namespace Task_3._2
         /// <param name="value">Value to add</param>
         public void AddElementToHashTable(string value)
         {
-            int index = Hash.HashFunction(value);
+            int index = Hash.HashFunction(value) % capacity;
             hashTable[index].AddUniqueElementToList(value);
         }
 
