@@ -17,7 +17,7 @@ namespace Task_4._1
             return value >= '0' && value <= '9';
         }
 
-        void AddElementNotToHead(ITreeElement currentElement, ITreeElement newElement, ref bool isElementAdded)
+        void AddElementNotToHead(Operator currentElement, ITreeElement newElement, ref bool isElementAdded)
         {
             if (!isElementAdded)
             {
