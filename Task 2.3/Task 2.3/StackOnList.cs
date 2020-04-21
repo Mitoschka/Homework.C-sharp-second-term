@@ -7,8 +7,8 @@ namespace Task_2._3
     /// </summary>
     public class StackOnList : IStack
     {
-        int counter = 0;
-        MyList list = new MyList();
+       private int counter = 0;
+       private MyList list = new MyList();
 
         /// <summary>
         /// The operation to insert a new item.
@@ -29,7 +29,7 @@ namespace Task_2._3
         {
             if (Count() <= 0)
             {
-                throw new MyException("Стек пуст");
+                throw new MyException("The stack is empty");
             }
             else
             {

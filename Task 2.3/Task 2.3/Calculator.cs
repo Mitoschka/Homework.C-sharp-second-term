@@ -12,7 +12,7 @@ namespace Task_2._3
             stack = stack1;
         }
 
-        IStack stack;
+        private IStack stack;
 
         /// <summary>
         /// Result of operations

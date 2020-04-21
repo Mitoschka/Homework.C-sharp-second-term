@@ -7,7 +7,7 @@ namespace Task_2._3
     /// </summary>
     public class StackOnArray : IStack
     {
-        const int size = 100;
+        private const int size = 100;
 
         private int counter = 0;
         private string[] stringArray = new string[size];
@@ -34,15 +34,19 @@ namespace Task_2._3
         {
             if (stringArray[counter] == null)
             {
-                string result = stringArray[counter - 1];
-                stringArray[counter - 1] = null;
-                counter--;
-                return result;
+                try
+                {
+                    string result = stringArray[counter - 1];
+                    stringArray[counter - 1] = null;
+                    counter--;
+                    return result;
+                }
+                catch
+                {
+                    throw new MyException("The stack is empty");
+                }
             }
-            else
-            {
-                throw new MyException("The stack is empty");
-            }
+            return "Error";
         }
 
         /// <summary>

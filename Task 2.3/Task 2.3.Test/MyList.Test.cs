@@ -4,16 +4,17 @@ namespace Task_2._3.Test
 {
     public class TestsOfMyList
     {
+        private MyList myList;
+
         [SetUp]
         public void Setup()
         {
+            myList = new MyList();
         }
 
         [Test]
         public void SizeOfListMustBeEqualToTheNumberOfItemsAdded()
         {
-            MyList myList = new MyList();
-
             myList.AddElement("5");
             myList.AddElement("78");
 
@@ -23,8 +24,6 @@ namespace Task_2._3.Test
         [Test]
         public void SizeOfListShouldBeEqualToTheNumberOfRemainingItems()
         {
-            MyList myList = new MyList();
-
             myList.AddElement("5");
             myList.AddElement("78");
             myList.RemoveElement();
