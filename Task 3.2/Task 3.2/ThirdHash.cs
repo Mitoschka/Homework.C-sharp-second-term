@@ -2,7 +2,6 @@
 {
     public class ThirdHash : IMyHash
     {
-        const int capacity = 100;
         /// <summary>
         /// Makes the hash function more random
         /// </summary>
@@ -29,7 +28,7 @@
             int result = 0;
             for (int i = 0; i != value.Length; ++i)
             {
-                result = (result + PowerOfTwo(i) * value[i]) % capacity;
+                result = (result + PowerOfTwo(i) * value[i]) % Program.Capacity;
             }
 
             return result;

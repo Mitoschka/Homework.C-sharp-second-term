@@ -2,8 +2,6 @@
 {
     public class FirstHash : IMyHash
     {
-        const int capacity = 100;
-
         /// <summary>
         /// Transforming an array of input data into a bit string of a specified length
         /// </summary>
@@ -14,7 +12,7 @@
             int result = 0;
             for (int i = 0; i != value.Length; ++i)
             {
-                result = (result * value[i]) % capacity;
+                result = (result * value[i]) % Program.Capacity;
             }
 
             return result;

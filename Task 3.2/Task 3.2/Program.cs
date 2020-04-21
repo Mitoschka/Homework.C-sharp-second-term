@@ -4,6 +4,9 @@ namespace Task_3._2
 {
     public class Program
     {
+        private const int capacity = 100;
+        public static int Capacity => capacity;
+
         static void PrintMenu()
         {
             Console.WriteLine("[МЕНЮ КОМАНД]: \n" +
