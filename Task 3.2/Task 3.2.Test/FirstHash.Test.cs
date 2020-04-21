@@ -4,33 +4,32 @@ namespace Task_3._2.Test
 {
     class FirstHashTests
     {
-        [SetUp]
-        public void Setup()
+        public class TestsOfHash
         {
-        }
+            [TestCaseSource("DivideCases")]
+            public void AddElementToHashTableAndIsContainInHashTableShouldWork(HashTable hashTable)
+            {
+                hashTable.AddElementToHashTable("abc");
 
-        [Test]
-        public void AddElementToHashTableAndIsContainInHashTableShouldWork()
-        {
-            IMyHash myHash = new FirstHash();
-            HashTable hashTable = new HashTable(myHash);
+                Assert.IsTrue(hashTable.IsContainInHashTable("abc"));
+            }
 
-            hashTable.AddElementToHashTable("abc");
+            [TestCaseSource("DivideCases")]
+            public void AddElementToHashTableAndDeleteElementOfHashTableShouldWork(HashTable hashTable)
+            {
+                hashTable.AddElementToHashTable("abc");
+                hashTable.AddElementToHashTable("ver");
+                hashTable.DeleteElementOfHashTable("abc");
 
-            Assert.IsTrue(hashTable.IsContainInHashTable("abc"));
-        }
+                Assert.IsFalse(hashTable.IsContainInHashTable("abc"));
+            }
 
-        [Test]
-        public void AddElementToHashTableAndDeleteElementOfHashTableShouldWork()
-        {
-            IMyHash myHash = new FirstHash();
-            HashTable hashTable = new HashTable(myHash);
-
-            hashTable.AddElementToHashTable("abc");
-            hashTable.AddElementToHashTable("ver");
-            hashTable.DeleteElementOfHashTable("abc");
-
-            Assert.IsFalse(hashTable.IsContainInHashTable("abc"));
+            static object[] DivideCases =
+            {
+            new HashTable(new FirstHash()),
+               new HashTable(new SecondHash()),
+               new HashTable(new ThirdHash()),
+        };
         }
     }
 }
