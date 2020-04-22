@@ -1,11 +1,11 @@
-﻿using MyList;
+﻿using Task_4._2;
 using NUnit.Framework;
 
 namespace Task_4._2.Test
 {
     class ExceptionTest
     {
-        UniqueList unique;
+        private UniqueList unique;
 
         [SetUp]
         public void Setup()
@@ -16,23 +16,23 @@ namespace Task_4._2.Test
         [Test]
         public void AddUniqueElementToListTest()
         {
-            unique.AddUniqueElementToList("dog");
-            Assert.Throws<AddException>(() => unique.AddUniqueElementToList("dog"));
+            unique.AddUniqueElementToList("dog", 0);
+            Assert.Throws<AddException>(() => unique.AddUniqueElementToList("dog", 0));
         }
 
         [Test]
         public void DeleteElementFromEmptyListTest()
         {
-            unique.AddUniqueElementToList("dog");
-            unique.DeleteElement("dog");
-            Assert.Throws<DeleteException>(() => unique.DeleteElement("dog"));
+            unique.AddUniqueElementToList("dog", 0);
+            unique.DeleteElement(0);
+            Assert.Throws<DeleteException>(() => unique.DeleteElement(0));
         }
 
         [Test]
         public void DeleteElementFromListTest()
         {
-            unique.AddUniqueElementToList("dog");
-            Assert.Throws<DeleteException>(() => unique.DeleteElement("cat"));
+            unique.AddUniqueElementToList("dog", 0);
+            Assert.Throws<System.ArgumentOutOfRangeException>(() => unique.DeleteElement(1));
         }
     }
 }

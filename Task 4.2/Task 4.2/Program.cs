@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MyList
+namespace Task_4._2
 {
     class Program
     {
@@ -9,8 +9,8 @@ namespace MyList
             try
             {
                 UniqueList list = new UniqueList();
-                list.DeleteElement("cat");
-                Console.WriteLine(list.IsContain("cat"));
+                list.AddUniqueElementToList("abc", 0);
+                Console.WriteLine(list.GetItemValue(0));
             }
             catch (AddException ex)
             {
