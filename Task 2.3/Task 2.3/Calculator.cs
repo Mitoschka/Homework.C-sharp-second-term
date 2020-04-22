@@ -21,6 +21,10 @@ namespace Task_2._3
         /// <returns>Result of operations</returns>
         public int CalculateTheResultOfOperations(string expression)
         {
+            if(!expression.Contains('-') && !expression.Contains('+') && !expression.Contains('*') && !expression.Contains('/'))
+            {
+                throw new InvalidOperationException("Не верный ввод");
+            }
             string tmp = "";
             for (int i = 0; i != expression.Length; ++i)
             {
@@ -32,61 +36,43 @@ namespace Task_2._3
                 {
                     if (tmp != "")
                     {
-                        stack.Push(tmp);
+                        int num = Convert.ToInt32(tmp);
+                        stack.Push(num);
                         tmp = "";
                     }
+                    int result = 0;
                     switch (expression[i])
                     {
                         case '/':
                             {
-                                string divisor = stack.Pop();
-                                int convertDivisor = Convert.ToInt32(divisor);
-                                string dividend = stack.Pop();
-                                int convertDividend = Convert.ToInt32(dividend);
-
-                                int result = convertDividend / convertDivisor;
-
-                                string quotient = Convert.ToString(result);
-                                stack.Push(quotient);
+                                int firstNum = stack.Pop();
+                                int secondNum = stack.Pop();
+                                result = firstNum / secondNum;
+                                stack.Push(result);
                                 break;
                             }
                         case '*':
                             {
-                                string firstFactor = stack.Pop();
-                                int convertFirstFactor = Convert.ToInt32(firstFactor);
-                                string secondFactor = stack.Pop();
-                                int convertSecondFactor = Convert.ToInt32(secondFactor);
-
-                                int result = convertFirstFactor * convertSecondFactor;
-
-                                string composition = Convert.ToString(result);
-                                stack.Push(composition);
+                                int firstNum = stack.Pop();
+                                int secondNum = stack.Pop();
+                                result = firstNum * secondNum;
+                                stack.Push(result);
                                 break;
                             }
                         case '+':
                             {
-                                string firstMultiplier = stack.Pop();
-                                int convertFirstMultiplier = Convert.ToInt32(firstMultiplier);
-                                string secondMultiplier = stack.Pop();
-                                int convertSecondMultiplier = Convert.ToInt32(secondMultiplier);
-
-                                int result = convertFirstMultiplier + convertSecondMultiplier;
-
-                                string sum = Convert.ToString(result);
-                                stack.Push(sum);
+                                int firstNum = stack.Pop();
+                                int secondNum = stack.Pop();
+                                result = firstNum + secondNum;
+                                stack.Push(result);
                                 break;
                             }
                         case '-':
                             {
-                                string minuend = stack.Pop();
-                                int convertMinuend = Convert.ToInt32(minuend);
-                                string subtrahend = stack.Pop();
-                                int convertSubtrahend = Convert.ToInt32(subtrahend);
-
-                                int result = convertMinuend - convertSubtrahend;
-
-                                string difference = Convert.ToString(result);
-                                stack.Push(difference);
+                                int firstNum = stack.Pop();
+                                int secondNum = stack.Pop();
+                                result = firstNum - secondNum;
+                                stack.Push(result);
                                 break;
                             }
                         case ' ':
@@ -100,8 +86,7 @@ namespace Task_2._3
                     }
                 }
             }
-            string peek = stack.Pop();
-            int res = Convert.ToInt32(peek);
+            int res = stack.Pop();
             return res;
         }
     }

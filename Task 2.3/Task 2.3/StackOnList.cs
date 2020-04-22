@@ -14,7 +14,7 @@ namespace Task_2._3
         /// The operation to insert a new item.
         /// </summary>
         /// <param name="value"> value of new item </param>
-        public void Push(string value)
+        public void Push(int value)
         {
             list.AddElement(value);
             counter++;
@@ -25,7 +25,7 @@ namespace Task_2._3
         /// Returns the top element of the stack.
         /// </summary>
         /// <returns> top element </returns>
-        public string Pop()
+        public int Pop()
         {
             if (Count() <= 0)
             {

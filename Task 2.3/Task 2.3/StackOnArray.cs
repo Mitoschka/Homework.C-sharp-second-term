@@ -7,20 +7,20 @@ namespace Task_2._3
     /// </summary>
     public class StackOnArray : IStack
     {
-        private const int size = 100;
+        private static int size = 100;
 
         private int counter = 0;
-        private string[] stringArray = new string[size];
+        private int[] stringArray = new int[size];
 
         /// <summary>
         /// The operation to insert a new item.
         /// </summary>
         /// <param name="value"> value of new item </param>
-        public void Push(string value)
+        public void Push(int value)
         {
-            if (counter > size)
+            if (counter >= size)
             {
-                throw new MyException("Out of bounds array");
+                Array.Resize(ref stringArray, stringArray.Length * 2);
             }
             stringArray[counter] = value;
             counter++;
@@ -30,14 +30,14 @@ namespace Task_2._3
         /// Returns the top element of the stack.
         /// </summary>
         /// <returns> top element </returns>
-        public string Pop()
+        public int Pop()
         {
-            if (stringArray[counter] == null)
+            if (stringArray[counter] == 0)
             {
                 try
                 {
-                    string result = stringArray[counter - 1];
-                    stringArray[counter - 1] = null;
+                    int result = stringArray[counter - 1];
+                    stringArray[counter - 1] = 0;
                     counter--;
                     return result;
                 }
@@ -46,7 +46,7 @@ namespace Task_2._3
                     throw new MyException("The stack is empty");
                 }
             }
-            return "Error";
+            return 0;
         }
 
         /// <summary>

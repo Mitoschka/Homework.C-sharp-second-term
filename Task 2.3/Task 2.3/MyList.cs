@@ -6,18 +6,18 @@ namespace Task_2._3
     {
         class ListElement
         {
-            internal string value;
+            internal int value;
             internal ListElement next;
         }
 
-        ListElement head;
-        int counter = 0;
+        private ListElement head;
+        private int counter = 0;
 
         /// <summary>
         /// Add item to List
         /// </summary>
         /// <param name="value">Value to add</param>
-        public void AddElement(string value)
+        public void AddElement(int value)
         {
             ListElement newElement = new ListElement();
             newElement.value = value;
@@ -41,7 +41,7 @@ namespace Task_2._3
         /// Remove element in the List
         /// </summary>
         /// <returns> Result of value </returns>
-        public string RemoveElement()
+        public int RemoveElement()
         {
             ListElement currentElement = head;
             if (currentElement == null)
@@ -49,7 +49,7 @@ namespace Task_2._3
                 throw new MyException("The list is empty");
             }
 
-            string value;
+            int value;
             if (currentElement.next == null)
             {
                 value = currentElement.value;
