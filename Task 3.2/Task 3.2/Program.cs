@@ -63,6 +63,7 @@ namespace Task_3._2
                             Console.Write("Введите значение: " + "\n");
                             string value = (Console.ReadLine());
                             hashTable.DeleteElementOfHashTable(value);
+                            Console.WriteLine($"\"{value}\" было удалено" + "\n");
                             break;
                         }
                     case 3:

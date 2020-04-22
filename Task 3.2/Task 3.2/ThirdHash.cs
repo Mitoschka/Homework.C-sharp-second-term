@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="degree">Degree of received number</param>
         /// <returns>Returns the power of a number</returns>
-        public int PowerOfTwo(int degree)
+        private int PowerOfTwo(int degree)
         {
             int result = 1;
             for (int i = 0; i != degree; ++i)

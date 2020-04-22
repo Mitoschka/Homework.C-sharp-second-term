@@ -10,8 +10,8 @@ namespace Task_3._2
             internal ListElement next;
         }
 
-        ListElement head;
-        int counter;
+        private ListElement head;
+        private int counter;
 
         /// <summary>
         /// Add item to List
@@ -46,9 +46,7 @@ namespace Task_3._2
             ListElement currentElement = head;
             if (currentElement == null)
             {
-                Console.WriteLine("Нет начала списка");
-                --counter;
-                return;
+                throw new IndexOutOfRangeException("Нет начала списка");
             }
             if (head.value == value)
             {
