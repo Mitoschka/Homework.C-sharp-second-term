@@ -4,7 +4,7 @@ namespace Task_4._1.Tests
 {
     public class MyTreeTests
     {
-        MyTree myTree;
+        private MyTree myTree;
 
         [SetUp]
         public void Setup()

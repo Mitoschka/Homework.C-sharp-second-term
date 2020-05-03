@@ -4,18 +4,11 @@ namespace Task_4._1
 {
     public class MyTree
     {
+        private ITreeElement head;
 
-        ITreeElement head;
+        private bool IsOperator(char value) => value == '+' || value == '-' || value == '*' || value == '/';
 
-        bool IsOperator(char value)
-        {
-            return value == '+' || value == '-' || value == '*' || value == '/';
-        }
-
-        bool IsNumber(char value)
-        {
-            return value >= '0' && value <= '9';
-        }
+        private bool IsNumber(char value) => value >= '0' && value <= '9';
 
         void AddElementNotToHead(Operator currentElement, ITreeElement newElement, ref bool isElementAdded)
         {
