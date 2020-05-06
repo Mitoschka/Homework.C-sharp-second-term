@@ -5,9 +5,9 @@ namespace Task_3._2
     public class HashTable
     {
         /// <summary>
-        /// Creat HashTable
+        /// Represents a collection of key-value pairs that are ordered by a key hash.
         /// </summary>
-        /// <param name="myHash"> instance of classe, its auction </param>
+        /// <param name="myHash"> Class instance, its interface </param>
         public HashTable(IMyHash myHash)
         {
             Hash = myHash;
@@ -28,7 +28,7 @@ namespace Task_3._2
         /// <param name="myHash"> changed hash </param>
         public void ChangeHash(IMyHash myHash)
         {
-            MyList list = new MyList();
+            var list = new MyList();
             for (int i = 0; i < capacity; i++)
             {
                 while (hashTable[i].SizeOfList() != 0)
@@ -52,6 +52,10 @@ namespace Task_3._2
         public void AddElementToHashTable(string value)
         {
             int index = Hash.HashFunction(value) % capacity;
+            if (index < 0)
+            {
+                throw new System.IndexOutOfRangeException("negative array index value");
+            }
             hashTable[index].AddUniqueElementToList(value);
         }
 

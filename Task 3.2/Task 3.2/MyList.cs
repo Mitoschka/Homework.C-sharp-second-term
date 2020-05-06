@@ -4,12 +4,18 @@ namespace Task_3._2
 {
     public class MyList
     {
-        class ListElement
+        private class ListElement
         {
             internal string value;
             internal ListElement next;
+
+            public ListElement(string value)
+            {
+                this.value = value;
+            }
         }
 
+        private ListElement tail;
         private ListElement head;
         private int counter;
 
@@ -19,21 +25,26 @@ namespace Task_3._2
         /// <param name="value">Value to add</param>
         public void AddElement(string value)
         {
-            ListElement newElement = new ListElement();
-            newElement.value = value;
+            var newElement = new ListElement(value)
+            {
+                value = value
+            };
             if (head == null)
             {
                 head = newElement;
+                tail = newElement;
                 ++counter;
                 return;
             }
-            ListElement currentElement = head;
-            while (currentElement.next != null)
+            if (head.next == null)
             {
-                currentElement = currentElement.next;
+                tail.next = newElement;
+                tail = newElement;
+                ++counter;
+                return;
             }
-            newElement.next = currentElement.next;
-            currentElement.next = newElement;
+            tail.next = newElement;
+            tail = newElement;
             ++counter;
         }
 
@@ -89,8 +100,10 @@ namespace Task_3._2
         {
             if (head == null)
             {
-                head = new ListElement();
-                head.value = value;
+                head = new ListElement(value)
+                {
+                    value = value
+                };
                 ++counter;
                 return;
             }
@@ -107,8 +120,10 @@ namespace Task_3._2
 
             if (currentElement.value != value)
             {
-                currentElement.next = new ListElement();
-                currentElement.next.value = value;
+                currentElement.next = new ListElement(value)
+                {
+                    value = value
+                };
                 ++counter;
             }
         }

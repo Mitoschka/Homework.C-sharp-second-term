@@ -4,7 +4,7 @@ namespace Task_3._2
 {
     public class Program
     {
-        static void PrintMenu()
+        private static void PrintMenu()
         {
             Console.WriteLine("[МЕНЮ КОМАНД]: \n" +
             "'0' - Выход из программы \n" +
@@ -14,6 +14,7 @@ namespace Task_3._2
             "'4' - Изменить хэш - функцию \n" +
             "'5' - Вызвать меню команд \n");
         }
+
         static void Main()
         {
             IMyHash myHash;

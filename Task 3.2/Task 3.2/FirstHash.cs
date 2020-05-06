@@ -1,5 +1,8 @@
 ﻿namespace Task_3._2
 {
+    /// <summary>
+    /// First class of Hash
+    /// </summary>
     public class FirstHash : IMyHash
     {
         /// <summary>

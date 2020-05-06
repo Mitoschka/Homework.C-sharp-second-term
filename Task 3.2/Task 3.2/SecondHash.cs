@@ -1,5 +1,8 @@
 ﻿namespace Task_3._2
 {
+    /// <summary>
+    /// Second class of Hash
+    /// </summary>
     public class SecondHash : IMyHash
     {
         /// <summary>

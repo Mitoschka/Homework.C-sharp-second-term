@@ -6,10 +6,9 @@
     public interface IMyHash
     {
         /// <summary>
-        /// added value to HashFunction
+        /// Added value to HashFunction
         /// </summary>
-        /// <param name="value"> value added to HashFunction</param>
-        /// <returns></returns>
+        /// <param name="value">Value added to HashFunction</param>
         int HashFunction(string value);
     }
 }
