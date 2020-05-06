@@ -32,14 +32,19 @@ namespace Task_1._5
                 {
                     if (array[0, j] > array[0, j + 1])
                     {
-                        for (int k = 0; k < array.GetLength(0); k++)
-                        {
-                            (array[k, j], array[k, j + 1]) = (array[k, j + 1], array[k, j]);
-                        }
+                        Swap(array, j);
                     }
                 }
             }
             return array;
+        }
+
+        private static void Swap(int[,] array, int j)
+        {
+            for (int k = 0; k < array.GetLength(0); k++)
+            {
+                (array[k, j], array[k, j + 1]) = (array[k, j + 1], array[k, j]);
+            }
         }
 
         private static void ToDisplay(int[,] array)
