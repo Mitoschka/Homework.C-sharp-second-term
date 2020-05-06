@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace Task_7._1.Test
 {
-    public class Tests
+    public class CalculatorLogicTests
     {
         private CalculatorLogic calculatorLogic;
 
@@ -35,6 +35,7 @@ namespace Task_7._1.Test
 
             Assert.AreEqual(-26, calculatorLogic.FirstNum);
         }
+
         [Test]
         public void TestOfCorrectWorkOfDivised()
         {
@@ -46,6 +47,7 @@ namespace Task_7._1.Test
 
             Assert.AreEqual(5, calculatorLogic.FirstNum);
         }
+
         [Test]
         public void TestOfCorrectWorkOfMultiply()
         {
@@ -57,6 +59,7 @@ namespace Task_7._1.Test
 
             Assert.AreEqual(-15, calculatorLogic.FirstNum);
         }
+
         [Test]
         public void TestOfCorrectWorkOfSqrt()
         {
@@ -67,6 +70,7 @@ namespace Task_7._1.Test
 
             Assert.AreEqual(5, calculatorLogic.FirstNum);
         }
+
         [Test]
         public void TestOfCorrectWorkOfDivisedOnOne()
         {
@@ -77,6 +81,7 @@ namespace Task_7._1.Test
 
             Assert.AreEqual(0.20, calculatorLogic.FirstNum);
         }
+
         [Test]
         public void TestOfCorrectWorkOfPercent()
         {
@@ -88,6 +93,7 @@ namespace Task_7._1.Test
 
             Assert.AreEqual(10, calculatorLogic.FirstNum);
         }
+
         [Test]
         public void TestOfCorrectWorkOfRemove()
         {

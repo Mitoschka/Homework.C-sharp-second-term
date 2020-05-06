@@ -8,50 +8,14 @@ namespace Task_7._1
 {
     public class CalculatorLogic
     {
-        private double firstNum = 0;
-        private double secondNum = 0;
         private double result = 0;
-        private char symbol = ' ';
-        private bool isOperationPressedEarly = false;
-        private bool isEqualPressed = false;
-        private bool isContainDot = false;
-        private bool isDelete = false;
-
-        internal bool IsOperationPressedEarly
-        {
-            get => isOperationPressedEarly;
-            set => isOperationPressedEarly = value;
-        }
-        internal bool IsContainDot
-        {
-            get => isContainDot;
-            set => isContainDot = value;
-        }
-        internal bool IsEqualPressed
-        {
-            get => isEqualPressed;
-            set => isEqualPressed = value;
-        }
-        public double SecondNum
-        {
-            get => secondNum;
-            set => secondNum = value;
-        }
-        public double FirstNum
-        {
-            get => firstNum;
-            set => firstNum = value;
-        }
-        public char Symbol
-        {
-            get => symbol;
-            set => symbol = value;
-        }
-        internal bool IsDelete
-        {
-            get => isDelete;
-            set => isDelete = value;
-        }
+        internal bool IsOperationPressedEarly { get; set; }
+        internal bool IsContainDot { get; set; }
+        internal bool IsEqualPressed { get; set; }
+        public double SecondNum { get; set; } = 0;
+        public double FirstNum { get; set; } = 0;
+        public char Symbol { get; set; } = ' ';
+        internal bool IsDelete { get; set; }
 
         internal void EqualButtonPressed()
         {
@@ -101,14 +65,14 @@ namespace Task_7._1
 
         public void SqrtMath(double resultOfSqrt)
         {
-            resultOfSqrt = Math.Sqrt(firstNum);
-            firstNum = resultOfSqrt;
+            resultOfSqrt = Math.Sqrt(FirstNum);
+            FirstNum = resultOfSqrt;
         }
 
         public void DivisedOnOne(double resultDivisedOnOne)
         {
-            resultDivisedOnOne = 1 / firstNum;
-            firstNum = resultDivisedOnOne;
+            resultDivisedOnOne = 1 / FirstNum;
+            FirstNum = resultDivisedOnOne;
         }
     }
 }

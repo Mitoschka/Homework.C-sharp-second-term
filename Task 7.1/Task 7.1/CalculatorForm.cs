@@ -7,6 +7,7 @@ namespace Task_7._1
     public partial class CalculatorForm : Form
     {
         private CalculatorLogic calculatorLogic;
+
         public CalculatorForm()
         {
             InitializeComponent();
@@ -23,6 +24,7 @@ namespace Task_7._1
             calculatorLogic.Operation();
             inputAndOutputLineOfResult.Text = calculatorLogic.FirstNum.ToString();
         }
+
         private void CalculatorForm_Load(object sender, EventArgs e)
         {
             MaximizeBox = false;
@@ -43,9 +45,9 @@ namespace Task_7._1
 
         public void inputNumButton_Click(object sender, EventArgs e)
         {
-            if(calculatorLogic.IsEqualPressed)
+            if (calculatorLogic.IsEqualPressed)
             {
-                if(!calculatorLogic.IsDelete)
+                if (!calculatorLogic.IsDelete)
                 {
                     inputAndOutputLineOfResult.Clear();
                     calculatorLogic.IsDelete = true;
@@ -110,6 +112,7 @@ namespace Task_7._1
             inputAndOutputLineOfResult.Clear();
             inputAndOutputLineOfOperation.Clear();
             calculatorLogic.IsDelete = false;
+            calculatorLogic.IsOperationPressedEarly = false;
         }
 
         private void oppositeMeaningButton_Click(object sender, EventArgs e)
@@ -205,6 +208,10 @@ namespace Task_7._1
         private void DivisedOnOneButton_Click(object sender, EventArgs e)
         {
             if (inputAndOutputLineOfResult.Text.Length == 0)
+            {
+                return;
+            }
+            if ((calculatorLogic.FirstNum == 0) || (calculatorLogic.SecondNum == 0))
             {
                 return;
             }
