@@ -4,14 +4,20 @@ namespace Task_2._3
 {
     public class MyList
     {
-        class ListElement
+        private class ListElement
         {
             internal int value;
             internal ListElement next;
+
+            public ListElement(int value)
+            {
+                this.value = value;
+            }
         }
 
+        private ListElement tail;
         private ListElement head;
-        private int counter = 0;
+        private int counter;
 
         /// <summary>
         /// Add item to List
@@ -19,21 +25,27 @@ namespace Task_2._3
         /// <param name="value">Value to add</param>
         public void AddElement(int value)
         {
-            ListElement newElement = new ListElement();
-            newElement.value = value;
+            var newElement = new ListElement(value)
+            {
+                value = value
+            };
             if (head == null)
             {
                 head = newElement;
+                tail = newElement;
                 ++counter;
                 return;
             }
-            ListElement currentElement = head;
-            while (currentElement.next != null)
+            if (head.next == null)
             {
-                currentElement = currentElement.next;
+                head.next = tail;
+                tail.next = newElement;
+                tail = newElement;
+                ++counter;
+                return;
             }
-            newElement.next = currentElement.next;
-            currentElement.next = newElement;
+            tail.next = newElement;
+            tail = newElement;
             ++counter;
         }
 
@@ -46,36 +58,32 @@ namespace Task_2._3
             ListElement currentElement = head;
             if (currentElement == null)
             {
-                throw new MyException("The list is empty");
+                throw new InvalidOperationException("The list is empty");
             }
 
-            int value;
             if (currentElement.next == null)
             {
-                value = currentElement.value;
+                int firstValue = currentElement.value;
                 head = null;
                 counter--;
-                return value;
+                return firstValue;
             }
 
             while (currentElement.next.next != null)
             {
                 currentElement = currentElement.next;
             }
-            value = currentElement.next.value;
+            int secondValue = currentElement.next.value;
             currentElement.next = null;
             counter--;
-            return value;
+            return secondValue;
         }
 
         /// <summary>
         /// Size of list
         /// </summary>
         /// <returns> Size of list </returns>
-        public int SizeOfList()
-        {
-            return counter;
-        }
+        public int SizeOfList() => counter;
     }
 }
 

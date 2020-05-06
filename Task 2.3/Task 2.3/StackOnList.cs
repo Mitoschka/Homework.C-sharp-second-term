@@ -22,14 +22,14 @@ namespace Task_2._3
         }
 
         /// <summary>
-        /// Returns the top element of the stack.
+        /// Returns and Delete the top element of the stack.
         /// </summary>
         /// <returns> top element </returns>
         public int Pop()
         {
             if (Count() <= 0)
             {
-                throw new MyException("The stack is empty");
+                throw new InvalidOperationException("The stack is empty");
             }
             else
             {
@@ -42,9 +42,6 @@ namespace Task_2._3
         /// Returns the number of items on the stack.
         /// </summary>
         /// <returns> size of stack </returns>
-        public int Count()
-        {
-            return counter;
-        }
+        public int Count() => counter;
     }
 }

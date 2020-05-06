@@ -52,7 +52,7 @@ namespace Task_2._3
                     }
             }
 
-            Calculator myCalculator = new Calculator(stack);
+            var myCalculator = new Calculator(stack);
             Console.WriteLine("Введите арифметическое выражение в виде обратной польской записи: ");
             string expression = Console.ReadLine();
             Console.WriteLine($"Результат выражения: {myCalculator.CalculateTheResultOfOperations(expression)}");

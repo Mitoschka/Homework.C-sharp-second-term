@@ -21,9 +21,9 @@ namespace Task_2._3
         /// <returns>Result of operations</returns>
         public int CalculateTheResultOfOperations(string expression)
         {
-            if(!expression.Contains('-') && !expression.Contains('+') && !expression.Contains('*') && !expression.Contains('/'))
+            if (!expression.Contains('-') && !expression.Contains('+') && !expression.Contains('*') && !expression.Contains('/'))
             {
-                throw new InvalidOperationException("Не верный ввод");
+                throw new System.InvalidOperationException("Не верный ввод");
             }
             string tmp = "";
             for (int i = 0; i != expression.Length; ++i)
@@ -81,7 +81,7 @@ namespace Task_2._3
                             }
                         default:
                             {
-                                throw new InvalidOperationException("Я не знаю такого символа");
+                                throw new System.InvalidOperationException("Я не знаю такого символа");
                             }
                     }
                 }

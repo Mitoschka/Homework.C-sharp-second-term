@@ -12,7 +12,7 @@
         void Push(int value);
 
         /// <summary>
-        /// Returns the top element of the stack.
+        /// Returns and Delete the top element of the stack.
         /// </summary>
         /// <returns>Top element</returns>
         int Pop();

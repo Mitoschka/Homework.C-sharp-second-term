@@ -44,7 +44,7 @@ namespace Task_2._3.Test
         [Test]
         public void CheckForEmptyList()
         {
-            Assert.Throws<MyException>(() => myList.RemoveElement());
+            Assert.Throws<System.InvalidOperationException>(() => myList.RemoveElement());
         }
     }
 }

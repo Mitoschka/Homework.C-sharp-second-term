@@ -43,7 +43,7 @@ namespace Task_2._3.Test
             stack.Pop();
             stack.Pop();
 
-            Assert.Throws<MyException>(() => stack.Pop());
+            Assert.Throws<System.InvalidOperationException>(() => stack.Pop());
             Assert.AreEqual(0, stack.Count());
         }
 
@@ -59,7 +59,7 @@ namespace Task_2._3.Test
         [TestCaseSource(typeof(DivideCases))]
         public void MyExeptionShouldWork(IStack stack)
         {
-            Assert.Throws<MyException>(() => stack.Pop());
+            Assert.Throws<System.InvalidOperationException>(() => stack.Pop());
         }
 
         class DivideCases : IEnumerable

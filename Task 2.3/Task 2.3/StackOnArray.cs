@@ -7,10 +7,8 @@ namespace Task_2._3
     /// </summary>
     public class StackOnArray : IStack
     {
-        private static int size = 100;
-
         private int counter = 0;
-        private int[] stringArray = new int[size];
+        private int[] intArray = new int[100];
 
         /// <summary>
         /// The operation to insert a new item.
@@ -18,44 +16,37 @@ namespace Task_2._3
         /// <param name="value"> value of new item </param>
         public void Push(int value)
         {
-            if (counter >= size)
+            if (counter >= intArray.Length)
             {
-                Array.Resize(ref stringArray, stringArray.Length * 2);
+                Array.Resize(ref intArray, intArray.Length * 2);
             }
-            stringArray[counter] = value;
+            intArray[counter] = value;
             counter++;
         }
 
         /// <summary>
-        /// Returns the top element of the stack.
+        /// Returns and Delete the top element of the stack.
         /// </summary>
         /// <returns> top element </returns>
         public int Pop()
         {
-            if (stringArray[counter] == 0)
+            if (counter <= 0)
             {
-                try
-                {
-                    int result = stringArray[counter - 1];
-                    stringArray[counter - 1] = 0;
-                    counter--;
-                    return result;
-                }
-                catch
-                {
-                    throw new MyException("The stack is empty");
-                }
+                throw new System.InvalidOperationException("The stack is empty");
             }
-            return 0;
+            else
+            {
+                int result = intArray[counter - 1];
+                intArray[counter - 1] = 0;
+                counter--;
+                return result;
+            }
         }
 
         /// <summary>
         /// Returns the number of items on the stack.
         /// </summary>
         /// <returns> size of stack </returns>
-        public int Count()
-        {
-            return counter;
-        }
+        public int Count() => counter;
     }
 }
