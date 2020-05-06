@@ -7,7 +7,6 @@ namespace Task_6._1
     {
         static void Main(string[] args)
         {
-            var mapFunction = new MapFunction();
             var listOfMap = new List<int>();
 
             listOfMap.Add(0);
@@ -16,7 +15,7 @@ namespace Task_6._1
             listOfMap.Add(3);
             listOfMap.Add(4);
 
-            listOfMap = mapFunction.Map(listOfMap, x => x * 2);
+            listOfMap = MapFunction.Map(listOfMap, x => x * 2);
 
             Console.Write("Map: ");
             for (int i = 0; i != listOfMap.Count; i++)
@@ -45,7 +44,6 @@ namespace Task_6._1
 
             Console.Write("\n");
 
-            var FoldFunction = new FoldFunction();
             var listOfFold = new List<int>();
             int result = 0;
 

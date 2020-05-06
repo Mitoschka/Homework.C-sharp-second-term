@@ -5,11 +5,6 @@ namespace Task_6._1.Test
 {
     public class FilterTest
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
         public void FilterTestShoulWork()
         {

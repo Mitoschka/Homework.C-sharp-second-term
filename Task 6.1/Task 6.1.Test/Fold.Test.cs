@@ -5,21 +5,13 @@ namespace Task_6._1.Test
 {
     public class FoldTest
     {
-        private FoldFunction foldFunction;
-
-        [SetUp]
-        public void Setup()
-        {
-            foldFunction = new FoldFunction();
-        }
-
         [Test]
         public void FoldTestShoulWork()
         {
             var listOfFold = new List<int>() { 1, 2, 3, 4 };
             int result = 0;
 
-            result = foldFunction.Fold(listOfFold, 1, (x, y) => x * y);
+            result = FoldFunction.Fold(listOfFold, 1, (x, y) => x * y);
 
             Assert.IsTrue(listOfFold.Contains(3));
             Assert.IsFalse(listOfFold.Contains(8));
@@ -32,7 +24,7 @@ namespace Task_6._1.Test
             var listOfFold = new List<int>() { 8, 6, 3, 0 };
             int result = 0;
 
-            result = foldFunction.Fold(listOfFold, 1, (x, y) => x * y);
+            result = FoldFunction.Fold(listOfFold, 1, (x, y) => x * y);
 
             Assert.AreEqual(0, result);
         }
@@ -43,7 +35,7 @@ namespace Task_6._1.Test
             var listOfFold = new List<int>() {};
             int result = 0;
 
-            result = foldFunction.Fold(listOfFold, 1, (x, y) => x * y);
+            result = FoldFunction.Fold(listOfFold, 1, (x, y) => x * y);
 
             Assert.AreEqual(1, result);
         }
