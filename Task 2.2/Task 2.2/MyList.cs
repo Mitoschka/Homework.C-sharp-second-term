@@ -17,7 +17,6 @@ namespace Task_2._2
 
         private ListElement tail;
         private ListElement head;
-        private ListElement tail;
         private int counter;
 
         /// <summary>
@@ -37,7 +36,6 @@ namespace Task_2._2
                 ++counter;
                 return;
             }
-<<<<<<< Updated upstream
             if (head.next == null)
             {
                 head.next = tail;
@@ -48,15 +46,9 @@ namespace Task_2._2
             }
             tail.next = newElement;
             tail = newElement;
-=======
-            ListElement currentElement = tail;
-            newElement.next = currentElement.next;
-            currentElement.next = newElement;
-            tail.next = newElement;
->>>>>>> Stashed changes
             ++counter;
         }
-            
+
         /// <summary>
         /// Delete the value in the List
         /// </summary>
