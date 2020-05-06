@@ -42,12 +42,8 @@ namespace Task_2._2.Test
         [Test]
         public void AddElementAndAddUniqueElementToListShouldWork()
         {
-            list.AddElement("1");
-            list.AddUniqueElementToList("1");
-            list.AddElement("2");
-            list.AddElement("3");
-            list.AddElement("4");
-            list.AddElement("lce");
+            list.AddElement("abc");
+            list.AddUniqueElementToList("abc");
             list.AddElement("abc");
 
             Assert.AreEqual(2, list.SizeOfList());
