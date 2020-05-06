@@ -38,7 +38,6 @@ namespace Task_2._3
             }
             if (head.next == null)
             {
-                head.next = tail;
                 tail.next = newElement;
                 tail = newElement;
                 ++counter;
