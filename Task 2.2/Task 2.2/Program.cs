@@ -4,7 +4,7 @@ namespace Task_2._2
 {
     class Program
     {
-        static void PrintMenu()
+        private static void PrintMenu()
         {
             Console.WriteLine("[МЕНЮ КОМАНД]: \n" +
             "'0' - Выход из программы \n" +
@@ -16,7 +16,7 @@ namespace Task_2._2
 
         static void Main()
         {
-            HashTable hashTable = new HashTable();
+            var hashTable = new HashTable();
 
             Console.Write("Это программа по работе с хэш - таблицей \n");
             Program.PrintMenu();
@@ -70,7 +70,7 @@ namespace Task_2._2
                             Console.Write("[ПРОВЕРЯЕМ ЗНАЧЕНИЕ НА ПРИНАДЛЕЖНОСТЬ...]" + "\n" + "\n");
                             Console.Write("Введите значение: " + "\n");
                             string value = (Console.ReadLine());
-                            if (hashTable.IsContainInHashTable(value) == true)
+                            if (hashTable.IsContainInHashTable(value))
                             {
                                 Console.WriteLine($"Значение \"{value}\" существует" + "\n");
                             }

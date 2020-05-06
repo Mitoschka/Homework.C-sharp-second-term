@@ -4,13 +4,20 @@ namespace Task_2._2
 {
     public class MyList
     {
-        class ListElement
+        private class ListElement
         {
             internal string value;
             internal ListElement next;
+
+            public ListElement(string value)
+            {
+                this.value = value;
+            }
         }
 
+        private ListElement tail;
         private ListElement head;
+        private ListElement tail;
         private int counter;
 
         /// <summary>
@@ -19,24 +26,37 @@ namespace Task_2._2
         /// <param name="value">Value to add</param>
         public void AddElement(string value)
         {
-            ListElement newElement = new ListElement();
-            newElement.value = value;
+            var newElement = new ListElement(value)
+            {
+                value = value
+            };
             if (head == null)
             {
                 head = newElement;
+                tail = newElement;
                 ++counter;
                 return;
             }
-            ListElement currentElement = head;
-            while (currentElement.next != null)
+<<<<<<< Updated upstream
+            if (head.next == null)
             {
-                currentElement = currentElement.next;
+                head.next = tail;
+                tail.next = newElement;
+                tail = newElement;
+                ++counter;
+                return;
             }
+            tail.next = newElement;
+            tail = newElement;
+=======
+            ListElement currentElement = tail;
             newElement.next = currentElement.next;
             currentElement.next = newElement;
+            tail.next = newElement;
+>>>>>>> Stashed changes
             ++counter;
         }
-
+            
         /// <summary>
         /// Delete the value in the List
         /// </summary>
@@ -46,9 +66,7 @@ namespace Task_2._2
             ListElement currentElement = head;
             if (currentElement == null)
             {
-                Console.WriteLine("Нет начала списка");
-                --counter;
-                return;
+                throw new NullReferenceException("Нет начала списка");
             }
             if (head.value == value)
             {
@@ -69,7 +87,7 @@ namespace Task_2._2
         /// </summary>
         /// <param name="value">Value entered</param>
         /// <returns>Returns check result</returns>
-        public bool IsContain(string value)
+        public bool Contains(string value)
         {
             ListElement currentElement = head;
             while (currentElement != null)
@@ -91,8 +109,10 @@ namespace Task_2._2
         {
             if (head == null)
             {
-                head = new ListElement();
-                head.value = value;
+                head = new ListElement(value)
+                {
+                    value = value
+                };
                 ++counter;
                 return true;
             }
@@ -109,14 +129,19 @@ namespace Task_2._2
 
             if (currentElement.value != value)
             {
-                currentElement.next = new ListElement();
-                currentElement.next.value = value;
+                currentElement.next = new ListElement(value)
+                {
+                    value = value
+                };
                 ++counter;
                 return true;
             }
             return false;
         }
 
+        /// <summary>
+        /// Size of list
+        /// </summary>
         public int SizeOfList() => counter;
     }
 }

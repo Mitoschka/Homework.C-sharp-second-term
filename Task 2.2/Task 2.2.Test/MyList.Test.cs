@@ -2,7 +2,7 @@
 
 namespace Task_2._2.Test
 {
-    public class Test
+    public class ListTests
     {
         private MyList list;
 
@@ -17,7 +17,7 @@ namespace Task_2._2.Test
         {
             list.AddUniqueElementToList("abc");
 
-            Assert.IsTrue(list.IsContain("abc"));
+            Assert.IsTrue(list.Contains("abc"));
         }
 
         [Test]
@@ -25,7 +25,7 @@ namespace Task_2._2.Test
         {
             list.AddUniqueElementToList("abc");
 
-            Assert.IsFalse(list.IsContain("ver"));
+            Assert.IsFalse(list.Contains("ver"));
         }
 
         [Test]
@@ -35,15 +35,19 @@ namespace Task_2._2.Test
             list.AddUniqueElementToList("ver");
             list.DeleteElement("abc");
 
-            Assert.IsFalse(list.IsContain("abc"));
-            Assert.IsTrue(list.IsContain("ver"));
+            Assert.IsFalse(list.Contains("abc"));
+            Assert.IsTrue(list.Contains("ver"));
         }
 
         [Test]
         public void AddElementAndAddUniqueElementToListShouldWork()
         {
-            list.AddElement("abc");
-            list.AddUniqueElementToList("abc");
+            list.AddElement("1");
+            list.AddUniqueElementToList("1");
+            list.AddElement("2");
+            list.AddElement("3");
+            list.AddElement("4");
+            list.AddElement("lce");
             list.AddElement("abc");
 
             Assert.AreEqual(2, list.SizeOfList());

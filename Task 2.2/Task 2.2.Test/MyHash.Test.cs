@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace Task_2._2.Test
 {
-    public class Tests
+    public class HashTests
     {
        private HashTable hashTable;
 
@@ -15,7 +15,7 @@ namespace Task_2._2.Test
         [Test]
         public void MyExceptionInDeleteElementOfHashTableShouldWork()
         {
-            Assert.Throws<MyException>(() => hashTable.DeleteElementOfHashTable("abc"));
+            Assert.Throws<System.NullReferenceException>(() => hashTable.DeleteElementOfHashTable("abc"));
         }
 
         [Test]

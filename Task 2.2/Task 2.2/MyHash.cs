@@ -23,11 +23,10 @@ namespace Task_2._2
         /// <returns>Returns result</returns>
         private int HashFunction(string value)
         {
-            Degree degree = new Degree();
             int result = 0;
             for (int i = 0; i != value.Length; ++i)
             {
-                result = (result + degree.PowerOfTwo(i) * value[i]) % capacity;
+                result = (result + Degree.PowerOfTwo(i) * value[i]) % capacity;
             }
             return result;
         }
@@ -43,10 +42,6 @@ namespace Task_2._2
             {
                 count++;
             }
-            else
-            {
-                return;
-            }
         }
 
         /// <summary>
@@ -57,7 +52,7 @@ namespace Task_2._2
         public bool IsContainInHashTable(string value)
         {
             int index = HashFunction(value);
-            return hashTable[index].IsContain(value);
+            return hashTable[index].Contains(value);
         }
 
         /// <summary>
@@ -66,15 +61,15 @@ namespace Task_2._2
         /// <param name="value">Value to be deleted</param>
         public void DeleteElementOfHashTable(string value)
         {
-            int index = HashFunction(value);
             if (IsContainInHashTable(value))
             {
+                int index = HashFunction(value);
                 hashTable[index].DeleteElement(value);
                 count--;
             }
             else
             {
-                throw new MyException("Такого элемента здесь нет");
+                throw new NullReferenceException("Такого элемента здесь нет");
             }
         }
 
