@@ -5,6 +5,38 @@
     /// </summary>
     public class UniqueList : MyList
     {
+        public bool AddUniqueElementToList(string value, int position)
+        {
+            if (position > SizeOfList())
+            {
+                throw new System.ArgumentOutOfRangeException("Error: Неверно указана позиция");
+            }
+            if (currentElement == null)
+            {
+                currentElement = new ListElement(value, currentElement);
+                currentElement.Value = value;
+                ++Сounter;
+                return true;
+            }
+            while (currentElement.Next != null)
+            {
+                if (currentElement.Value == value)
+                {
+                    throw new AddException($"Выражение {value} не являеться уникальным.");
+                }
+                currentElement = currentElement.Next;
+            }
+
+            if (currentElement.Value != value)
+            {
+                currentElement.Next = new ListElement(value, currentElement.Next);
+                currentElement.Next.Value = value;
+                ++Сounter;
+            }
+            throw new AddException($"Выражение {value} не являеться уникальным.");
+        }
+
+
         /// <summary>
         /// Adds element to position in list.
         /// </summary>
@@ -14,9 +46,9 @@
         /// <exception cref="AddException">Throws when element already exist.</exception>
         public void AddUniqueElement(string value, int position)
         {
-            if (AddUniqueElementToList(value, position))
+            if (!AddUniqueElementToList(value, position))
             {
-                throw new AddException($"Element {value} already exist.");
+                throw new AddException($"Выражение {value} не являеться уникальным.");
             }
             else
             {

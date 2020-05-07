@@ -7,7 +7,7 @@ namespace Task_4._2
         /// <summary>
         /// Class with implementation of list element.
         /// </summary>
-        private class ListElement
+        protected class ListElement
         {
             /// <summary>
             /// Initializes a new instance of the <see cref="ListElement"/> class.
@@ -39,8 +39,10 @@ namespace Task_4._2
             }
         }
 
-        private ListElement currentElement;
+        protected ListElement currentElement;
         private int сounter;
+
+        public int Сounter { get => сounter; set => сounter = value; }
 
         /// <summary>
         /// Add item to list
@@ -59,7 +61,7 @@ namespace Task_4._2
             if (currentElement == null || position == 0)
             {
                 currentElement = newElement;
-                ++сounter;
+                ++Сounter;
                 return;
             }
             if (position == 0)
@@ -73,7 +75,7 @@ namespace Task_4._2
             }
             newElement.Next = currentElement.Next;
             currentElement.Next = newElement;
-            ++сounter;
+            ++Сounter;
         }
 
         /// <summary>
@@ -85,16 +87,16 @@ namespace Task_4._2
             int currentPosition = 0;
             if (currentElement == null && position == 0)
             {
-                --сounter;
+                --Сounter;
                 throw new DeleteException("Нет начала списка");
             }
             if (position == 0)
             {
                 currentElement = currentElement.Next;
-                --сounter;
+                --Сounter;
                 return;
             }
-            if (position > сounter - 1)
+            if (position > Сounter - 1)
             {
                 throw new System.ArgumentOutOfRangeException("Error: Неверно указана позиция");
             }
@@ -104,14 +106,14 @@ namespace Task_4._2
                 ++currentPosition;
             }
             currentElement.Next = currentElement.Next.Next;
-            --сounter;
+            --Сounter;
         }
 
         /// <summary>
         /// Get the size of the list.
         /// </summary>
         /// <returns>List size</returns>
-        public int SizeOfList() => сounter;
+        public int SizeOfList() => Сounter;
 
         /// <summary>
         /// Getting position value
@@ -148,7 +150,7 @@ namespace Task_4._2
         /// <param name="number"> The number we want to replace</param>
         public void SetItemValue(int position, string stringOfValue)
         {
-            if (position > сounter - 1)
+            if (position > Сounter - 1)
             {
                 throw new System.ArgumentOutOfRangeException("Error: Неверно указана позиция");
             }
@@ -168,38 +170,6 @@ namespace Task_4._2
                 ++currentPosition;
             }
             currentElement.Next.Value = stringOfValue;
-        }
-
-        public bool AddUniqueElementToList(string value, int position)
-        {
-            if (position > SizeOfList())
-            {
-                throw new System.ArgumentOutOfRangeException("Error: Неверно указана позиция");
-            }
-            if (currentElement == null)
-            {
-                currentElement = new ListElement(value, currentElement);
-                currentElement.Value = value;
-                ++сounter;
-                return true;
-            }
-
-            while (currentElement.Next != null)
-            {
-                if (currentElement.Value == value)
-                {
-                    throw new AddException("Error: Выражение не являеться уникальным");
-                }
-                currentElement = currentElement.Next;
-            }
-
-            if (currentElement.Value != value)
-            {
-                currentElement.Next = new ListElement(value, currentElement.Next);
-                currentElement.Next.Value = value;
-                ++сounter;
-            }
-            throw new AddException("Error: Выражение не являеться уникальным");
         }
     }
 }

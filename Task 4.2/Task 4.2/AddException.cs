@@ -3,7 +3,7 @@
 namespace Task_4._2
 {
     /// <summary>
-    /// Class with implementation exception
+    /// Class with implementation exception to add
     /// </summary>
     [Serializable]
     public class AddException : Exception
