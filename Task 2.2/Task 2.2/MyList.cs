@@ -48,6 +48,10 @@ namespace Task_2._2
         public void DeleteElement(string value)
         {
             ListElement currentElement = head;
+            if (head == null)
+            {
+                currentElement = tail;
+            }
             if (currentElement == null)
             {
                 throw new NullReferenceException("Нет начала списка");
