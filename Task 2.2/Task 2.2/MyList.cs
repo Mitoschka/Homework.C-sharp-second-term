@@ -36,13 +36,6 @@ namespace Task_2._2
                 ++counter;
                 return;
             }
-            if (head.next == null)
-            {
-                tail.next = newElement;
-                tail = newElement;
-                ++counter;
-                return;
-            }
             tail.next = newElement;
             tail = newElement;
             ++counter;
