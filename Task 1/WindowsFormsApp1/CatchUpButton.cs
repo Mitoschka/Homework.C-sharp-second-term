@@ -12,7 +12,7 @@ namespace RunAwayButton
     public partial class CatchUpButton : Form
     {
         private Random randomNumber = new Random();
-        
+
         /// <summary>
         /// Конструктор класса убегающей кнопки.
         /// </summary>
