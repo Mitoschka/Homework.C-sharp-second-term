@@ -1,4 +1,4 @@
-﻿namespace RunningButton
+﻿namespace RunAwayButton
 {
     partial class CatchUpButton
     {
@@ -28,27 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.runawayButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // runawayButton
             // 
-            this.button1.Location = new System.Drawing.Point(237, 140);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 61);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Click!";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.OnRunawayButtonClick);
-            this.button1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.CursorTouchesRunawayButton);
+            this.runawayButton.Location = new System.Drawing.Point(237, 140);
+            this.runawayButton.Name = "runawayButton";
+            this.runawayButton.Size = new System.Drawing.Size(103, 61);
+            this.runawayButton.TabIndex = 0;
+            this.runawayButton.Text = "Click!";
+            this.runawayButton.UseVisualStyleBackColor = true;
+            this.runawayButton.Click += new System.EventHandler(this.OnRunawayButtonClick);
+            this.runawayButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.CursorTouchesRunawayButton);
             // 
             // CatchUpButton
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(617, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.runawayButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximumSize = new System.Drawing.Size(600, 600);
+            this.MinimumSize = new System.Drawing.Size(600, 600);
             this.Name = "CatchUpButton";
             this.Text = "CatchUpButton";
             this.ResumeLayout(false);
@@ -57,7 +59,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button runawayButton;
     }
 }
 

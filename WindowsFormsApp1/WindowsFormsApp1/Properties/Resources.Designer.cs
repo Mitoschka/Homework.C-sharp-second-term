@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RunningButton.Properties
+namespace RunAwayButton.Properties
 {
 
 

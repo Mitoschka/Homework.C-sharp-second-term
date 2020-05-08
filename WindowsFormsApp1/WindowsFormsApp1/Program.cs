@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace RunningButton
+namespace RunAwayButton
 {
     static class Program
     {

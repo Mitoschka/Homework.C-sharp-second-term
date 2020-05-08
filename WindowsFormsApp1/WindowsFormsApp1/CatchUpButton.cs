@@ -1,12 +1,21 @@
 ﻿using System;
 using System.Windows.Forms;
 
-
-namespace RunningButton
+/// <summary>
+/// Пространство имен для реализации убегающей кнопки.
+/// </summary>
+namespace RunAwayButton
 {
+    /// <summary>
+    /// Класс, реализующий убегающую кнопку.
+    /// </summary>
     public partial class CatchUpButton : Form
     {
         private Random randomNumber = new Random();
+        
+        /// <summary>
+        /// Конструктор класса убегающей кнопки.
+        /// </summary>
         public CatchUpButton()
         {
             InitializeComponent();
@@ -33,13 +42,13 @@ namespace RunningButton
         }
 
         /// <summary>
-        /// Метод, который открывает messageBox, если кнопка была нажата.
+        /// Метод, который закрывает форму, если кнопка была нажата.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void OnRunawayButtonClick(object sender, EventArgs e)
         {
-            MessageBox.Show("Fail.");
+            Close();
         }
     }
 }
