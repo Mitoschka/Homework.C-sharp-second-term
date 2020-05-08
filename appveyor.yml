@@ -1,10 +1,10 @@
 image: Visual Studio 2019
 
 before_build:
-- nuget restore "Task 1/Task 1.sln"
+- nuget restore "Task 1/RunningButton.sln"
 
 build:
- project: "Task 1/Task 1.sln"
+ project: "Task 1/RunningButton.sln"
 
 test_script:
-- dotnet test "Task 1/Task 1.sln"
+- dotnet test "Task 1/RunningButton.sln"
