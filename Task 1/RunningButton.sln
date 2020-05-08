@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunningButton", "WindowsFormsApp1\RunningButton.csproj", "{F1C144D3-E317-48FB-8275-9BFDBC0FF4C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunningButton", "RunningButton\RunningButton.csproj", "{F1C144D3-E317-48FB-8275-9BFDBC0FF4C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {686716E5-7DFE-4AD7-AB9A-374A1B157114}
+		SolutionGuid = {CDC4F864-48CD-4E98-AE33-FB9FD4266ECF}
 	EndGlobalSection
 EndGlobal
