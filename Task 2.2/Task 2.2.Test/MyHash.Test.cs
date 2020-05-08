@@ -4,7 +4,7 @@ namespace Task_2._2.Test
 {
     public class HashTests
     {
-       private HashTable hashTable;
+        private HashTable hashTable;
 
         [SetUp]
         public void Setup()

@@ -2,6 +2,9 @@
 
 namespace Task_2._2
 {
+    /// <summary>
+    /// Custom implementation of Hash table
+    /// </summary>
     public class HashTable
     {
         public HashTable()

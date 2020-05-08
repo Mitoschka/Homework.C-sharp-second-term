@@ -2,8 +2,14 @@
 
 namespace Task_2._2
 {
+    /// <summary>
+    /// Custom implementation of List
+    /// </summary>
     public class MyList
     {
+        /// <summary>
+        /// Sheet element class
+        /// </summary>
         private class ListElement
         {
             internal string value;
@@ -29,7 +35,7 @@ namespace Task_2._2
             {
                 value = value
             };
-            if (head == null)
+            if ((head == null) && (tail == null))
             {
                 head = newElement;
                 tail = newElement;
@@ -47,26 +53,24 @@ namespace Task_2._2
         /// <param name="value">Value to be deleted</param>
         public void DeleteElement(string value)
         {
-            ListElement currentElement = head;
-            if (head == null)
-            {
-                currentElement = tail;
-            }
-            if (currentElement == null)
+            if ((head == null) && (tail == null))
             {
                 throw new NullReferenceException("Нет начала списка");
             }
-            if (head.value == value)
+            if ((head.value == value) && (tail.value == value))
             {
-                head = currentElement.next;
+                head = head.next;
+                tail = tail.next;
                 --counter;
                 return;
             }
-            while (currentElement.next != null && currentElement.next.value != value)
+            while ((head.next != null && head.next.value != value) && (tail.next != null && tail.next.value != value))
             {
-                currentElement = currentElement.next;
+                head = head.next;
+                tail = tail.next;
             }
-            currentElement.next = currentElement.next.next;
+            head.next = head.next.next;
+            tail.next = tail.next.next;
             --counter;
         }
 
@@ -77,14 +81,14 @@ namespace Task_2._2
         /// <returns>Returns check result</returns>
         public bool Contains(string value)
         {
-            ListElement currentElement = head;
-            while (currentElement != null)
+            while ((head != null) && (tail != null))
             {
-                if (value == currentElement.value)
+                if ((value == head.value) && (value == tail.value))
                 {
                     return true;
                 }
-                currentElement = currentElement.next;
+                head = head.next;
+                tail = tail.next;
             }
             return false;
         }
@@ -95,9 +99,13 @@ namespace Task_2._2
         /// <param name="value">Unique value</param>
         public bool AddUniqueElementToList(string value)
         {
-            if (head == null)
+            if ((head == null) && (tail == null))
             {
                 head = new ListElement(value)
+                {
+                    value = value
+                };
+                tail = new ListElement(value)
                 {
                     value = value
                 };
@@ -105,19 +113,23 @@ namespace Task_2._2
                 return true;
             }
 
-            ListElement currentElement = head;
-            while (currentElement.next != null)
+            while ((head.next != null) && (tail.next != null))
             {
-                if (currentElement.value == value)
+                if ((head.value == value) && (tail.value == value))
                 {
                     return false;
                 }
-                currentElement = currentElement.next;
+                head = head.next;
+                tail = tail.next;
             }
 
-            if (currentElement.value != value)
+            if ((head.value != value) && (tail.value != value))
             {
-                currentElement.next = new ListElement(value)
+                head = new ListElement(value)
+                {
+                    value = value
+                };
+                tail = new ListElement(value)
                 {
                     value = value
                 };
