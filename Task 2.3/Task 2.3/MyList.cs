@@ -49,6 +49,12 @@ namespace Task_2._3
         {
             ListElement currentElement = head;
 
+            if (head == null)
+            {
+                head = tail;
+                currentElement = head;
+            }
+
             if ((head == null) && (tail == null))
             {
                 throw new InvalidOperationException("The list is empty");
