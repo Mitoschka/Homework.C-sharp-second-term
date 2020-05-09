@@ -15,9 +15,11 @@ namespace Task_2._2.Test
         [Test]
         public void AddUniqueElementToListShouldWorkTrue()
         {
+            list.AddUniqueElementToList("ver");
+            list.AddUniqueElementToList("car");
             list.AddUniqueElementToList("abc");
 
-            Assert.IsTrue(list.Contains("abc"));
+            Assert.IsTrue(list.Contains("car"));
         }
 
         [Test]

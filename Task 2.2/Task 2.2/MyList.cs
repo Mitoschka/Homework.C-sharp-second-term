@@ -53,24 +53,22 @@ namespace Task_2._2
         /// <param name="value">Value to be deleted</param>
         public void DeleteElement(string value)
         {
+            ListElement currentElement = head;
             if ((head == null) && (tail == null))
             {
                 throw new NullReferenceException("Нет начала списка");
             }
-            if ((head.value == value) && (tail.value == value))
+            if (head.value == value)
             {
-                head = head.next;
-                tail = tail.next;
+                head = currentElement.next;
                 --counter;
                 return;
             }
-            while ((head.next != null && head.next.value != value) && (tail.next != null && tail.next.value != value))
+            while (currentElement.next != null && currentElement.next.value != value)
             {
-                head = head.next;
-                tail = tail.next;
+                currentElement = currentElement.next;
             }
-            head.next = head.next.next;
-            tail.next = tail.next.next;
+            currentElement.next = currentElement.next.next;
             --counter;
         }
 
@@ -81,14 +79,14 @@ namespace Task_2._2
         /// <returns>Returns check result</returns>
         public bool Contains(string value)
         {
-            while ((head != null) && (tail != null))
+            ListElement currentElement = head;
+            while (currentElement != null)
             {
-                if ((value == head.value) && (value == tail.value))
+                if (value == currentElement.value)
                 {
                     return true;
                 }
-                head = head.next;
-                tail = tail.next;
+                currentElement = currentElement.next;
             }
             return false;
         }
@@ -99,40 +97,36 @@ namespace Task_2._2
         /// <param name="value">Unique value</param>
         public bool AddUniqueElementToList(string value)
         {
+            var newElement = new ListElement(value)
+            {
+                value = value
+            };
             if ((head == null) && (tail == null))
             {
-                head = new ListElement(value)
-                {
-                    value = value
-                };
-                tail = new ListElement(value)
-                {
-                    value = value
-                };
+                head = newElement;
+                tail = newElement;
                 ++counter;
                 return true;
             }
 
-            while ((head.next != null) && (tail.next != null))
+            ListElement currentElement = head;
+            while (currentElement.next != null)
             {
-                if ((head.value == value) && (tail.value == value))
+                if (currentElement.value == value)
                 {
                     return false;
                 }
-                head = head.next;
-                tail = tail.next;
+                currentElement = currentElement.next;
             }
 
-            if ((head.value != value) && (tail.value != value))
+            if (currentElement.value != value)
             {
-                head = new ListElement(value)
+                currentElement.next = new ListElement(value)
                 {
                     value = value
                 };
-                tail = new ListElement(value)
-                {
-                    value = value
-                };
+                tail.next = newElement;
+                tail = newElement;
                 ++counter;
                 return true;
             }
