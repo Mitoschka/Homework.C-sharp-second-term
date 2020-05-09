@@ -49,12 +49,6 @@ namespace Task_2._3
         {
             ListElement currentElement = head;
 
-            if (head == null)
-            {
-                head = tail;
-                currentElement = head;
-            }
-
             if ((head == null) && (tail == null))
             {
                 throw new InvalidOperationException("The list is empty");
@@ -64,6 +58,7 @@ namespace Task_2._3
             {
                 int firstValue = currentElement.value;
                 head = null;
+                tail = null;
                 counter--;
                 return firstValue;
             }
@@ -74,6 +69,7 @@ namespace Task_2._3
             }
             int secondValue = currentElement.next.value;
             currentElement.next = null;
+            tail = currentElement;
             counter--;
             return secondValue;
         }
