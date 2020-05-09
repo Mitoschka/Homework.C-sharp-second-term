@@ -51,5 +51,10 @@ namespace Task_2._2.Test
             Assert.AreEqual(2, list.SizeOfList());
         }
 
+        [Test]
+        public void ShouldThrowExceptionWhenWeDeleteEmpty()
+        {
+            Assert.Throws <System.NullReferenceException>(() => list.DeleteElement("abc"));
+        }
     }
 }

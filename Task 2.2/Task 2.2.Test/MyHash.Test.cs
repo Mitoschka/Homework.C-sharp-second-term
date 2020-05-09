@@ -58,5 +58,11 @@ namespace Task_2._2.Test
 
             Assert.IsFalse(hashTable.IsContainInHashTable("abc"));
         }
+
+        [Test]
+        public void ShouldThrowExceptionWhenWeDeleteEmpty()
+        {
+            Assert.Throws<System.NullReferenceException>(() => hashTable.DeleteElementOfHashTable("abc"));
+        }
     }
 }
