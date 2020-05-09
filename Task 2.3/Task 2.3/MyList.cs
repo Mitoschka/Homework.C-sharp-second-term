@@ -36,13 +36,6 @@ namespace Task_2._3
                 ++counter;
                 return;
             }
-            if (head.next == null)
-            {
-                tail.next = newElement;
-                tail = newElement;
-                ++counter;
-                return;
-            }
             tail.next = newElement;
             tail = newElement;
             ++counter;
@@ -55,7 +48,8 @@ namespace Task_2._3
         public int RemoveElement()
         {
             ListElement currentElement = head;
-            if (currentElement == null)
+
+            if ((head == null) && (tail == null))
             {
                 throw new InvalidOperationException("The list is empty");
             }
