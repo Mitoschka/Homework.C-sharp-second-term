@@ -9,9 +9,9 @@ namespace Task_4._2
             try
             {
                 var list = new UniqueList();
-                list.AddUniqueElement("abc", 0);
+                list.AddElement("abc", 0);
                 Console.WriteLine(list.GetItemValue(0));
-                list.AddUniqueElement("abc", 1);
+                list.AddElement("abc", 1);
             }
             catch (AddException ex)
             {

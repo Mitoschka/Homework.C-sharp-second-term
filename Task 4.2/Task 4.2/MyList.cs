@@ -40,24 +40,25 @@ namespace Task_4._2
         }
 
         protected ListElement currentElement;
-        private int сounter;
 
-        public int Сounter { get => сounter; set => сounter = value; }
+        public int Сounter { get; set; }
 
         /// <summary>
         /// Add item to list
         /// </summary>
         /// <param name="value">Value to add</param>
         /// <param name="position">Number of item to add value to</param>
-        public void AddElement(string value, int position)
+        public virtual void AddElement(string value, int position)
         {
             if (position > SizeOfList() || position < 0)
             {
-                throw new System.ArgumentOutOfRangeException("Error: Неверно указана позиция");
+                throw new ArgumentOutOfRangeException("Error: Неверно указана позиция");
             }
             int currentPosition = 0;
-            var newElement = new ListElement(value, currentElement.Next);
-            newElement.Value = value;
+            var newElement = new ListElement(value, currentElement)
+            {
+                Value = value
+            };
             if (currentElement == null || position == 0)
             {
                 currentElement = newElement;
@@ -98,7 +99,7 @@ namespace Task_4._2
             }
             if (position > Сounter - 1)
             {
-                throw new System.ArgumentOutOfRangeException("Error: Неверно указана позиция");
+                throw new ArgumentOutOfRangeException("Error: Неверно указана позиция");
             }
             while (currentElement.Next != null && currentPosition != position - 1)
             {
@@ -124,12 +125,12 @@ namespace Task_4._2
         {
             if (position > SizeOfList())
             {
-                throw new System.ArgumentOutOfRangeException("Error: Неверно указана позиция");
+                throw new ArgumentOutOfRangeException("Error: Неверно указана позиция");
             }
             int currentPosition = 0;
             if (currentElement == null)
             {
-                throw new System.InvalidOperationException("Нет начала списка");
+                throw new InvalidOperationException("Нет начала списка");
             }
             if (position == 0)
             {
@@ -152,12 +153,12 @@ namespace Task_4._2
         {
             if (position > Сounter - 1)
             {
-                throw new System.ArgumentOutOfRangeException("Error: Неверно указана позиция");
+                throw new ArgumentOutOfRangeException("Error: Неверно указана позиция");
             }
             int currentPosition = 0;
             if (currentElement == null)
             {
-                throw new System.InvalidOperationException("Нет начала списка");
+                throw new InvalidOperationException("Нет начала списка");
             }
             if (position == 0)
             {

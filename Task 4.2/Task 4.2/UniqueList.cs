@@ -13,9 +13,6 @@
             }
             if (currentElement == null)
             {
-                currentElement = new ListElement(value, currentElement);
-                currentElement.Value = value;
-                ++Сounter;
                 return true;
             }
             while (currentElement.Next != null)
@@ -44,7 +41,7 @@
         /// <param name="position">Position of new element in list.</param>
         /// <exception cref="System.ArgumentOutOfRangeException">Throws at the wrong position.</exception>
         /// <exception cref="AddException">Throws when element already exist.</exception>
-        public void AddUniqueElement(string value, int position)
+        public override void AddElement(string value, int position)
         {
             if (!AddUniqueElementToList(value, position))
             {
@@ -52,7 +49,7 @@
             }
             else
             {
-                AddElement(value, position);
+               base.AddElement(value, position);
             }
         }
     }

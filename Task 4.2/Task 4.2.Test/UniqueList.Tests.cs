@@ -40,5 +40,12 @@ namespace Task_4._2.Test
             Assert.Throws<AddException>(() => list.AddUniqueElementToList("abc", 1));
             Assert.Throws<AddException>(() => list.AddUniqueElementToList("abc", 0));
         }
+
+        [Test]
+        public void ShouldNotContainDuplicates()
+        {
+            list.AddElement("abc", 0);
+            Assert.Throws<AddException>(() => list.AddElement("abc", 0));
+        }
     }
 }
