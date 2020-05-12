@@ -1,14 +1,24 @@
 ﻿using System;
 
+/// <summary>
+/// Global namespace.
+/// </summary>
 namespace Task_2._3
 {
     public class MyList
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MyList"/> class.
+        /// </summary>
         private class ListElement
         {
             internal int value;
             internal ListElement next;
 
+            /// <summary>
+            /// <see cref="ListElement"/> class constructor
+            /// </summary>
+            /// <param name="value"></param>
             public ListElement(int value)
             {
                 this.value = value;

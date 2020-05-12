@@ -5,7 +5,7 @@ namespace Task_2._3.Test
 {
     public class TestsOfMyStack
     {
-        [TestCaseSource(typeof(DivideCases))]
+        [TestCaseSource(typeof(Stacks))]
         public void CountShouldCountTheNumberOfAddedItems(IStack stack)
         {
             stack.Push(34);
@@ -15,7 +15,7 @@ namespace Task_2._3.Test
             Assert.AreEqual(1, stack.Count());
         }
 
-        [TestCaseSource(typeof(DivideCases))]
+        [TestCaseSource(typeof(Stacks))]
         public void PushShouldWorkWhenWeAddedHundredElements(IStack stack)
         {
             for (int i = 0; i < 100; i++)
@@ -25,7 +25,7 @@ namespace Task_2._3.Test
             Assert.AreEqual(100, stack.Count());
         }
 
-        [TestCaseSource(typeof(DivideCases))]
+        [TestCaseSource(typeof(Stacks))]
         public void PushShouldWorkWhenWeAddedHundredAndOneElements(IStack stack)
         {
             for (int i = 0; i <= 100; i++)
@@ -35,7 +35,7 @@ namespace Task_2._3.Test
             Assert.AreEqual(101, stack.Count());
         }
 
-        [TestCaseSource(typeof(DivideCases))]
+        [TestCaseSource(typeof(Stacks))]
         public void PushAndPopShouldWorkCorrect(IStack stack)
         {
             stack.Push(9);
@@ -47,7 +47,7 @@ namespace Task_2._3.Test
             Assert.AreEqual(0, stack.Count());
         }
 
-        [TestCaseSource(typeof(DivideCases))]
+        [TestCaseSource(typeof(Stacks))]
         public void PushShouldWorkCorrect(IStack stack)
         {
             stack.Push(9);
@@ -56,13 +56,13 @@ namespace Task_2._3.Test
             Assert.AreEqual(8, stack.Pop());
         }
 
-        [TestCaseSource(typeof(DivideCases))]
+        [TestCaseSource(typeof(Stacks))]
         public void MyExeptionShouldWork(IStack stack)
         {
             Assert.Throws<System.InvalidOperationException>(() => stack.Pop());
         }
 
-        class DivideCases : IEnumerable
+        class Stacks : IEnumerable
         {
             public IEnumerator GetEnumerator()
             {
