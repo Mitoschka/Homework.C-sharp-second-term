@@ -44,7 +44,7 @@ namespace Task_3._2.Test
         [Test]
         public void CheckForEmptyList()
         {
-            Assert.Throws<System.IndexOutOfRangeException>(() => myList.DeleteElement(" "));
+            Assert.Throws<System.NullReferenceException>(() => myList.DeleteElement(" "));
         }
     }
 }

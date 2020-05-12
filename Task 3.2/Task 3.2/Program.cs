@@ -17,8 +17,7 @@ namespace Task_3._2
 
         static void Main()
         {
-            IMyHash myHash;
-            myHash = new ThirdHash();
+            IMyHash myHash = new ThirdHash();
             HashTable hashTable = new HashTable(myHash);
 
             Console.Write("Это программа по работе с хэш - таблицей \n");

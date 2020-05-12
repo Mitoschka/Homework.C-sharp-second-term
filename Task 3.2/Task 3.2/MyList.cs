@@ -48,13 +48,9 @@ namespace Task_3._2
         public void DeleteElement(string value)
         {
             ListElement currentElement = head;
-            if(head == null)
+            if ((head == null) && (tail == null))
             {
-                currentElement = tail;
-            }
-            if (currentElement == null)
-            {
-                throw new IndexOutOfRangeException("Нет начала списка");
+                throw new NullReferenceException("Нет начала списка");
             }
             if (head.value == value)
             {

@@ -5,7 +5,7 @@ namespace Task_3._2.Test
 {
     class HashTests
     {
-        [TestCaseSource(typeof(DivideCases))]
+        [TestCaseSource(typeof(Hashes))]
         public void AddElementToHashTableAndIsContainInHashTableShouldWork(HashTable hashTable)
         {
             hashTable.AddElementToHashTable("abc");
@@ -13,7 +13,7 @@ namespace Task_3._2.Test
             Assert.IsTrue(hashTable.IsContainInHashTable("abc"));
         }
 
-        [TestCaseSource(typeof(DivideCases))]
+        [TestCaseSource(typeof(Hashes))]
         public void AddElementToHashTableAndDeleteElementOfHashTableShouldWork(HashTable hashTable)
         {
             hashTable.AddElementToHashTable("abc");
@@ -23,13 +23,13 @@ namespace Task_3._2.Test
             Assert.IsFalse(hashTable.IsContainInHashTable("abc"));
         }
 
-        [TestCaseSource(typeof(DivideCases))]
+        [TestCaseSource(typeof(Hashes))]
         public void HashTableShouldWorkIfWeTryDeleteEmtyHashTable(HashTable hashTable)
         {
             Assert.Throws<System.InvalidOperationException>(() => hashTable.DeleteElementOfHashTable("dog"));
         }
 
-        [TestCaseSource(typeof(DivideCases))]
+        [TestCaseSource(typeof(Hashes))]
         public void AddElementToHashTableShouldWorkCorrect(HashTable hashTable)
         {
             hashTable.AddElementToHashTable("abc");
@@ -42,7 +42,7 @@ namespace Task_3._2.Test
 
         }
 
-        class DivideCases : IEnumerable
+        class Hashes : IEnumerable
         {
             public IEnumerator GetEnumerator()
             {

@@ -20,7 +20,6 @@ namespace Task_3._2
         private IMyHash Hash;
         private const int capacity = 100;
         private MyList[] hashTable = new MyList[capacity];
-        private int count = 0;
 
         /// <summary>
         /// Change my hash
@@ -54,7 +53,11 @@ namespace Task_3._2
             int index = Hash.HashFunction(value) % capacity;
             if (index < 0)
             {
-                throw new System.IndexOutOfRangeException("negative array index value");
+                index *= (-1);
+            }
+            if (index >= capacity)
+            {
+                index %= capacity;
             }
             hashTable[index].AddUniqueElementToList(value);
         }
@@ -67,6 +70,14 @@ namespace Task_3._2
         public bool IsContainInHashTable(string value)
         {
             int index = Hash.HashFunction(value) % capacity;
+            if (index < 0)
+            {
+                index *= (-1);
+            }
+            if (index >= capacity)
+            {
+                index %= capacity;
+            }
             return hashTable[index].IsContain(value);
         }
 
@@ -79,6 +90,14 @@ namespace Task_3._2
             if (IsContainInHashTable(value))
             {
                 int index = Hash.HashFunction(value) % capacity;
+                if (index < 0)
+                {
+                    index *= (-1);
+                }
+                if (index >= capacity)
+                {
+                    index %= capacity;
+                }
                 hashTable[index].DeleteElement(value);
             }
             else
