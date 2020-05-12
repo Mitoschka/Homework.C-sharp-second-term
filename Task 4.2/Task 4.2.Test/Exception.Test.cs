@@ -16,14 +16,14 @@ namespace Task_4._2.Test
         [Test]
         public void AddUniqueElementToListTest()
         {
-            unique.AddUniqueElementToList("dog", 0);
-            Assert.Throws<AddException>(() => unique.AddUniqueElementToList("dog", 0));
+            unique.AddElement("dog", 0);
+            Assert.Throws<AddException>(() => unique.AddElement("dog", 0));
         }
 
         [Test]
         public void DeleteElementFromEmptyListTest()
         {
-            unique.AddUniqueElementToList("dog", 0);
+            unique.AddElement("dog", 0);
             unique.DeleteElement(0);
             Assert.Throws<DeleteException>(() => unique.DeleteElement(0));
         }
@@ -31,7 +31,7 @@ namespace Task_4._2.Test
         [Test]
         public void DeleteElementFromListTest()
         {
-            unique.AddUniqueElementToList("dog", 0);
+            unique.AddElement("dog", 0);
             Assert.Throws<System.ArgumentOutOfRangeException>(() => unique.DeleteElement(1));
         }
     }

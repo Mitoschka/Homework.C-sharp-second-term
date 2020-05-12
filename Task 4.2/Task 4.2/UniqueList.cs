@@ -5,7 +5,7 @@
     /// </summary>
     public class UniqueList : MyList
     {
-        public bool AddUniqueElementToList(string value, int position)
+        public bool ChecksForUniquenessOfElmenetInList(string value, int position)
         {
             if (position > SizeOfList())
             {
@@ -43,7 +43,7 @@
         /// <exception cref="AddException">Throws when element already exist.</exception>
         public override void AddElement(string value, int position)
         {
-            if (!AddUniqueElementToList(value, position))
+            if (!ChecksForUniquenessOfElmenetInList(value, position))
             {
                 throw new AddException($"Выражение {value} не являеться уникальным.");
             }
