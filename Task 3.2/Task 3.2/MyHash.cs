@@ -55,10 +55,6 @@ namespace Task_3._2
             {
                 index *= (-1);
             }
-            if (index >= capacity)
-            {
-                index %= capacity;
-            }
             hashTable[index].AddUniqueElementToList(value);
         }
 
@@ -73,10 +69,6 @@ namespace Task_3._2
             if (index < 0)
             {
                 index *= (-1);
-            }
-            if (index >= capacity)
-            {
-                index %= capacity;
             }
             return hashTable[index].IsContain(value);
         }
@@ -93,10 +85,6 @@ namespace Task_3._2
                 if (index < 0)
                 {
                     index *= (-1);
-                }
-                if (index >= capacity)
-                {
-                    index %= capacity;
                 }
                 hashTable[index].DeleteElement(value);
             }
