@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/// <summary>
+/// Пространство имён
+/// </summary>
 namespace FindPair
 {
     public partial class GameForm : Form
@@ -20,6 +23,9 @@ namespace FindPair
 
         private Label secondClicked = null;
 
+        /// <summary>
+        /// Инициализация и заполнение формы
+        /// </summary>
         public GameForm(int sizeOfTable)
         {
             numbers = new List<int>();
