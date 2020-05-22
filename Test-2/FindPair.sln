@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30011.22
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindPair", "FindPair\FindPair.csproj", "{52341F0B-88F5-4B5E-98BF-307CDBE5A173}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindPair.Test", "FindPair.Test\FindPair.Test.csproj", "{69A03DEF-F712-461E-B2D3-9977A2C4E414}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{52341F0B-88F5-4B5E-98BF-307CDBE5A173}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52341F0B-88F5-4B5E-98BF-307CDBE5A173}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52341F0B-88F5-4B5E-98BF-307CDBE5A173}.Release|Any CPU.Build.0 = Release|Any CPU
-		{69A03DEF-F712-461E-B2D3-9977A2C4E414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{69A03DEF-F712-461E-B2D3-9977A2C4E414}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{69A03DEF-F712-461E-B2D3-9977A2C4E414}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{69A03DEF-F712-461E-B2D3-9977A2C4E414}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
