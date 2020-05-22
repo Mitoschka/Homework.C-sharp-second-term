@@ -12,8 +12,6 @@ namespace FindPair
 {
     public partial class GameForm : Form
     {
-        private int sizeOfTable;
-
         private Random random = new Random();
 
         private List<int> numbers;
@@ -22,19 +20,8 @@ namespace FindPair
 
         private Label secondClicked = null;
 
-        public GameForm()
+        public GameForm(int sizeOfTable)
         {
-            string[] arguments = Environment.GetCommandLineArgs();
-            if (arguments.Length > 1)
-            {
-                bool isCorrectInput = Int32.TryParse(arguments[1], out sizeOfTable);
-                if (arguments.Length != 2 || !isCorrectInput || sizeOfTable < 1 || sizeOfTable % 2 != 0)
-                {
-                    MessageBox.Show("Некорректные данные в командной строке.");
-                    return;
-                }
-            }
-
             numbers = new List<int>();
             for (int i = 0; i != sizeOfTable * sizeOfTable; ++i)
             {

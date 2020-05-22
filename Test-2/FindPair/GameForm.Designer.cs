@@ -81,6 +81,9 @@
             this.Text = "Find The Pair!";
             this.tableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.MaximumSize = new System.Drawing.Size(900, 900);
+            this.MinimumSize = new System.Drawing.Size(900, 900);
+            this.MaximizeBox = false;
 
         }
 
