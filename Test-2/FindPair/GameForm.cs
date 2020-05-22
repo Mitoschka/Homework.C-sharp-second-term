@@ -20,12 +20,14 @@ namespace FindPair
 
         private Label secondClicked = null;
 
+        public List<int> Numbers { get => numbers; set => numbers = value; }
+
         public GameForm(int sizeOfTable)
         {
-            numbers = new List<int>();
+            Numbers = new List<int>();
             for (int i = 0; i != sizeOfTable * sizeOfTable; ++i)
             {
-                numbers.Add(i / 2);
+                Numbers.Add(i / 2);
             }
 
             InitializeComponent(sizeOfTable);
@@ -42,10 +44,10 @@ namespace FindPair
                 Label label = control as Label;
                 if (label != null)
                 {
-                    int randomNumber = random.Next(numbers.Count);
-                    label.Text = numbers[randomNumber].ToString();
+                    int randomNumber = random.Next(Numbers.Count);
+                    label.Text = Numbers[randomNumber].ToString();
                     label.ForeColor = label.BackColor;
-                    numbers.RemoveAt(randomNumber);
+                    Numbers.RemoveAt(randomNumber);
                 }
             }
         }
