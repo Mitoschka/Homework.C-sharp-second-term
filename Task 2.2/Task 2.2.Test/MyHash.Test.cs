@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 
 namespace Task_2._2.Test
@@ -10,12 +11,6 @@ namespace Task_2._2.Test
         public void Setup()
         {
             hashTable = new HashTable();
-        }
-
-        [Test]
-        public void MyExceptionInDeleteElementOfHashTableShouldWork()
-        {
-            Assert.Throws<System.NullReferenceException>(() => hashTable.DeleteElementOfHashTable("abc"));
         }
 
         [Test]
@@ -62,7 +57,7 @@ namespace Task_2._2.Test
         [Test]
         public void ShouldThrowExceptionWhenWeDeleteEmpty()
         {
-            Assert.Throws<System.NullReferenceException>(() => hashTable.DeleteElementOfHashTable("abc"));
+            Assert.Throws<InvalidOperationException>(() => hashTable.DeleteElementOfHashTable("abc"));
         }
     }
 }

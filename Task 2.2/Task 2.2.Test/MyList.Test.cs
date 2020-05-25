@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace Task_2._2.Test
 {
@@ -54,7 +55,7 @@ namespace Task_2._2.Test
         [Test]
         public void ShouldThrowExceptionWhenWeDeleteEmpty()
         {
-            Assert.Throws <System.NullReferenceException>(() => list.DeleteElement("abc"));
+            Assert.Throws<InvalidOperationException>(() => list.DeleteElement("abc"));
         }
     }
 }

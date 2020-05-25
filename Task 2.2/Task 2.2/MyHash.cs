@@ -72,7 +72,7 @@ namespace Task_2._2
             }
             else
             {
-                throw new NullReferenceException("Такого элемента здесь нет");
+                throw new InvalidOperationException("Такого элемента здесь нет");
             }
         }
 

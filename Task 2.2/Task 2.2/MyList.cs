@@ -31,11 +31,8 @@ namespace Task_2._2
         /// <param name="value">Value to add</param>
         public void AddElement(string value)
         {
-            var newElement = new ListElement(value)
-            {
-                value = value
-            };
-            if ((head == null) && (tail == null))
+            var newElement = new ListElement(value);
+            if (head == null)
             {
                 head = newElement;
                 tail = newElement;
@@ -54,13 +51,14 @@ namespace Task_2._2
         public void DeleteElement(string value)
         {
             ListElement currentElement = head;
-            if ((head == null) && (tail == null))
+            if (head == null)
             {
-                throw new NullReferenceException("Нет начала списка");
+                throw new InvalidOperationException("Нет начала списка");
             }
             if (head.value == value)
             {
                 head = currentElement.next;
+                tail = null;
                 --counter;
                 return;
             }
@@ -97,11 +95,8 @@ namespace Task_2._2
         /// <param name="value">Unique value</param>
         public bool AddUniqueElementToList(string value)
         {
-            var newElement = new ListElement(value)
-            {
-                value = value
-            };
-            if ((head == null) && (tail == null))
+            var newElement = new ListElement(value);
+            if (head == null)
             {
                 head = newElement;
                 tail = newElement;
@@ -121,10 +116,7 @@ namespace Task_2._2
 
             if (currentElement.value != value)
             {
-                currentElement.next = new ListElement(value)
-                {
-                    value = value
-                };
+                currentElement.next = new ListElement(value);
                 tail.next = newElement;
                 tail = newElement;
                 ++counter;
