@@ -10,12 +10,12 @@ namespace Task_2._3
     /// </summary>
     public class Calculator
     {
-        public Calculator(IStack stack1)
+        public Calculator(IStack stack)
         {
-            stack = stack1;
+            this.stack = stack;
         }
 
-        private IStack stack;
+        private readonly IStack stack;
 
         /// <summary>
         /// Result of operations
@@ -26,7 +26,7 @@ namespace Task_2._3
         {
             if (!expression.Contains('-') && !expression.Contains('+') && !expression.Contains('*') && !expression.Contains('/'))
             {
-                throw new System.InvalidOperationException("Не верный ввод");
+                throw new System.ArgumentException("Не верный ввод");
             }
             string tmp = "";
             for (int i = 0; i != expression.Length; ++i)
@@ -43,13 +43,17 @@ namespace Task_2._3
                         stack.Push(num);
                         tmp = "";
                     }
-                    int result = 0;
+                    int result;
                     switch (expression[i])
                     {
                         case '/':
                             {
                                 int firstNum = stack.Pop();
                                 int secondNum = stack.Pop();
+                                if (secondNum == 0)
+                                {
+                                    throw new System.InvalidOperationException("На ноль делить нельзя");
+                                }
                                 result = firstNum / secondNum;
                                 stack.Push(result);
                                 break;

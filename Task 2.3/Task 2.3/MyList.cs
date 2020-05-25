@@ -25,7 +25,6 @@ namespace Task_2._3
             }
         }
 
-        private ListElement tail;
         private ListElement head;
         private int counter;
 
@@ -35,19 +34,16 @@ namespace Task_2._3
         /// <param name="value">Value to add</param>
         public void AddElement(int value)
         {
-            var newElement = new ListElement(value)
-            {
-                value = value
-            };
+            var newElement = new ListElement(value);
             if (head == null)
             {
                 head = newElement;
-                tail = newElement;
                 ++counter;
                 return;
             }
-            tail.next = newElement;
-            tail = newElement;
+            ListElement currentElement = head;
+            newElement.next = currentElement.next;
+            currentElement.next = newElement;
             ++counter;
         }
 
@@ -59,7 +55,7 @@ namespace Task_2._3
         {
             ListElement currentElement = head;
 
-            if ((head == null) && (tail == null))
+            if (head == null)
             {
                 throw new InvalidOperationException("The list is empty");
             }
@@ -68,7 +64,6 @@ namespace Task_2._3
             {
                 int firstValue = currentElement.value;
                 head = null;
-                tail = null;
                 counter--;
                 return firstValue;
             }
@@ -79,7 +74,6 @@ namespace Task_2._3
             }
             int secondValue = currentElement.next.value;
             currentElement.next = null;
-            tail = currentElement;
             counter--;
             return secondValue;
         }

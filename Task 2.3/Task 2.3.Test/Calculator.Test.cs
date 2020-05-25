@@ -4,32 +4,38 @@ namespace Task_2._3.Test
 {
     public class TestsOfCalculator
     {
-        [TestCaseSource("StackImplementation")]
+        [TestCaseSource("stackImplementation")]
         public void CalculateTest(Calculator calculator)
         {
             Assert.AreEqual(15, calculator.CalculateTheResultOfOperations("1 4 - 2 3 + *"));
         }
 
-        [TestCaseSource("StackImplementation")]
-        public void CalculateShouldWorkWhenWeNotAdd(Calculator calculator)
+        [TestCaseSource("stackImplementation")]
+        public void CalculateTestIfWeDivideByZero(Calculator calculator)
         {
-            Assert.Throws<System.InvalidOperationException>(() => calculator.CalculateTheResultOfOperations(""));
+            Assert.Throws<System.InvalidOperationException>(() => calculator.CalculateTheResultOfOperations("0 3 /"));
         }
 
-        [TestCaseSource("StackImplementation")]
+        [TestCaseSource("stackImplementation")]
+        public void CalculateShouldWorkWhenWeNotAdd(Calculator calculator)
+        {
+            Assert.Throws<System.ArgumentException>(() => calculator.CalculateTheResultOfOperations(""));
+        }
+
+        [TestCaseSource("stackImplementation")]
         public void CalculateTestWhenWeAddOnlyOperator(Calculator calculator)
         {
             Assert.Throws<System.InvalidOperationException>(() => calculator.CalculateTheResultOfOperations("-"));
             Assert.Throws<System.InvalidOperationException>(() => calculator.CalculateTheResultOfOperations("+ - / *"));
         }
 
-        [TestCaseSource("StackImplementation")]
+        [TestCaseSource("stackImplementation")]
         public void CalculateTestWhenWeAddOnlyOperand(Calculator calculator)
         {
-            Assert.Throws<System.InvalidOperationException>(() => calculator.CalculateTheResultOfOperations("32 6 3"));
+            Assert.Throws<System.ArgumentException>(() => calculator.CalculateTheResultOfOperations("32 6 3"));
         }
 
-        static object[] StackImplementation =
+        private static object[] stackImplementation =
         {
             new Calculator(new StackOnList()),
                new Calculator(new StackOnArray())

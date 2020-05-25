@@ -8,12 +8,22 @@ namespace Task_2._3
     /// <summary>
     /// Program launch
     /// </summary>
-    class Program
+    internal class Program
     {
+        /// <summary>
+        /// Handles exceptions
+        /// </summary>
+        private static void Catch()
+        {
+            Console.Clear();
+            Console.WriteLine("Упс, что-то вышло не так, повторите ещё раз");
+            Main();
+        }
+
         /// <summary>
         /// Launches programs
         /// </summary>
-        static void Main()
+        private static void Main()
         {
             Console.WriteLine("[ОБРАТНАЯ ПОЛЬСКАЯ ЗАПИСЬ]");
             int number = -1;
@@ -55,10 +65,21 @@ namespace Task_2._3
                     }
             }
 
-            var myCalculator = new Calculator(stack);
-            Console.WriteLine("Введите арифметическое выражение в виде обратной польской записи: ");
-            string expression = Console.ReadLine();
-            Console.WriteLine($"Результат выражения: {myCalculator.CalculateTheResultOfOperations(expression)}");
+            try
+            {
+                var myCalculator = new Calculator(stack);
+                Console.WriteLine("Введите арифметическое выражение в виде обратной польской записи: ");
+                string expression = Console.ReadLine();
+                Console.WriteLine($"Результат выражения: {myCalculator.CalculateTheResultOfOperations(expression)}");
+            }
+            catch (InvalidOperationException)
+            {
+                Catch();
+            }
+            catch (ArgumentException)
+            {
+                Catch();
+            }
         }
     }
 }

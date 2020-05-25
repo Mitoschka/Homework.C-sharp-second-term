@@ -62,7 +62,7 @@ namespace Task_2._3.Test
             Assert.Throws<System.InvalidOperationException>(() => stack.Pop());
         }
 
-        class Stacks : IEnumerable
+        private class Stacks : IEnumerable
         {
             public IEnumerator GetEnumerator()
             {
