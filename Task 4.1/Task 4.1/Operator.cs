@@ -2,7 +2,7 @@
 
 namespace Task_4._1
 {
-    public class Operator : ITreeElement
+    class Operator : ITreeElement
     {
         private ITreeElement left;
         public ITreeElement Left
@@ -26,31 +26,10 @@ namespace Task_4._1
         {
             Console.Write($"{Value}");
         }
-        public int Count()
+
+        public virtual int Count() 
         {
-            switch (Value)
-            {
-                case '+':
-                    {
-                        return Left.Count() + Right.Count();
-                    }
-                case '-':
-                    {
-                        return Left.Count() - Right.Count();
-                    }
-                case '*':
-                    {
-                        return Left.Count() * Right.Count();
-                    }
-                case '/':
-                    {
-                        return Left.Count() / Right.Count();
-                    }
-                default:
-                    {
-                        return 0;
-                    }
-            }
+            return 0;
         }
     }
 }

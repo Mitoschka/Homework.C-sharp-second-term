@@ -6,5 +6,9 @@ namespace Task_4._1
 {
     class Division : Operator
     {
+        public override int Count()
+        {
+            return Left.Count() / Right.Count();
+        }
     }
 }

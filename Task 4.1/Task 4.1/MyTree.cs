@@ -5,12 +5,13 @@ namespace Task_4._1
     public class MyTree
     {
         private ITreeElement head;
+        private Operator currentElement;
 
         private bool IsOperator(char value) => value == '+' || value == '-' || value == '*' || value == '/';
 
         private bool IsNumber(char value) => value >= '0' && value <= '9';
 
-        void AddElementNotToHead(Operator currentElement, ITreeElement newElement, ref bool isElementAdded)
+        void AddElementNotToHead(ITreeElement newElement, ref bool isElementAdded)
         {
             if (!isElementAdded)
             {
@@ -20,9 +21,10 @@ namespace Task_4._1
                     isElementAdded = true;
                     return;
                 }
-                if (IsOperator(currentElement.Left.Value))
+                if (currentElement.Left is Operator)
+                // if (currentElement.Left -- это класс Operator??)
                 {
-                    AddElementNotToHead(currentElement.Left, newElement, ref isElementAdded);
+                    AddElementNotToHead(newElement, ref isElementAdded);
                 }
             }
             if (!isElementAdded)
@@ -33,9 +35,9 @@ namespace Task_4._1
                     isElementAdded = true;
                     return;
                 }
-                if (IsOperator(currentElement.Right.Value))
+                if (currentElement.Right is Operator)
                 {
-                    AddElementNotToHead(currentElement.Right, newElement, ref isElementAdded);
+                    AddElementNotToHead(newElement, ref isElementAdded);
                 }
             }
         }
@@ -48,20 +50,19 @@ namespace Task_4._1
                 return;
             }
 
-            ITreeElement currentElement = head;
             bool addedElement = false;
-            AddElementNotToHead(currentElement, newElement, ref addedElement);
+            AddElementNotToHead(newElement, ref addedElement);
         }
 
-        void PrintTreeElement(ITreeElement currentElement)
+        void PrintTreeElement(Operator currentElement)
         {
             if (currentElement.Left != null)
             {
-                if (IsOperator(currentElement.Value))
+                if (currentElement is Operator)
                 {
                     Console.Write("( ");
                 }
-                PrintTreeElement(currentElement.Left);
+                PrintTreeElement(currentElement);
             }
 
             currentElement.Print();
@@ -69,7 +70,7 @@ namespace Task_4._1
 
             if (currentElement.Right != null)
             {
-                PrintTreeElement(currentElement.Right);
+                PrintTreeElement(currentElement);
                 Console.Write(") ");
             }
         }
@@ -81,7 +82,7 @@ namespace Task_4._1
                 Console.WriteLine("Нет головы.");
                 return;
             }
-            PrintTreeElement(head);
+            PrintTreeElement(currentElement);
         }
 
         public void PutExpressionToTree(string expression)
