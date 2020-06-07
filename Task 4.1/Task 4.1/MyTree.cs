@@ -1,47 +1,54 @@
 ﻿using System;
 
+/// <summary>
+/// Global namespace.
+/// </summary>
 namespace Task_4._1
 {
     public class MyTree
     {
         private ITreeElement head;
-        private Operator currentElement;
 
         private bool IsOperator(char value) => value == '+' || value == '-' || value == '*' || value == '/';
 
         private bool IsNumber(char value) => value >= '0' && value <= '9';
 
-        void AddElementNotToHead(ITreeElement newElement, ref bool isElementAdded)
+        /// <summary>
+        /// Adds an element to the tree but not to the head
+        /// </summary>
+        void AddElementNotToHead(Operator cursor, ITreeElement newElement, ref bool isElementAdded)
         {
             if (!isElementAdded)
             {
-                if (currentElement.Left == null)
+                if (cursor.Left == null)
                 {
-                    currentElement.Left = newElement;
+                    cursor.Left = newElement;
                     isElementAdded = true;
                     return;
                 }
-                if (currentElement.Left is Operator)
-                // if (currentElement.Left -- это класс Operator??)
+                if (cursor.Left is Operator)
                 {
-                    AddElementNotToHead(newElement, ref isElementAdded);
+                    AddElementNotToHead(cursor.Left as Operator, newElement, ref isElementAdded);
                 }
             }
             if (!isElementAdded)
             {
-                if (currentElement.Right == null)
+                if (cursor.Right == null)
                 {
-                    currentElement.Right = newElement;
+                    cursor.Right = newElement;
                     isElementAdded = true;
                     return;
                 }
-                if (currentElement.Right is Operator)
+                if (cursor.Right is Operator)
                 {
-                    AddElementNotToHead(newElement, ref isElementAdded);
+                    AddElementNotToHead(cursor.Right as Operator, newElement, ref isElementAdded);
                 }
             }
         }
 
+        /// <summary>
+        /// Adds an element to the tree
+        /// </summary>
         void AddElementInTree(ITreeElement newElement)
         {
             if (head == null)
@@ -51,30 +58,33 @@ namespace Task_4._1
             }
 
             bool addedElement = false;
-            AddElementNotToHead(newElement, ref addedElement);
+            AddElementNotToHead(head as Operator, newElement, ref addedElement);
         }
 
-        void PrintTreeElement(Operator currentElement)
+        /// <summary>
+        /// Prints a tree element
+        /// </summary>
+        void PrintTreeElement(ITreeElement currentElement)
         {
-            if (currentElement.Left != null)
+            if (currentElement is Operator && (currentElement as Operator).Left != null)
             {
-                if (currentElement is Operator)
-                {
-                    Console.Write("( ");
-                }
-                PrintTreeElement(currentElement);
+                Console.Write("( ");
+                PrintTreeElement((currentElement as Operator).Left);
             }
 
             currentElement.Print();
             Console.Write(" ");
 
-            if (currentElement.Right != null)
+            if (currentElement is Operator && (currentElement as Operator).Right != null)
             {
-                PrintTreeElement(currentElement);
+                PrintTreeElement((currentElement as Operator).Right);
                 Console.Write(") ");
             }
         }
 
+        /// <summary>
+        /// Prints tree
+        /// </summary>
         public void PrintTree()
         {
             if (head == null)
@@ -82,9 +92,13 @@ namespace Task_4._1
                 Console.WriteLine("Нет головы.");
                 return;
             }
-            PrintTreeElement(currentElement);
+            PrintTreeElement(head as Operator);
         }
 
+        /// <summary>
+        /// Puts value in a tree
+        /// </summary>
+        /// <param name="expression"></param>
         public void PutExpressionToTree(string expression)
         {
             for (int i = 0; i != expression.Length; ++i)
@@ -93,7 +107,33 @@ namespace Task_4._1
                 if (IsOperator(element))
                 {
                     Operator newElement = new Operator();
-                    newElement.Value = element;
+                    switch (element)
+                    {
+                        case '+':
+                            {
+                                newElement = new Addition();
+                                break;
+                            }
+                        case '-':
+                            {
+                                newElement = new Subtraction();
+                                break;
+                            }
+                        case '*':
+                            {
+                                newElement = new Multiplication();
+                                break;
+                            }
+                        case '/':
+                            {
+                                newElement = new Division();
+                                break;
+                            }
+                        default:
+                            {
+                                break;
+                            }
+                    }
 
                     AddElementInTree(newElement);
                 }
@@ -111,6 +151,10 @@ namespace Task_4._1
             }
         }
 
+        /// <summary>
+        /// Counter values ​​in the tree
+        /// </summary>
+        /// <returns></returns>
         public int CountExpression()
         {
             return head.Count();

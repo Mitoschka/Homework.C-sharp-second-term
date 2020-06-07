@@ -1,11 +1,21 @@
 ﻿using System;
 using System.IO;
 
+/// <summary>
+/// Global namespace.
+/// </summary>
 namespace Task_4._1
 {
-    class Program
+    /// <summary>
+    /// Class with Main function.
+    /// </summary>
+    internal class Program
     {
-        static void Main()
+        /// <summary>
+        /// Main function in program.
+        /// </summary>
+        /// <param name="args">Program arguments.</param>
+        private static void Main(string[] args)
         {
             MyTree myTree = new MyTree();
             string expression = File.ReadAllText("expression.txt");
