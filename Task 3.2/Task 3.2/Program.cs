@@ -1,9 +1,18 @@
 ﻿using System;
 
+/// <summary>
+/// Global namespace.
+/// </summary>
 namespace Task_3._2
 {
+    /// <summary>
+    /// Class with Main function.
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Print menu to screen
+        /// </summary>
         private static void PrintMenu()
         {
             Console.WriteLine("[МЕНЮ КОМАНД]: \n" +
@@ -15,6 +24,9 @@ namespace Task_3._2
             "'5' - Вызвать меню команд \n");
         }
 
+        /// <summary>
+        /// Main function in program.
+        /// </summary>
         static void Main()
         {
             IMyHash myHash = new ThirdHash();

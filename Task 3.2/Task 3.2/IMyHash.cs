@@ -1,4 +1,7 @@
-﻿namespace Task_3._2
+﻿/// <summary>
+/// Global namespace.
+/// </summary>
+namespace Task_3._2
 {
     /// <summary>
     ///  interface of hash function

@@ -1,5 +1,8 @@
 ﻿using System;
 
+/// <summary>
+/// Global namespace.
+/// </summary>
 namespace Task_3._2
 {
     public class HashTable
