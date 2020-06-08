@@ -1,10 +1,10 @@
 image: Visual Studio 2019
 
 before_build:
-- nuget restore "Task 6.1/Task 6.1.sln"
+- nuget restore "Test-2/FindPair.sln"
 
 build:
- project: "Task 6.1/Task 6.1.sln"
+ project: "Test-2/FindPair.sln"
 
 test_script:
-- dotnet test "Task 6.1/Task 6.1.sln"
+- dotnet test "Test-2/FindPair.sln"
