@@ -1,5 +1,8 @@
 ﻿using System;
 
+/// <summary>
+/// Global namespace.
+/// </summary>
 namespace Task_4._2
 {
     /// <summary>

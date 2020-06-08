@@ -1,10 +1,19 @@
-﻿namespace Task_4._2
+﻿/// <summary>
+/// Global namespace.
+/// </summary>
+namespace Task_4._2
 {
     /// <summary>
     /// List with unique elements.
     /// </summary>
     public class UniqueList : MyList
     {
+        /// <summary>
+        /// Checks for unique ness of elmenet in List
+        /// </summary>
+        /// <param name="value">value of element</param>
+        /// <param name="position">position of element in list</param>
+        /// <returns></returns>
         public bool ChecksForUniquenessOfElmenetInList(string value, int position)
         {
             if (position > SizeOfList())

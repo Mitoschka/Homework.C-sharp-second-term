@@ -1,10 +1,19 @@
 ﻿using System;
 
+/// <summary>
+/// Global namespace.
+/// </summary>
 namespace Task_4._2
 {
-    class Program
+    /// <summary>
+    /// Class with Main function.
+    /// </summary>
+    internal class Program
     {
-        static void Main()
+        /// <summary>
+        /// Main function in program.
+        /// </summary>
+        private static void Main()
         {
             try
             {

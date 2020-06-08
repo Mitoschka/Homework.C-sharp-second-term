@@ -1,5 +1,4 @@
-﻿using Task_4._2;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Task_4._2.Test
 {
