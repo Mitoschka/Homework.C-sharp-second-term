@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 
 namespace Task_4._1.Tests
@@ -23,6 +24,38 @@ namespace Task_4._1.Tests
         public void EmtyPutExpressionToTreeTest()
         {
             Assert.Throws<NullException>(() => myTree.PutExpressionToTree(""));
+        }
+
+        [Test]
+        public void DivideBeZeroTest()
+        {
+            myTree.PutExpressionToTree("/ 10 - 5 5");
+            Assert.Throws<DivideByZeroException>(() => myTree.CountExpression());
+        }
+
+        [Test]
+        public void ShouldThrowExceptionWenWeAddedOnlyOperand()
+        {
+            Assert.Throws<InvalidOperationException>(() => myTree.PutExpressionToTree("2"));
+        }
+
+        [Test]
+        public void ShouldThrowExceptionWenWeAddedOnlyOperator()
+        {
+            Assert.Throws<InvalidOperationException>(() => myTree.PutExpressionToTree("+"));
+        }
+
+        [Test]
+        public void ShouldThrowExceptionWenWeAddedMoreOperand()
+        {
+            Assert.Throws<InvalidOperationException>(() => myTree.PutExpressionToTree("2 3 4"));
+        }
+
+        [Test]
+        public void ShouldThrowExceptionWenWeAddedMoreOperator()
+        {
+            myTree.PutExpressionToTree("/ + -");
+            Assert.Throws<InvalidOperationException>(() => myTree.CountExpression());
         }
     }
 }

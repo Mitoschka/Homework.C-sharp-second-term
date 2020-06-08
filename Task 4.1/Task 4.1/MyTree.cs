@@ -18,6 +18,10 @@ namespace Task_4._1
         /// </summary>
         void AddElementNotToHead(Operator cursor, ITreeElement newElement, ref bool isElementAdded)
         {
+            if (cursor == null)
+            {
+                throw new InvalidOperationException("Error");
+            }
             if (!isElementAdded)
             {
                 if (cursor.Left == null)
@@ -101,6 +105,11 @@ namespace Task_4._1
         /// <param name="expression"></param>
         public void PutExpressionToTree(string expression)
         {
+            if (expression.Length == 1)
+            {
+                throw new InvalidOperationException("Error");
+            }
+
             for (int i = 0; i != expression.Length; ++i)
             {
                 char element = expression[i];

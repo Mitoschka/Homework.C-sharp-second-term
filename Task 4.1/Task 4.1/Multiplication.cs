@@ -12,6 +12,10 @@ namespace Task_4._1
         /// </summary>
         public override int Count()
         {
+            if (Left == null || Right == null)
+            {
+                throw new System.InvalidOperationException("Error");
+            }
             return Left.Count() * Right.Count();
         }
 
