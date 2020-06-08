@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+/// <summary>
+/// Global namespace.
+/// </summary>
 namespace MySet
 {
     /// <summary>
-    /// Класс, реализущий АТД "Множество" на основе двоичного дерева.
+    /// A class that implements the ADT "Set" based on a binary tree.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class MySet<T> : ISet<T> where T : IComparable<T>
@@ -24,17 +27,17 @@ namespace MySet
         private int count;
 
         /// <summary>
-        /// Количество элементов во множестве.
+        /// The number of elements in the set.
         /// </summary>
         public int Count => count;
 
         /// <summary>
-        /// Значение, показывающее, доступно ли множество только для чтения.
+        /// A value indicating whether the set is read-only.
         /// </summary>
         public bool IsReadOnly => false;
 
         /// <summary>
-        /// Добавляет элемент в текущий набор и возвращает значение, указывающее, что элемент был добавлен успешно.
+        /// Adds an item to the current set and returns a value indicating that the item was added successfully.
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
@@ -86,7 +89,7 @@ namespace MySet
         }
 
         /// <summary>
-        /// Удаляет все элементы из множества.
+        /// Removes all elements from a set.
         /// </summary>
         public void Clear()
         {
@@ -95,7 +98,7 @@ namespace MySet
         }
 
         /// <summary>
-        /// Определяет, содержит ли множество определенное значение.
+        /// Determines if the set contains a specific value.
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
@@ -129,7 +132,7 @@ namespace MySet
         }
 
         /// <summary>
-        /// Копирует элементы коллекции множества в массив Array, начиная с указанного индекса массива Array.
+        /// Copies the elements of a collection set to an Array, starting at the specified index of the Array.
         /// </summary>
         /// <param name="array"></param>
         /// <param name="arrayIndex"></param>
@@ -156,7 +159,7 @@ namespace MySet
         }
 
         /// <summary>
-        /// Удаляет все элементы указанной коллекции из текущего множества.
+        /// Removes all elements of the specified collection from the current set.
         /// </summary>
         /// <param name="other"></param>
         public void ExceptWith(IEnumerable<T> other)
@@ -168,7 +171,7 @@ namespace MySet
         }
 
         /// <summary>
-        /// Изменяет текущий набор, чтобы он содержал только элементы, которые также имеются в заданной коллекции.
+        /// Modifies the current set so that it contains only elements that are also in the specified collection.
         /// </summary>
         /// <param name="other"></param>
         public void IntersectWith(IEnumerable<T> other)
@@ -183,7 +186,7 @@ namespace MySet
         }
 
         /// <summary>
-        /// Определяет, является ли текущий набор должным (строгим) подмножеством заданной коллекции.
+        /// Determines whether the current set is a proper (strict) subset of the specified collection.
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -211,7 +214,7 @@ namespace MySet
         }
 
         /// <summary>
-        /// Определяет, является ли текущий набор должным (строгим) подмножеством заданной коллекции.
+        /// Determines whether the current set is a proper (strict) subset of the specified collection.
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -239,7 +242,7 @@ namespace MySet
         }
 
         /// <summary>
-        /// Определяет, является ли набор подмножеством заданной коллекции.
+        /// Determines whether the collection is a subset of the specified collection.
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -267,7 +270,7 @@ namespace MySet
         }
 
         /// <summary>
-        /// Определяет, является ли текущий набор надмножеством заданной коллекции.
+        /// Determines whether the current set is a superset of the specified collection.
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -295,7 +298,7 @@ namespace MySet
         }
 
         /// <summary>
-        /// Определяет, пересекаются ли текущий набор и указанная коллекция.
+        /// Determines whether the current collection and the specified collection intersect.
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -318,7 +321,7 @@ namespace MySet
         }
 
         /// <summary>
-        /// Удаляет элемент из множества.
+        /// Removes an item from the set.
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
@@ -397,7 +400,7 @@ namespace MySet
         }
 
         /// <summary>
-        /// Определяет, содержат ли текущий набор и указанная коллекция одни и те же элементы.
+        /// Determines whether the current set and the specified collection contain the same elements.
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -417,7 +420,7 @@ namespace MySet
         }
 
         /// <summary>
-        /// Изменяет текущий набор таким образом, чтобы он содержал только элементы, которые есть либо в нем, либо в указанной коллекции, но не одновременно там и там.
+        /// Changes the current set so that it contains only elements that are either in it or in the specified collection, but not both there and there.
         /// </summary>
         /// <param name="other"></param>
         public void SymmetricExceptWith(IEnumerable<T> other)
@@ -441,7 +444,7 @@ namespace MySet
         }
 
         /// <summary>
-        /// Изменяет текущий набор так, чтобы он содержал все элементы, которые имеются в текущем наборе, в указанной коллекции либо в них обоих.
+        /// Changes the current set so that it contains all the elements that are in the current set, in the specified collection, or both of them.
         /// </summary>
         /// <param name="other"></param>
         public void UnionWith(IEnumerable<T> other)
@@ -471,7 +474,7 @@ namespace MySet
         }
 
         /// <summary>
-        /// Возвращает перечислитель для прохода по коллекции.
+        /// Returns an enumerator for passing through a collection.
         /// </summary>
         /// <returns></returns>
         public IEnumerator<T> GetEnumerator()

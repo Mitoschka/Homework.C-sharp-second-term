@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿/// <summary>
+/// Global namespace.
+/// </summary>
 namespace MySet
 {
+    /// <summary>
+    /// Class with Main function.
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// Main function in program.
+        /// </summary>
+        /// <param name="args">Program arguments.</param>
         static void Main(string[] args)
         {
         }
