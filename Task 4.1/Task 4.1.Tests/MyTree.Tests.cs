@@ -59,9 +59,9 @@ namespace Task_4._1.Tests
         }
 
         [Test]
-        public void ShouldThrowExceptionWeànWeAddedMoreOperator()
+        public void ShouldThrowException()
         {
-            myTree.PutExpressionToTree("/ 5 + 3 ");
+            myTree.PutExpressionToTree("/ - 3");
             Assert.Throws<InvalidOperationException>(() => myTree.CountExpression());
         }
     }
