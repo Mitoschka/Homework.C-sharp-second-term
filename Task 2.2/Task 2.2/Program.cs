@@ -1,9 +1,19 @@
 ﻿using System;
 
+/// <summary>
+/// Global namespace.
+/// </summary>
 namespace Task_2._2
 {
-    class Program
+    /// <summary>
+    /// Class with Main function.
+    /// </summary>
+    internal class Program
     {
+        /// <summary>
+        /// Main function in program.
+        /// </summary>
+        /// <param name="args">Program arguments.</param>
         private static void PrintMenu()
         {
             Console.WriteLine("[МЕНЮ КОМАНД]: \n" +

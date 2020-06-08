@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
+/// <summary>
+/// Global namespace.
+/// </summary>
 namespace Task_2._2
 {
     static class Degree
