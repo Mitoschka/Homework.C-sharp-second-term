@@ -9,7 +9,7 @@ namespace Task_4._2
     public class UniqueList : MyList
     {
         /// <summary>
-        /// Adds element to position in list.
+        /// Adds element to position in MyList.
         /// </summary>
         /// <param name="value">Element to add.</param>
         /// <param name="position">Position of new element in list.</param>
