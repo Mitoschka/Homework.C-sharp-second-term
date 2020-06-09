@@ -5,13 +5,22 @@
 /// </summary>
 namespace Task_3._2
 {
+    /// <summary>
+    /// Class with implementation of MyList.
+    /// </summary>
     public class MyList
     {
+        /// <summary>
+        /// Class with implementation of ListElement.
+        /// </summary>
         private class ListElement
         {
             internal string value;
             internal ListElement next;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="ListElement"/> class.
+            /// </summary>
             public ListElement(string value)
             {
                 this.value = value;
@@ -53,7 +62,7 @@ namespace Task_3._2
             ListElement currentElement = head;
             if ((head == null) && (tail == null))
             {
-                throw new NullReferenceException("Нет начала списка");
+                throw new InvalidOperationException("Нет начала списка");
             }
             if (head.value == value)
             {

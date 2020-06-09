@@ -5,6 +5,9 @@
 /// </summary>
 namespace Task_3._2
 {
+    /// <summary>
+    /// Class with implementation of HashTable.
+    /// </summary>
     public class HashTable
     {
         /// <summary>
@@ -53,11 +56,7 @@ namespace Task_3._2
         /// <param name="value">Value to add</param>
         public void AddElementToHashTable(string value)
         {
-            int index = Hash.HashFunction(value) % capacity;
-            if (index < 0)
-            {
-                index *= (-1);
-            }
+            int index = Math.Abs(Hash.HashFunction(value) % capacity);
             hashTable[index].AddUniqueElementToList(value);
         }
 
@@ -68,11 +67,7 @@ namespace Task_3._2
         /// <returns>Returns index position</returns>
         public bool IsContainInHashTable(string value)
         {
-            int index = Hash.HashFunction(value) % capacity;
-            if (index < 0)
-            {
-                index *= (-1);
-            }
+            int index = Math.Abs(Hash.HashFunction(value) % capacity);
             return hashTable[index].IsContain(value);
         }
 
@@ -84,11 +79,7 @@ namespace Task_3._2
         {
             if (IsContainInHashTable(value))
             {
-                int index = Hash.HashFunction(value) % capacity;
-                if (index < 0)
-                {
-                    index *= (-1);
-                }
+                int index = Math.Abs(Hash.HashFunction(value) % capacity);
                 hashTable[index].DeleteElement(value);
             }
             else
