@@ -6,7 +6,7 @@
 namespace Task_2._3
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="MyList"/> class.
+    /// Custom implementation of List
     /// </summary>
     public class MyList
     {
