@@ -5,6 +5,9 @@
 /// </summary>
 namespace Task_4._1
 {
+    /// <summary>
+    /// Class with implementation of Addition.
+    /// </summary>
     class Addition : Operator
     {
         /// <summary>

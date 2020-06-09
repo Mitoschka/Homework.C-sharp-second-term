@@ -115,27 +115,26 @@ namespace Task_4._1
                 char element = expression[i];
                 if (IsOperator(element))
                 {
-                    Operator newElement = new Operator();
                     switch (element)
                     {
                         case '+':
                             {
-                                newElement = new Addition();
+                                AddElementInTree(new Addition());
                                 break;
                             }
                         case '-':
                             {
-                                newElement = new Subtraction();
+                                AddElementInTree(new Subtraction());
                                 break;
                             }
                         case '*':
                             {
-                                newElement = new Multiplication();
+                                AddElementInTree(new Multiplication());
                                 break;
                             }
                         case '/':
                             {
-                                newElement = new Division();
+                                AddElementInTree(new Division());
                                 break;
                             }
                         default:
@@ -143,12 +142,10 @@ namespace Task_4._1
                                 break;
                             }
                     }
-
-                    AddElementInTree(newElement);
                 }
                 else if (IsNumber(element))
                 {
-                    Operand newElement = new Operand();
+                    var newElement = new Operand();
                     newElement.Value = element;
 
                     AddElementInTree(newElement);
@@ -164,9 +161,6 @@ namespace Task_4._1
         /// Counter values ​​in the tree
         /// </summary>
         /// <returns></returns>
-        public int CountExpression()
-        {
-            return head.Count();
-        }
+        public int CountExpression() => head.Count();
     }
 }

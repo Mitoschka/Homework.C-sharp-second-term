@@ -17,7 +17,7 @@ namespace Task_4._1
         /// <param name="args">Program arguments.</param>
         private static void Main(string[] args)
         {
-            MyTree myTree = new MyTree();
+            var myTree = new MyTree();
             string expression = File.ReadAllText("expression.txt");
             Console.WriteLine($"Исходная строка: {expression}" + "\n");
             myTree.PutExpressionToTree(expression);

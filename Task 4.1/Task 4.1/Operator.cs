@@ -5,7 +5,7 @@
 /// </summary>
 namespace Task_4._1
 {
-    class Operator : ITreeElement
+    abstract class Operator : ITreeElement
     {
         private ITreeElement left;
 
@@ -42,9 +42,6 @@ namespace Task_4._1
         /// <summary>
         /// The counter of operators in a tree
         /// </summary>
-        public virtual int Count()
-        {
-            return 0;
-        }
+        public abstract int Count();
     }
 }

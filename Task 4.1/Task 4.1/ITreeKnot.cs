@@ -13,7 +13,6 @@ namespace Task_4._1
         /// <summary>
         /// Tree Node Counter
         /// </summary>
-        /// <returns></returns>
         int Count();
     }
 }
