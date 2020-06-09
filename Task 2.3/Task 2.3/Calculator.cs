@@ -24,14 +24,20 @@ namespace Task_2._3
         /// <returns>Result of operations</returns>
         public int CalculateTheResultOfOperations(string expression)
         {
-            if (expression.Length >= 1 && expression[0] >= '0' && expression[0] <= '9')
-            {
-                return Convert.ToInt32(expression);
-            }
-
             if (!expression.Contains('-') && !expression.Contains('+') && !expression.Contains('*') && !expression.Contains('/'))
             {
-                throw new System.ArgumentException("Не верный ввод");
+                if (expression == "")
+                {
+                    throw new System.ArgumentException("Не верный ввод");
+                }
+                for (int i = 0; i != expression.Length; ++i)
+                {
+                    if (expression[i] <= '0' || expression[i] >= '9')
+                    {
+                        throw new System.ArgumentException("Не верный ввод");
+                    }
+                }
+                return Convert.ToInt32(expression);
             }
             string tmp = "";
             for (int i = 0; i != expression.Length; ++i)
