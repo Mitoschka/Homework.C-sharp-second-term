@@ -42,7 +42,7 @@ namespace Task_4._2
             }
         }
 
-        protected ListElement currentElement;
+        protected ListElement head;
 
         public int Сounter { get; set; }
 
@@ -58,27 +58,27 @@ namespace Task_4._2
                 throw new ArgumentOutOfRangeException("Error: Неверно указана позиция");
             }
             int currentPosition = 0;
-            var newElement = new ListElement(value, currentElement)
+            var newElement = new ListElement(value, head)
             {
                 Value = value
             };
-            if (currentElement == null || position == 0)
+            if (head == null || position == 0)
             {
-                currentElement = newElement;
+                head = newElement;
                 ++Сounter;
                 return;
             }
             if (position == 0)
             {
-                newElement.Next = currentElement;
+                newElement.Next = head;
             }
-            while (currentElement.Next != null && currentPosition != position - 1)
+            while (head.Next != null && currentPosition != position - 1)
             {
-                currentElement = currentElement.Next;
+                head = head.Next;
                 ++currentPosition;
             }
-            newElement.Next = currentElement.Next;
-            currentElement.Next = newElement;
+            newElement.Next = head.Next;
+            head.Next = newElement;
             ++Сounter;
         }
 
@@ -89,14 +89,14 @@ namespace Task_4._2
         public void DeleteElement(int position)
         {
             int currentPosition = 0;
-            if (currentElement == null && position == 0)
+            if (head == null && position == 0)
             {
                 --Сounter;
                 throw new DeleteException("Нет начала списка");
             }
             if (position == 0)
             {
-                currentElement = currentElement.Next;
+                head = head.Next;
                 --Сounter;
                 return;
             }
@@ -104,12 +104,12 @@ namespace Task_4._2
             {
                 throw new ArgumentOutOfRangeException("Error: Неверно указана позиция");
             }
-            while (currentElement.Next != null && currentPosition != position - 1)
+            while (head.Next != null && currentPosition != position - 1)
             {
-                currentElement = currentElement.Next;
+                head = head.Next;
                 ++currentPosition;
             }
-            currentElement.Next = currentElement.Next.Next;
+            head.Next = head.Next.Next;
             --Сounter;
         }
 
@@ -131,20 +131,20 @@ namespace Task_4._2
                 throw new ArgumentOutOfRangeException("Error: Неверно указана позиция");
             }
             int currentPosition = 0;
-            if (currentElement == null)
+            if (head == null)
             {
                 throw new InvalidOperationException("Нет начала списка");
             }
             if (position == 0)
             {
-                return currentElement.Value;
+                return head.Value;
             }
-            while (currentElement.Next != null && currentPosition != position - 1)
+            while (head.Next != null && currentPosition != position - 1)
             {
-                currentElement = currentElement.Next;
+                head = head.Next;
                 ++currentPosition;
             }
-            return currentElement.Next.Value;
+            return head.Next.Value;
         }
 
         /// <summary>
@@ -159,21 +159,40 @@ namespace Task_4._2
                 throw new ArgumentOutOfRangeException("Error: Неверно указана позиция");
             }
             int currentPosition = 0;
-            if (currentElement == null)
+            if (head == null)
             {
                 throw new InvalidOperationException("Нет начала списка");
             }
             if (position == 0)
             {
-                currentElement.Value = stringOfValue;
+                head.Value = stringOfValue;
                 return;
             }
-            while (currentElement.Next != null && currentPosition != position - 1)
+            while (head.Next != null && currentPosition != position - 1)
             {
-                currentElement = currentElement.Next;
+                head = head.Next;
                 ++currentPosition;
             }
-            currentElement.Next.Value = stringOfValue;
+            head.Next.Value = stringOfValue;
+        }
+
+        /// <summary>
+        /// Checks the existence of a value in a List
+        /// </summary>
+        /// <param name="value">Value entered</param>
+        /// <returns>Returns check result</returns>
+        public bool IsContain(string value)
+        {
+            ListElement currentElement = head;
+            while (currentElement != null)
+            {
+                if (value == currentElement.Value)
+                {
+                    return true;
+                }
+                currentElement = currentElement.Next;
+            }
+            return false;
         }
     }
 }
