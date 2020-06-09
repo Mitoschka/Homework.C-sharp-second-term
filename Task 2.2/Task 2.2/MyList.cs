@@ -61,7 +61,7 @@ namespace Task_2._2
             if (head.value == value)
             {
                 head = currentElement.next;
-                tail = null;
+                tail = currentElement.next;
                 --counter;
                 return;
             }

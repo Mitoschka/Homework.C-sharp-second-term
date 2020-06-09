@@ -33,6 +33,10 @@ namespace Task_2._2
             for (int i = 0; i != value.Length; ++i)
             {
                 result = (result + Degree.PowerOfTwo(i) * value[i]) % capacity;
+                if (result < 0)
+                {
+                    result *= (-1);
+                }
             }
             return result;
         }
@@ -43,7 +47,11 @@ namespace Task_2._2
         /// <param name="value">Value to add</param>
         public void AddElementToHashTable(string value)
         {
-            int index = HashFunction(value);
+            int index = HashFunction(value) % capacity;
+            if (index < 0)
+            {
+                index *= (-1);
+            }
             if (hashTable[index].AddUniqueElementToList(value))
             {
                 count++;
@@ -57,7 +65,11 @@ namespace Task_2._2
         /// <returns>Returns index position</returns>
         public bool IsContainInHashTable(string value)
         {
-            int index = HashFunction(value);
+            int index = HashFunction(value) % capacity;
+            if (index < 0)
+            {
+                index *= (-1);
+            }
             return hashTable[index].Contains(value);
         }
 
@@ -69,9 +81,12 @@ namespace Task_2._2
         {
             if (IsContainInHashTable(value))
             {
-                int index = HashFunction(value);
+                int index = HashFunction(value) % capacity;
+                if (index < 0)
+                {
+                    index *= (-1);
+                }
                 hashTable[index].DeleteElement(value);
-                count--;
             }
             else
             {
