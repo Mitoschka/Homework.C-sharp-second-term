@@ -35,6 +35,12 @@ namespace Task_2._3.Test
             Assert.Throws<System.ArgumentException>(() => calculator.CalculateTheResultOfOperations("32 6 3"));
         }
 
+        [TestCaseSource("stackImplementation")]
+        public void CalculateOneNumberTest(Calculator calculator)
+        {
+            Assert.AreEqual(6, calculator.CalculateTheResultOfOperations("6"));
+        }
+
         private static object[] stackImplementation =
         {
             new Calculator(new StackOnList()),

@@ -1,4 +1,7 @@
-﻿namespace Task_2._3
+﻿/// <summary>
+/// Global namespace.
+/// </summary>
+namespace Task_2._3
 {
     /// <summary>
     /// Stack interface

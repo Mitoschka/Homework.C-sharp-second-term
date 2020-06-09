@@ -5,10 +5,13 @@
 /// </summary>
 namespace Task_2._3
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MyList"/> class.
+    /// </summary>
     public class MyList
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MyList"/> class.
+        /// Initializes a new instance of the <see cref="ListElement"/> class.
         /// </summary>
         private class ListElement
         {
@@ -18,7 +21,6 @@ namespace Task_2._3
             /// <summary>
             /// <see cref="ListElement"/> class constructor
             /// </summary>
-            /// <param name="value"></param>
             public ListElement(int value)
             {
                 this.value = value;
@@ -42,8 +44,8 @@ namespace Task_2._3
                 return;
             }
             ListElement currentElement = head;
-            newElement.next = currentElement.next;
-            currentElement.next = newElement;
+            newElement.next = currentElement;
+            head = newElement;
             ++counter;
         }
 
@@ -53,29 +55,15 @@ namespace Task_2._3
         /// <returns> Result of value </returns>
         public int RemoveElement()
         {
-            ListElement currentElement = head;
-
             if (head == null)
             {
                 throw new InvalidOperationException("The list is empty");
             }
 
-            if (currentElement.next == null)
-            {
-                int firstValue = currentElement.value;
-                head = null;
-                counter--;
-                return firstValue;
-            }
-
-            while (currentElement.next.next != null)
-            {
-                currentElement = currentElement.next;
-            }
-            int secondValue = currentElement.next.value;
-            currentElement.next = null;
+            int value = head.value;
+            head = head.next;
             counter--;
-            return secondValue;
+            return value;
         }
 
         /// <summary>

@@ -24,6 +24,11 @@ namespace Task_2._3
         /// <returns>Result of operations</returns>
         public int CalculateTheResultOfOperations(string expression)
         {
+            if (expression.Length == 1 && expression[0] >= '0' && expression[0] <= '9')
+            {
+                return Convert.ToInt32(expression);
+            }
+
             if (!expression.Contains('-') && !expression.Contains('+') && !expression.Contains('*') && !expression.Contains('/'))
             {
                 throw new System.ArgumentException("Не верный ввод");
@@ -43,7 +48,6 @@ namespace Task_2._3
                         stack.Push(num);
                         tmp = "";
                     }
-                    int result;
                     switch (expression[i])
                     {
                         case '/':
@@ -54,7 +58,7 @@ namespace Task_2._3
                                 {
                                     throw new System.InvalidOperationException("На ноль делить нельзя");
                                 }
-                                result = firstNum / secondNum;
+                                int result = firstNum / secondNum;
                                 stack.Push(result);
                                 break;
                             }
@@ -62,7 +66,7 @@ namespace Task_2._3
                             {
                                 int firstNum = stack.Pop();
                                 int secondNum = stack.Pop();
-                                result = firstNum * secondNum;
+                                int result = firstNum * secondNum;
                                 stack.Push(result);
                                 break;
                             }
@@ -70,7 +74,7 @@ namespace Task_2._3
                             {
                                 int firstNum = stack.Pop();
                                 int secondNum = stack.Pop();
-                                result = firstNum + secondNum;
+                                int result = firstNum + secondNum;
                                 stack.Push(result);
                                 break;
                             }
@@ -78,7 +82,7 @@ namespace Task_2._3
                             {
                                 int firstNum = stack.Pop();
                                 int secondNum = stack.Pop();
-                                result = firstNum - secondNum;
+                                int result = firstNum - secondNum;
                                 stack.Push(result);
                                 break;
                             }
