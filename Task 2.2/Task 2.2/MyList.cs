@@ -62,6 +62,8 @@ namespace Task_2._2
                     {
                         head = null;
                         tail = null;
+                        --counter;
+                        return;
                     }
                     head = currentElement.next;
                     --counter;
