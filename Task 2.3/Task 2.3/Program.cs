@@ -15,7 +15,7 @@ namespace Task_2._3
         /// </summary>
         private static void Main()
         {
-            bool flag = true;
+            bool flag = false;
 
             while (!flag)
             {
@@ -26,14 +26,20 @@ namespace Task_2._3
                 Console.Write("\nВведите номер реализации: " + "\n");
                 Console.Write("'1' - Реализация листом \n" +
                               "'2' - Реализация массивом \n");
-                try
+                bool isCorrecting = false;
+                while (!isCorrecting)
                 {
-                    number = Convert.ToInt32(Console.ReadLine());
-                }
-                catch (FormatException error)
-                {
-                    Console.Clear();
-                    Console.WriteLine(error.Message);
+                    try
+                    {
+                        number = Convert.ToInt32(Console.ReadLine());
+                        isCorrecting = true;
+                    }
+                    catch (FormatException error)
+                    {
+                        Console.Clear();
+                        Console.WriteLine(error.Message);
+                        isCorrecting = false;
+                    }
                 }
 
                 IStack stack;

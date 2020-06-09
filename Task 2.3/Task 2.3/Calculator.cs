@@ -24,7 +24,7 @@ namespace Task_2._3
         /// <returns>Result of operations</returns>
         public int CalculateTheResultOfOperations(string expression)
         {
-            if (expression.Length == 1 && expression[0] >= '0' && expression[0] <= '9')
+            if (expression.Length >= 1 && expression[0] >= '0' && expression[0] <= '9')
             {
                 return Convert.ToInt32(expression);
             }
