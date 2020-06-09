@@ -41,7 +41,7 @@ namespace MySet
         public bool Add(T item)
         {
             ++count;
-            SetElement newElement = new SetElement
+            var newElement = new SetElement
             {
                 Value = item
             };
@@ -156,9 +156,15 @@ namespace MySet
         /// </summary>
         public void ExceptWith(IEnumerable<T> other)
         {
-            if (other == null || other == this)
+            
+            if (other == null)
             {
                 throw new ArgumentNullException();
+            }
+            if (other == this)
+            {
+                this.Clear();
+                return;
             }
             foreach (var item in other)
             {
@@ -171,6 +177,11 @@ namespace MySet
         /// </summary>
         public void IntersectWith(IEnumerable<T> other)
         {
+            if (other == this)
+            {
+                return;
+            }
+
             foreach (var item in this)
             {
                 if (!other.Contains(item))
@@ -405,9 +416,14 @@ namespace MySet
         /// </summary>
         public void SymmetricExceptWith(IEnumerable<T> other)
         {
-            if (other == null || other == this)
+            if (other == null)
             {
                 throw new ArgumentNullException();
+            }
+            if (other == this)
+            {
+                this.Clear();
+                return;
             }
 
             foreach (var item in other)
@@ -431,6 +447,10 @@ namespace MySet
             if (other == null)
             {
                 throw new ArgumentNullException();
+            }
+            if (other == this)
+            {
+                return;
             }
 
             foreach (var item in other)
