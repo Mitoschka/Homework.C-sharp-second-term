@@ -1,4 +1,5 @@
-﻿/// <summary>
+﻿using System;
+/// <summary>
 /// Global namespace.
 /// </summary>
 namespace MySet
@@ -11,9 +12,15 @@ namespace MySet
         /// <summary>
         /// Main function in program.
         /// </summary>
-        /// <param name="args">Program arguments.</param>
-        static void Main(string[] args)
+        static void Main()
         {
+            var set = new MySet<string>();
+            set.Add("abc");
+            set.Add("aaa");
+            set.Add("bbb");
+            set.Add("ccc");
+            set.Clear();
+            Console.WriteLine(set.Count);
         }
     }
 }

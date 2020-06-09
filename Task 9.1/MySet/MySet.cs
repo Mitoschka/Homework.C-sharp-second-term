@@ -11,10 +11,9 @@ namespace MySet
     /// <summary>
     /// A class that implements the ADT "Set" based on a binary tree.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
     public class MySet<T> : ISet<T> where T : IComparable<T>
     {
-        class SetElement
+        private class SetElement
         {
             public T Value { get; set; }
             public SetElement Parent { get; set; }
@@ -39,8 +38,6 @@ namespace MySet
         /// <summary>
         /// Adds an item to the current set and returns a value indicating that the item was added successfully.
         /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
         public bool Add(T item)
         {
             ++count;
@@ -100,8 +97,6 @@ namespace MySet
         /// <summary>
         /// Determines if the set contains a specific value.
         /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
         public bool Contains(T item)
         {
             SetElement cursor = head;
@@ -134,8 +129,6 @@ namespace MySet
         /// <summary>
         /// Copies the elements of a collection set to an Array, starting at the specified index of the Array.
         /// </summary>
-        /// <param name="array"></param>
-        /// <param name="arrayIndex"></param>
         public void CopyTo(T[] array, int arrayIndex)
         {
             if (array == null)
@@ -161,9 +154,12 @@ namespace MySet
         /// <summary>
         /// Removes all elements of the specified collection from the current set.
         /// </summary>
-        /// <param name="other"></param>
         public void ExceptWith(IEnumerable<T> other)
         {
+            if (other == null || other == this)
+            {
+                throw new ArgumentNullException();
+            }
             foreach (var item in other)
             {
                 Remove(item);
@@ -173,7 +169,6 @@ namespace MySet
         /// <summary>
         /// Modifies the current set so that it contains only elements that are also in the specified collection.
         /// </summary>
-        /// <param name="other"></param>
         public void IntersectWith(IEnumerable<T> other)
         {
             foreach (var item in this)
@@ -188,8 +183,6 @@ namespace MySet
         /// <summary>
         /// Determines whether the current set is a proper (strict) subset of the specified collection.
         /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
         public bool IsProperSubsetOf(IEnumerable<T> other)
         {
             if (other == null)
@@ -216,8 +209,6 @@ namespace MySet
         /// <summary>
         /// Determines whether the current set is a proper (strict) subset of the specified collection.
         /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
         public bool IsProperSupersetOf(IEnumerable<T> other)
         {
             if (other == null)
@@ -244,8 +235,6 @@ namespace MySet
         /// <summary>
         /// Determines whether the collection is a subset of the specified collection.
         /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
         public bool IsSubsetOf(IEnumerable<T> other)
         {
             if (other == null)
@@ -272,8 +261,6 @@ namespace MySet
         /// <summary>
         /// Determines whether the current set is a superset of the specified collection.
         /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
         public bool IsSupersetOf(IEnumerable<T> other)
         {
             if (other == null)
@@ -300,8 +287,6 @@ namespace MySet
         /// <summary>
         /// Determines whether the current collection and the specified collection intersect.
         /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
         public bool Overlaps(IEnumerable<T> other)
         {
             if (other == null)
@@ -323,8 +308,6 @@ namespace MySet
         /// <summary>
         /// Removes an item from the set.
         /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
         public bool Remove(T item)
         {
             if (!Contains(item))
@@ -402,8 +385,6 @@ namespace MySet
         /// <summary>
         /// Determines whether the current set and the specified collection contain the same elements.
         /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
         public bool SetEquals(IEnumerable<T> other)
         {
             if (other == null)
@@ -422,10 +403,9 @@ namespace MySet
         /// <summary>
         /// Changes the current set so that it contains only elements that are either in it or in the specified collection, but not both there and there.
         /// </summary>
-        /// <param name="other"></param>
         public void SymmetricExceptWith(IEnumerable<T> other)
         {
-            if (other == null)
+            if (other == null || other == this)
             {
                 throw new ArgumentNullException();
             }
@@ -446,7 +426,6 @@ namespace MySet
         /// <summary>
         /// Changes the current set so that it contains all the elements that are in the current set, in the specified collection, or both of them.
         /// </summary>
-        /// <param name="other"></param>
         public void UnionWith(IEnumerable<T> other)
         {
             if (other == null)
@@ -476,7 +455,6 @@ namespace MySet
         /// <summary>
         /// Returns an enumerator for passing through a collection.
         /// </summary>
-        /// <returns></returns>
         public IEnumerator<T> GetEnumerator()
         {
             var stack = new Stack<SetElement>();
