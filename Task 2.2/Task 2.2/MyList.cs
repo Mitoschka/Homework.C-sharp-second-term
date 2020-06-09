@@ -58,11 +58,12 @@ namespace Task_2._2
                 ListElement currentElement = head;
                 if (head.value == value)
                 {
-                    head = currentElement.next;
-                    if (tail.value == value)
+                    if (tail == head)
                     {
-                        tail = head;
+                        head = null;
+                        tail = null;
                     }
+                    head = currentElement.next;
                     --counter;
                     return;
                 }
