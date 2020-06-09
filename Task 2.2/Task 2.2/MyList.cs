@@ -53,24 +53,34 @@ namespace Task_2._2
         /// <param name="value">Value to be deleted</param>
         public void DeleteElement(string value)
         {
-            ListElement currentElement = head;
-            if (head == null)
+            if (Contains(value))
             {
-                throw new InvalidOperationException("Нет начала списка");
-            }
-            if (head.value == value)
-            {
-                head = currentElement.next;
-                tail = currentElement.next;
+                ListElement currentElement = head;
+                if (head.value == value)
+                {
+                    head = currentElement.next;
+                    if (tail.value == value)
+                    {
+                        tail = head;
+                    }
+                    --counter;
+                    return;
+                }
+                while (currentElement.next != null && currentElement.next.value != value)
+                {
+                    currentElement = currentElement.next;
+                }
+                if (tail.value == value)
+                {
+                    tail = currentElement;
+                }
+                currentElement.next = currentElement.next.next;
                 --counter;
-                return;
             }
-            while (currentElement.next != null && currentElement.next.value != value)
+            else
             {
-                currentElement = currentElement.next;
+                throw new InvalidOperationException("Такого элемента тут нет");
             }
-            currentElement.next = currentElement.next.next;
-            --counter;
         }
 
         /// <summary>
