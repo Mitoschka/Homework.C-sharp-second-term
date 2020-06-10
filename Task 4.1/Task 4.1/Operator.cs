@@ -5,6 +5,9 @@
 /// </summary>
 namespace Task_4._1
 {
+    /// <summary>
+    /// Class with implementation of Operator.
+    /// </summary>
     abstract class Operator : ITreeElement
     {
         private ITreeElement left;
@@ -34,10 +37,7 @@ namespace Task_4._1
         /// <summary>
         /// Prints the value of an operator
         /// </summary>
-        public virtual void Print()
-        {
-            Console.Write($"{Value}");
-        }
+        public abstract void Print();
 
         /// <summary>
         /// The counter of operators in a tree

@@ -5,14 +5,24 @@
 /// </summary>
 namespace Task_4._1
 {
+    /// <summary>
+    /// Class with implementation of Operand.
+    /// </summary>
     class Operand : ITreeElement
     {
+        /// <summary>
+        /// <see cref="Operand"/> class constructor
+        /// </summary>
+        public Operand(char value)
+        {
+            valueElement = value;
+        }
+
         private char valueElement;
         
         public char Value
         {
             get => valueElement;
-            set => valueElement = value;
         }
 
         /// <summary>
@@ -26,9 +36,6 @@ namespace Task_4._1
         /// <summary>
         /// The counter of operands in a tree
         /// </summary>
-        public int Count()
-        {
-            return Value - '0';
-        }
+        public int Count() => Value - '0';
     }
 }

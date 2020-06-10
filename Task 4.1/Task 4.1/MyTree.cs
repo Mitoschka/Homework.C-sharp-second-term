@@ -5,6 +5,9 @@
 /// </summary>
 namespace Task_4._1
 {
+    /// <summary>
+    /// Class with implementation of MyTree.
+    /// </summary>
     public class MyTree
     {
         private ITreeElement head;
@@ -115,38 +118,20 @@ namespace Task_4._1
                 char element = expression[i];
                 if (IsOperator(element))
                 {
-                    switch (element)
+                    Operator newOperator = element switch
                     {
-                        case '+':
-                            {
-                                AddElementInTree(new Addition());
-                                break;
-                            }
-                        case '-':
-                            {
-                                AddElementInTree(new Subtraction());
-                                break;
-                            }
-                        case '*':
-                            {
-                                AddElementInTree(new Multiplication());
-                                break;
-                            }
-                        case '/':
-                            {
-                                AddElementInTree(new Division());
-                                break;
-                            }
-                        default:
-                            {
-                                break;
-                            }
-                    }
+                        '+' => new Addition(),
+                        '/' => new Division(),
+                        '*' => new Multiplication(),
+                        '-' => new Subtraction(),
+                         _ => throw new ArgumentException(),
+                    };
+                    AddElementInTree(newOperator);
                 }
+
                 else if (IsNumber(element))
                 {
-                    var newElement = new Operand();
-                    newElement.Value = element;
+                    var newElement = new Operand(element);
 
                     AddElementInTree(newElement);
                 }
@@ -162,5 +147,6 @@ namespace Task_4._1
         /// </summary>
         /// <returns></returns>
         public int CountExpression() => head.Count();
+
     }
 }

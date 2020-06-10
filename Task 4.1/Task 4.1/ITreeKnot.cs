@@ -3,6 +3,9 @@
 /// </summary>
 namespace Task_4._1
 {
+    /// <summary>
+    /// ITreeElement interface.
+    /// </summary>
     public interface ITreeElement
     {
         /// <summary>
