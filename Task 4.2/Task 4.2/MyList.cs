@@ -152,7 +152,7 @@ namespace Task_4._2
         /// </summary>
         /// <param name="position">Number of item to add value to</param>
         /// <param name="number"> The number we want to replace</param>
-        public void SetItemValue(int position, string stringOfValue)
+        public virtual void SetItemValue(int position, string stringOfValue)
         {
             if (position > Сounter - 1)
             {
