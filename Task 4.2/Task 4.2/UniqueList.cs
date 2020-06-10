@@ -19,11 +19,15 @@ namespace Task_4._2
         {
             if (IsContain(value))
             {
+                if (GetPositionByElementsValue(value) == position)
+                {
+                    return;
+                }
                 throw new AddException($"Выражение {value} не являеться уникальным.");
             }
             else
             {
-               base.AddElement(value, position);
+                base.AddElement(value, position);
             }
         }
     }

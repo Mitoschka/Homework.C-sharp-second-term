@@ -37,14 +37,15 @@ namespace Task_4._2.Test
             list.AddElement("abc", 0);
 
             Assert.Throws<AddException>(() => list.AddElement("abc", 1));
-            Assert.Throws<AddException>(() => list.AddElement("abc", 0));
+            Assert.AreEqual(1, list.SizeOfList());
         }
 
         [Test]
         public void ShouldNotContainDuplicates()
         {
             list.AddElement("abc", 0);
-            Assert.Throws<AddException>(() => list.AddElement("abc", 0));
+            list.AddElement("abc", 0);
+            Assert.AreEqual(1, list.SizeOfList());
         }
     }
 }

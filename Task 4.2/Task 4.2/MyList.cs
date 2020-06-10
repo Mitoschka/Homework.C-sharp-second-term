@@ -194,5 +194,22 @@ namespace Task_4._2
             }
             return false;
         }
+
+        /// <summary>
+        /// Get element position by element`s value
+        /// </summary>
+        /// <param name="value">Element`s value</param>
+        /// <returns>Position</returns>
+        protected int GetPositionByElementsValue(string value)
+        {
+            int counter = 0;
+            ListElement currentElement = head;
+            while (currentElement.Value != value)
+            {
+                currentElement = currentElement.Next;
+                counter++;
+            }
+            return counter;
+        }
     }
 }

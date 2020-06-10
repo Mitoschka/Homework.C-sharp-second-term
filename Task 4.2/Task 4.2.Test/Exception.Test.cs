@@ -13,13 +13,6 @@ namespace Task_4._2.Test
         }
 
         [Test]
-        public void AddUniqueElementToListTest()
-        {
-            unique.AddElement("dog", 0);
-            Assert.Throws<AddException>(() => unique.AddElement("dog", 0));
-        }
-
-        [Test]
         public void DeleteElementFromEmptyListTest()
         {
             unique.AddElement("dog", 0);
